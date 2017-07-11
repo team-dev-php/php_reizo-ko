@@ -1,0 +1,173 @@
+body{
+    width: 375px;
+    height: 667px;
+}
+
+.black_zone{
+    background-color: black;
+    width: 365px;
+    height: 20px;
+}
+
+.title{
+    color: red;
+    font-size: 20px;
+    text-align: center;
+    font-family: sans-serif;
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+
+#wrapper{
+    width:365px;
+    height: 667px;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form{
+    width:365px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.scan_bt{
+    margin-bottom: 15px;
+    margin-top: 0px;
+    width: 220px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    position: relative;
+    display: inline-block;
+    padding: 0.25em 0.5em;
+    text-decoration: none;
+    color: #FFF;
+    background: #fd613c;/*色*/
+    border-radius: 2px;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.2);
+    text-shadow: 0 1px 0 rgba(0,0,0,0.2);
+}
+
+.scan_bt_off{
+    margin-bottom: 15px;
+    margin-top: 0px;
+    width: 220px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    position: relative;
+    display: inline-block;
+    padding: 0.25em 0.5em;
+    text-decoration: none;
+    color: #FFF;
+    background: #d8d8d8;/*色*/
+    border-radius: 2px;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.2);
+    text-shadow: 0 1px 0 rgba(0,0,0,0.2);
+}
+
+.regist_bt{
+    border: thin solid #666666;
+    font-size: 18px;
+    margin-bottom: 15px;
+    margin-top: 0px;
+    width: 240px;
+    height: 50px;
+    line-height: 40px;
+    text-align: center;
+    position: relative;
+    display: inline-block;
+    padding: 0.25em 0.5em;
+    text-decoration: none;
+    color: #FFF;
+    background: #d8d8d8;/*色*/
+    border-radius: 2px;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.2);
+    text-shadow: 0 1px 0 rgba(0,0,0,0.2);
+}
+
+.regist_bt_run{
+    border: thin solid #666666;
+    font-size: 18px;
+    margin-bottom: 15px;
+    margin-top: 0px;
+    width: 240px;
+    height: 50px;
+    line-height: 40px;
+    text-align: center;
+    position: relative;
+    display: inline-block;
+    padding: 0.25em 0.5em;
+    text-decoration: none;
+    color: #FFF;
+    background: #fd613c;/*色*/
+    border-radius: 2px;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.2);
+    text-shadow: 0 1px 0 rgba(0,0,0,0.2);
+}
+
+.retry{
+    margin-bottom: 15px;
+    margin-top: 0px;
+    width: 220px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    position: relative;
+    display: inline-block;
+    padding: 0.25em 0.5em;
+    text-decoration: none;
+    color: #FFF;
+    background: #fdba3c;/*色*/
+    border-radius: 2px;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.2);
+    text-shadow: 0 1px 0 rgba(0,0,0,0.2);
+}
+
+.img_area{
+    border: .5px solid #a5a5a5;
+}
+
+#sourceImage{
+    max-height: 250px;
+    max-width: 330px;
+}
+
+#imageDiv{
+    width: 340px;
+    height: 260px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 260px;
+}
+
+.img_block{
+    max-height: 250px;
+    max-width: 330px;
+}
+
+.item_name{
+    font-size: 18px;
+    display: block;
+    width: 240px;
+    height: 40px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#numberArea{
+    position: absolute;
+    left: 400px;
+    top: 50px;
+}
+
+#inputImage{
+    position: absolute;
+    left: 400px;
+    top: 100px;
+}
