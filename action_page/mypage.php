@@ -3,6 +3,66 @@ $src = $_POST['img_src'];
 $name = $_POST['item_name'];
 $user_name = $_POST['user_name'];
 $user_email = $_POST['user_email'];
+//1.上記情報をDBにInsert
+//2.user_nameからuser_idをDBから取得(select文)
+//3.user_nameでitem一覧をDBから取得(select文)
+    //外部ファイル読み込み
+    include("functions.php");
+
+    //DB接続
+    $pdo = db_con();
+
+    //データ登録SQL作成
+    $stmt = $pdo->prepare("SELECT * FROM item_table");
+    $status = $stmt->execute();
+
+    //データ表示
+    $view="";
+    if($status==false){
+      //execute（SQL実行時にエラーがある場合）
+      $error = $stmt->errorInfo();
+      exit("ErrorQuery:".$error[2]);
+
+    }else{
+      //Selectデータの数だけ自動でループしてくれる
+      while( $result = $stmt->fetch(PDO::FETCH_ASSOC)){
+        $view .= "<tr>";
+        // $view .= '<a href = "detail.php?id='.$result["id"].'" >';
+        $view .="<td>";
+        $view .= $result["item_name"];
+        $view .= "</td><td>";
+        $view .= $result["indate"];
+        $view .= "</td><td>";
+        $view .= $result["end_date"];
+        $view .="</td>";
+        // $view .= " ";
+        // $view .= $result["indate"];
+        // $view .= " ";
+        // $view .= $result["end_date"];
+        // $view .= '</a>';
+        // $view .= '<a href = "delete.php?id='.$result["id"].'" >';
+        // $view .= '[削除]';
+        // $view .= '</a>';
+        $view .= "</tr>";
+        // <tr>
+        //     <td>John</td>
+        //     <td>Doe</td>
+        //     <td>john@example.com</td>
+        // </tr>
+        // <tr>
+        //     <td>Mary</td>
+        //     <td>Moe</td>
+        //     <td>mary@example.com</td>
+        // </tr>
+        // <tr>
+        //     <td>July</td>
+        //     <td>Dooley</td>
+        //     <td>july@example.com</td>
+        // </tr>
+      }
+
+    }
+//4.アイテム情報を$viewに整形して代入
 ?>
 
 <!DOCTYPE html>
@@ -61,33 +121,44 @@ $user_email = $_POST['user_email'];
 
     <!-- Navigation -->
     <?php include (dirname(__FILE__).'/navbar.php'); ?>
-    <!-- Header -->
-  <!--   <header>
-        <div class="container" id="maincontent" tabindex="-1">
-            <div class="row">
-                <div class="col-lg-12">
-                    <img class="img-responsive" src="img/profile.png" alt="">
-                    <div class="intro-text">
-                        <h1 class="name">Start Bootstrap</h1>
-                        <hr class="star-light">
-                        <span class="skills">Web Developer - Graphic Artist - User Experience Designer</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header> -->
+    <!-- /Navigation -->
     <section id="page-top">
         <div class="contatainer">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2>My page</h2>
-                    <hr class="star-primary">
-                </div>
+            <div class="col-lg-12 text-center">
+                <h2>My page</h2>
+                <div id="user-name" class="text-center"><h3>For <?=$user_name?></h3></div>
+                <hr class="star-primary">
             </div>
-            <div class="row">
-                <div class="col-lg-8 col-log-offset-2">
-                    <div id="user-name" class="text-center"><h2>For <?=$user_name?></h2></div>
-                    アイテムリスト
+            <div class="col-lg-8 col-log-offset-2">
+                <div class="container text-center">
+                  <h4>冷蔵中アイテム一覧</h4>          
+                  <table class="table table-condensed">
+                    <thead>
+                      <tr>
+                        <th>Item Name</th>
+                        <th>保存開始日</th>
+                        <th>保存期限</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    <?=$view?>
+                      <!-- <tr>
+                        <td>John</td>
+                        <td>Doe</td>
+                        <td>john@example.com</td>
+                      </tr>
+                      <tr>
+                        <td>Mary</td>
+                        <td>Moe</td>
+                        <td>mary@example.com</td>
+                      </tr>
+                      <tr>
+                        <td>July</td>
+                        <td>Dooley</td>
+                        <td>july@example.com</td>
+                      </tr> -->
+                    </tbody>
+                  </table>
                 </div>
             </div>
         </div>

@@ -80,48 +80,44 @@ $barcode = $_POST['barcode'];
     </header> -->
     <section id="page-top">
         <div class="contatainer">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2>Register Item</h2>
-                    <hr class="star-primary">
-                </div>
+            <div class="col-lg-12 text-center">
+                <h2>Register Item</h2>
+                <hr class="star-primary">
             </div>
-            <div class="row">
-                <div class="col-lg-8 col-log-offset-2">
-                    <form action="mypage.php" method="post" class="form">
-                        <div id="user-name" class="text-center"></div>
-                        <div id="imageDiv" class="img_area">
-                            <div class="img_block"><img id="sourceImage" src='<?php echo $barcode; ?>'/></div>
-                        </div>
-                        <input type="hidden" id="item_name" class="item_name" name="item_name">
-                        <input type = "hidden" id="img_src" class="img_src" name="img_src">
-                        <!-- <div class="scan_bt">スキャン</div> -->
-                        <div id="signin_btn" class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
-                        <button type="button" class="btn btn-primary btn-block scan_bt" onclick="processImage()" id="scan_bt">スキャン</button>
-                        <div class="item_info text-center">
-                            <h4>-Item Name-</h4>
-                            <h4><span class="item_name"></span></h4>
-                            <h4>-Category-</h4>
-                            <h4><span class="item_category"></span></h4>
-                            <h4></h4>
-                        </div>
-                        <input type="hidden" name="user_name" value="">
-                        <input type="hidden" name="user_email" value="">
-                        <input id="regist_bt" type="submit" class="regist_bt btn btn-block btn-danger" value="アイテムを登録！">
-                    <button type="button" class="btn btn-primary btn-block scan_bt retry" onclick="retry()" id="retry">撮りなおす</button>
-                    </form>
-                    <!--バーコードの数字と読み込み画像のurl-->
-                    <!--最終的には削除する-->
-                    <!--<input type="text" name="inputImage" id="inputImage" value="http://livedoor.blogimg.jp/jdash/imgs/1/7/17bbcf9b.jpg" style="width:200px; height:30px;" />-->
-                    <div id="jsonOutput">
-                        <input type="hidden" id="numberArea" class="UIInput" value="読み取った番号">
+            <div class="col-lg-8 col-log-offset-2">
+                <form action="mypage.php" method="post" class="form">
+                    <div id="user-name" class="text-center"></div>
+                    <div id="imageDiv" class="img_area">
+                        <div class="img_block"><img id="sourceImage" src='<?php echo $barcode; ?>'/></div>
                     </div>
-                    <!--/バーコードの数字と読み込み画像のurl-->
-                    <!--/最終的には削除する-->
-
-                    <!--POSTで受け取ったバーコードをsrcに入れる-->
-                    <input type="hidden" name="inputImage" id="inputImage" value='<?php echo $barcode; ?>'/>
+                    <input type="hidden" id="item_name" class="item_name" name="item_name">
+                    <input type = "hidden" id="img_src" class="img_src" name="img_src">
+                    <!-- <div class="scan_bt">スキャン</div> -->
+                    <div id="signin_btn" class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+                    <button type="button" class="btn btn-primary btn-block scan_bt" onclick="processImage()" id="scan_bt">スキャン</button>
+                    <div class="item_info text-center">
+                        <h4>-Item Name-</h4>
+                        <h4><span class="item_name"></span></h4>
+                        <h4>-Category-</h4>
+                        <h4><span class="item_category"></span></h4>
+                        <h4></h4>
+                    </div>
+                    <input type="hidden" name="user_name" value="">
+                    <input type="hidden" name="user_email" value="">
+                    <input id="regist_bt" type="submit" class="regist_bt btn btn-block btn-danger" value="アイテムを登録！">
+                <button type="button" class="btn btn-primary btn-block scan_bt retry" onclick="retry()" id="retry">撮りなおす</button>
+                </form>
+                <!--バーコードの数字と読み込み画像のurl-->
+                <!--最終的には削除する-->
+                <!--<input type="text" name="inputImage" id="inputImage" value="http://livedoor.blogimg.jp/jdash/imgs/1/7/17bbcf9b.jpg" style="width:200px; height:30px;" />-->
+                <div id="jsonOutput">
+                    <input type="hidden" id="numberArea" class="UIInput" value="読み取った番号">
                 </div>
+                <!--/バーコードの数字と読み込み画像のurl-->
+                <!--/最終的には削除する-->
+
+                <!--POSTで受け取ったバーコードをsrcに入れる-->
+                <input type="hidden" name="inputImage" id="inputImage" value='<?php echo $barcode; ?>'/>
             </div>
         </div>
     </section>
