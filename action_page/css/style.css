@@ -80,3 +80,9 @@ button{
     margin-top: 70%;
     /* margin: auto 0; */
 }
+
+.item_info{
+    width: 80%;
+    margin: 0 auto;
+    display: none;
+}

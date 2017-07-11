@@ -62,6 +62,8 @@
                         success: function(data){
                             let name = data.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'');
                             $("#item_name").val(name);
+                            $(".item_name").html(name);
+                            // $(".item_category").html();
                         }
                     });
 
@@ -81,6 +83,8 @@
                             $("#sourceImage").attr("src","http://whisper1111.sakura.ne.jp/noimage.png");
                             $('#regist_bt').removeClass().addClass("regist_bt_run btn btn-block btn-danger");
                             $("#loading").fadeOut();
+                            $(".item_info").show();
+                            
                             // $('#scan_bt').removeClass().addClass("scan_bt_off");
                      }else{
                          let item_image = html.items[0].link;
@@ -88,6 +92,7 @@
                          $("#img_src").val(item_image);
                          $('#regist_bt').removeClass().addClass("regist_bt_run btn btn-block btn-danger");
                          $("#loading").fadeOut();
+                         $(".item_info").show();
                          // $('#scan_bt').removeClass().addClass("scan_bt_off");
                      }
 

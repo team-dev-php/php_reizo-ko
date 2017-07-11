@@ -1,9 +1,12 @@
-<!-- <?php
-$barcode = $_POST['barcode'];
-?> -->
+<?php
+$src = $_POST['img_src'];
+$name = $_POST['item_name'];
+$user_name = $_POST['user_name'];
+$user_email = $_POST['user_email'];
+?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 
 <head>
 
@@ -51,13 +54,8 @@ $barcode = $_POST['barcode'];
 
 <body id="page-top" class="index">
 <div id="loading" class="text-center">
-    <div class="row">
-        <img class="loading_img" src="http://gsacademy.tokyo/data/images/header_title.png" alt="G's ACADEMY TOKYO">
-        <div class="container">
-            <img src="img/loading.gif" alt="Loading...">
-            <h4>画像を解析中...</h4>
-        </div>
-    </div>
+    <img class="loading_img" src="http://gsacademy.tokyo/data/images/header_title.png" alt="G's ACADEMY TOKYO">
+    <h4>画像を解析中...</h4>
 </div>
 <div id="skipnav"><a href="#maincontent">Skip to main content</a></div>
 
@@ -82,45 +80,14 @@ $barcode = $_POST['barcode'];
         <div class="contatainer">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2>Register Item</h2>
+                    <h2>My page</h2>
                     <hr class="star-primary">
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-8 col-log-offset-2">
-                    <form action="mypage.php" method="post" class="form">
-                        <div id="user-name" class="text-center"></div>
-                        <div id="imageDiv" class="img_area">
-                            <div class="img_block"><img id="sourceImage" src='<?php echo $barcode; ?>'/></div>
-                        </div>
-                        <input type="hidden" id="item_name" class="item_name" name="item_name">
-                        <input type = "hidden" id="img_src" class="img_src" name="img_src">
-                        <!-- <div class="scan_bt">スキャン</div> -->
-                        <div id="signin_btn" class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
-                        <button type="button" class="btn btn-primary btn-block scan_bt" onclick="processImage()" id="scan_bt">スキャン</button>
-                        <div class="item_info text-center">
-                            <h4>-Item Name-</h4>
-                            <h4><span class="item_name"></span></h4>
-                            <h4>-Category-</h4>
-                            <h4><span class="item_category"></span></h4>
-                            <h4></h4>
-                        </div>
-                        <input type="hidden" name="user_name" value="">
-                        <input type="hidden" name="user_email" value="">
-                        <input id="regist_bt" type="submit" class="regist_bt btn btn-block btn-danger" value="アイテムを登録！">
-                    <button type="button" class="btn btn-primary btn-block scan_bt retry" onclick="retry()" id="retry">撮りなおす</button>
-                    </form>
-                    <!--バーコードの数字と読み込み画像のurl-->
-                    <!--最終的には削除する-->
-                    <!--<input type="text" name="inputImage" id="inputImage" value="http://livedoor.blogimg.jp/jdash/imgs/1/7/17bbcf9b.jpg" style="width:200px; height:30px;" />-->
-                    <div id="jsonOutput">
-                        <input type="hidden" id="numberArea" class="UIInput" value="読み取った番号">
-                    </div>
-                    <!--/バーコードの数字と読み込み画像のurl-->
-                    <!--/最終的には削除する-->
-
-                    <!--POSTで受け取ったバーコードをsrcに入れる-->
-                    <input type="hidden" name="inputImage" id="inputImage" value='<?php echo $barcode; ?>'/>
+                    <div id="user-name" class="text-center"><h2>For <?=$user_name?></h2></div>
+                    アイテムリスト
                 </div>
             </div>
         </div>
@@ -148,29 +115,6 @@ $barcode = $_POST['barcode'];
     <script src="js/jqBootstrapValidation.js"></script>
     <script src="js/contact_me.js"></script>
     
-    <!-- Google Login javascript -->
-    <script>
-      function onSignIn(googleUser) {
-        // Useful data for your client-side scripts:
-        var profile = googleUser.getBasicProfile();
-        console.log("ID: " + profile.getId()); // Don't send this directly to your server!
-        console.log('Full Name: ' + profile.getName());
-        console.log('Given Name: ' + profile.getGivenName());
-        console.log('Family Name: ' + profile.getFamilyName());
-        console.log("Image URL: " + profile.getImageUrl());
-        console.log("Email: " + profile.getEmail());
-
-        // The ID token you need to pass to your backend:
-        var id_token = googleUser.getAuthResponse().id_token;
-        console.log("ID Token: " + id_token);
-        $("#signin_btn").hide();
-        $("#user-name").html("<h3>Hello "+profile.getGivenName()+"</h3>");
-        $("input[name='user_name']").val(profile.getName());
-        $("input[name='user_email']").val(profile.getEmail());
-        // $("#connected4o1hzjnrynxt").html(profile.getName()+"さんこんちは");
-      };
-    </script>
-
     <!-- Theme JavaScript -->
     <script src="js/freelancer.min.js"></script>
 
