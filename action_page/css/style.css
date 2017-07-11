@@ -1,3 +1,8 @@
+button{
+    margin-top: 10px!important;
+    margin-bottom: 10px!important;
+}
+
 .scan_bt{
 	margin: 0 auto;
     width: 80%;
@@ -14,7 +19,7 @@
 
 #sourceImage{
     max-height: 250px;
-    max-width: 330px;
+    max-width: 100%;
 }
 
 #imageDiv{
@@ -24,5 +29,17 @@
     /* flex-direction: column; */
     /* align-items: center; */
     line-height: 260px;
+    margin: 0 auto;
+}
+
+.abcRioButtonBlue{
+    background-color: #4285f4;
+    width: 80%!important;
+    margin: 0 auto;
+}
+
+#regist_bt{
+    width: 90%;
+    line-height: 2.8;
     margin: 0 auto;
 }

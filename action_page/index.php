@@ -116,13 +116,17 @@ $barcode = $_POST['barcode'];
                         </div>
                         <input type="text" id="item_name" class="item_name" name="item_name">
                         <input type = "hidden" id="img_src" class="img_src" name="img_src">
-<!--                         <div class="scan_bt">スキャン</div> -->
-                        <button type="button" class="btn btn-primary btn-block scan_bt" onclick="processImage()" id="scan_bt" >スキャン</button>
+                        <!-- <div class="scan_bt">スキャン</div> -->
+                        <div id="user-name" class="text-center"></div>
+                        <button type="button" class="btn btn-primary btn-block scan_bt" onclick="processImage()" id="scan_bt">スキャン</button>
                         <!-- <input type="submit" id="regist_bt" class="regist_bt" value="googleログインして登録"> -->
-                      <!--   <button type="button" id="regist_bt" class="btn btn-primary btn-block regist_bt">Google Login</button> -->
-                        <div id="regist_bt" class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
-                    </form>
+                        <!--   <button type="button" id="regist_bt" class="btn btn-primary btn-block regist_bt">Google Login</button> -->
+                        <div id="signin_btn" class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+                        <input type="hidden" name="user_name" value="">
+                        <input type="hidden" name="user_email" value="">
+                        <input type="submit" id="regist_bt" class="regist_bt btn btn-block btn-danger" value="アイテムを登録！">
                     <button type="button" class="btn btn-primary btn-block scan_bt retry" onclick="retry()" id="retry">撮りなおす</button>
+                    </form>
                     <!--バーコードの数字と読み込み画像のurl-->
                     <!--最終的には削除する-->
                     <!--<input type="text" name="inputImage" id="inputImage" value="http://livedoor.blogimg.jp/jdash/imgs/1/7/17bbcf9b.jpg" style="width:200px; height:30px;" />-->
@@ -445,6 +449,11 @@ $barcode = $_POST['barcode'];
         // The ID token you need to pass to your backend:
         var id_token = googleUser.getAuthResponse().id_token;
         console.log("ID Token: " + id_token);
+        $("#signin_btn").hide();
+        $("#user-name").html("<h3>Hello "+profile.getGivenName()+"</h3>");
+        $("input[name='user_name']").val(profile.getName());
+        $("input[name='user_email']").val(profile.getEmail());
+        // $("#connected4o1hzjnrynxt").html(profile.getName()+"さんこんちは");
       };
     </script>
 
