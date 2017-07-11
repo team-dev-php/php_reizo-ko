@@ -4,8 +4,14 @@ button{
 }
 
 .scan_bt{
-	margin: 0 auto;
+    margin: 0 auto;
     width: 80%;
+}
+
+.scan_bt_off{
+    margin: 0 auto;
+    width: 80%;
+    opacity: 0.4;
 }
 
 .img_block{
@@ -38,8 +44,39 @@ button{
     margin: 0 auto;
 }
 
-#regist_bt{
-    width: 90%;
+.regist_bt{
+    width: 90%!important;
     line-height: 2.8;
     margin: 0 auto;
+    color: #fff;
+    background-color: rgba(217, 83, 79, 0.22);
+     border-color: rgba(0, 0, 0, 0)!important; 
+    pointer-events: none;
+}
+
+.regist_bt_run{
+    width: 90%!important;
+    line-height: 2.8;
+    margin: 0 auto;
+    color: #fff;
+    background-color: rgb(217, 83, 79);
+    border-color: #d43f3a;
+}
+
+#loading{
+    background:rgba(255, 255, 255, 0.85);
+    height:100%;
+    left:0;
+    position:fixed;
+    top:0;
+    width:100%;
+    z-index:10;
+    display: none;
+    /*margin-top:80%;*/
+}
+.loading_img{
+    width: 80%;
+    /* height: 40%; */
+    margin-top: 70%;
+    /* margin: auto 0; */
 }

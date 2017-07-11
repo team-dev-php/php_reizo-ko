@@ -81,13 +81,13 @@
                         if(typeof checker === "undefined"){
                             $("#sourceImage").attr("src","http://whisper1111.sakura.ne.jp/noimage.png");
                             $('#regist_bt').removeClass().addClass("regist_bt_run");
-                            $('#scan_bt').removeClass().addClass("scan_bt_off");
+                            // $('#scan_bt').removeClass().addClass("scan_bt_off");
                      }else{
                          let item_image = html.items[0].link;
                          $("#sourceImage").attr("src",item_image);
                          $("#img_src").val(item_image);
                          $('#regist_bt').removeClass().addClass("regist_bt_run");
-                         $('#scan_bt').removeClass().addClass("scan_bt_off");
+                         // $('#scan_bt').removeClass().addClass("scan_bt_off");
                      }
 
                     }

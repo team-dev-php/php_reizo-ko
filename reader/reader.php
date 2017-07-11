@@ -21,7 +21,7 @@ $barcode = $_POST['barcode'];
     <?php include (dirname(__FILE__).'/navbar.php'); ?>
     <!-- /Navigation -->
        <div id="wrapper" style="width:375">
-            <div class="black_zone" ></div>
+            <div class="black_zone"></div>
             <p class="title">Reader</p>
             <form action="todb_test.php" method="post" class="form">
                 <div id="imageDiv" class="img_area">

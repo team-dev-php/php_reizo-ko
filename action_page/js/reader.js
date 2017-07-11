@@ -8,6 +8,7 @@
 
             //=================micro soft computer vision API====================//
             function processImage() {
+                $("#loading").show();
                 //microsoft Computer Vision APIのKey
                 var subscriptionKey = "253edd3abc2e4083a529927d9b1950ac";
                 var uriBase = "https://westcentralus.api.cognitive.microsoft.com/vision/v1.0/ocr";
@@ -32,9 +33,7 @@
                     type: "POST",
                     // Request body.
                     data: '{"url": ' + '"' + sourceImageUrl + '"}',
-                })
-
-                    .done(function(data) {
+                }).done(function(data) {
                     // Show formatted JSON on webpage.
                     //ここにバーコードの数字が入る
                     let wordsArray = data.regions[0].lines[0].words;
@@ -80,14 +79,16 @@
                         let checker = html.items;
                         if(typeof checker === "undefined"){
                             $("#sourceImage").attr("src","http://whisper1111.sakura.ne.jp/noimage.png");
-                            $('#regist_bt').removeClass().addClass("regist_bt_run");
-                            $('#scan_bt').removeClass().addClass("scan_bt_off");
+                            $('#regist_bt').removeClass().addClass("regist_bt_run btn btn-block btn-danger");
+                            $("#loading").fadeOut();
+                            // $('#scan_bt').removeClass().addClass("scan_bt_off");
                      }else{
                          let item_image = html.items[0].link;
                          $("#sourceImage").attr("src",item_image);
                          $("#img_src").val(item_image);
-                         $('#regist_bt').removeClass().addClass("regist_bt_run");
-                         $('#scan_bt').removeClass().addClass("scan_bt_off");
+                         $('#regist_bt').removeClass().addClass("regist_bt_run btn btn-block btn-danger");
+                         $("#loading").fadeOut();
+                         // $('#scan_bt').removeClass().addClass("scan_bt_off");
                      }
 
                     }
