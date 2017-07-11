@@ -1,0 +1,28 @@
+.scan_bt{
+	margin: 0 auto;
+    width: 80%;
+}
+
+.img_block{
+    max-height: 250px;
+    max-width: 330px;
+}
+
+.img_area{
+    border: .5px solid #a5a5a5;
+}
+
+#sourceImage{
+    max-height: 250px;
+    max-width: 330px;
+}
+
+#imageDiv{
+    width: 80%;
+    height: 260px;
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* align-items: center; */
+    line-height: 260px;
+    margin: 0 auto;
+}

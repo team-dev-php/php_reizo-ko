@@ -1,0 +1,82 @@
+/* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+#map {
+  height: 100%;
+  margin-top: 12%;
+}
+.search-section{
+  background-color: white;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+.map-section{
+  display: none;
+}
+
+/*CSS For Top Page*/
+.header {
+    display: table;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: url(../img/bg.png) no-repeat center center scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+  }
+
+.text-vertical-center {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+}
+
+/*CSS for proceeding pages*/
+#confirm-sns{
+  display: none;
+  margin-top: 12%;
+}
+#reservation{
+  display: none;
+  margin-top: 12%;
+}
+#confirmation{
+  display: none;
+  margin-top: 12%;
+}
+
+.inbox{
+  display: table;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+}
+/* Optional: Makes the sample page fill the window. */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+
+@media (min-width: 768px) {
+  #map {
+  margin-top: 5%;
+  }
+}
+@media (min-width: 992px) {
+  #map {
+  margin-top: 5%;
+  }
+}
+@media (min-width: 1200px) {
+  #map {
+  margin-top: 3.5%;
+  }
+}
