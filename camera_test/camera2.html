@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/cropper/1.0.0/cropper.min.css" rel="stylesheet" type="text/css" media="all" />
+	<!-- JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/cropper/1.0.0/cropper.min.js"></script>
+
+	<!-- <link rel="stylesheet" href="camera.css"> -->
+
+
+	<title>Webカメラの映像を画像化</title>
+</head>
+
+<body>
+	<h2>Video</h2>
+
+	<form action="upload.php" method="post" enctype="multipart/form-data">
+		<p>
+			<input type="file" name="upfile" id="upfile" accept="image/*" capture="camera" />
+			<span style="color: #ff0000;"><div><img id="thumbnail" src="" height:50;></div></span>
+		</p>
+		<p><input type="submit" name="save" value="保存" /></p>
+	</form>
+	<!-- <input type="file" accept="image/*" capture="camera"> -->
+
+
+	<div class="cropper-example-1">
+		<!-- bladeテンプレートを使用していれば asset()や url() 関数が使えます -->
+
+
+
+	<script>
+
+		$('#upfile').change(function() {
+			if (this.files.length > 0) {
+				// 選択されたファイル情報を取得
+				var file = this.files[0];
+
+				// readerのresultプロパティに、データURLとしてエンコードされたファイルデータを格納
+				var reader = new FileReader();
+				reader.readAsDataURL(file);
+
+				reader.onload = function() {
+					$('#thumbnail').attr('src', reader.result);
+				}
+			}
+		});
+
+	</script>
+
+	<!-- <video id="camera" autoplay></video>
+	<button id="start">start</button>
+	<h2>Canvas</h2>
+	<canvas id="canvas"></canvas>
+	<h2>Img</h2>
+	<img id="img"> -->
+
+	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+	<script type="text/javascript" src="camera.js"></script> -->
+</body>
+
+</html>
