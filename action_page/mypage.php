@@ -1,17 +1,42 @@
 <?php
-$src = $_POST['img_src'];
-$name = $_POST['item_name'];
+$url = $_POST['img_src'];
+$item_name = $_POST['item_name'];
 $user_name = $_POST['user_name'];
 $user_email = $_POST['user_email'];
+
+//外部ファイル読み込み
+include("functions.php");
+
+//DB接続
+$pdo = db_con();
+
 //1.上記情報をDBにInsert
+    //Item情報をDBにInsert
+    //入力チェック（受信確認処理追加）
+    if(
+        !isset($_POST["item_name"]) || $_POST["item_name"] == "" ||
+        !isset($_POST["img_src"]) || $_POST["img_src"] == ""
+    ){
+        exit("ParamError");
+    }
+
+    //データ登録SQL作成
+    $stmt1 = $pdo->prepare("INSERT INTO item_table(id, item_name, url, indate, end_date)VALUES(NULL, :item_name, :url, sysdate(), sysdate() + INTERVAL 1 WEEK)");
+    $stmt1->bindValue(':item_name', $item_name, PDO::PARAM_STR);  //Integer（数値の場合 PDO::PARAM_INT)
+    $stmt1->bindValue(':url', $url, PDO::PARAM_STR);
+    $status = $stmt1->execute();//上記が全て実行された後の結果を$statusに格納
+
+    //User情報をDBで確認、null➜insert, あったらOK
+    $stmt2 = $pdo->prepare("SELECT 'id' FROM user_table WHERE 'name'= :user_name");
+    $stmt2->bindValue(':user_name', $user_name, PDO::PARAM_STR);
+    $status = $stmt2->execute();
+    
+    //nullの場合はuser情報を新規登録(Insert文)
+    
+
 //2.user_nameからuser_idをDBから取得(select文)
+    
 //3.user_nameでitem一覧をDBから取得(select文)
-    //外部ファイル読み込み
-    include("functions.php");
-
-    //DB接続
-    $pdo = db_con();
-
     //データ登録SQL作成
     $stmt = $pdo->prepare("SELECT * FROM item_table");
     $status = $stmt->execute();
