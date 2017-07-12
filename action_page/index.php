@@ -78,11 +78,11 @@
     </header> -->
     <section id="page-top">
         <div class="contatainer">
-            <div class="col-lg-12 text-center">
+            <div class="text-center">
                 <h2>Register Item</h2>
                 <hr class="star-primary">
             </div>
-            <div class="col-lg-8 col-log-offset-2">
+            <div class="">
                 <form action="mypage.php" method="post" class="form">
                     <div id="user-name" class="text-center"></div>
                     <!-- 画像表示 -->

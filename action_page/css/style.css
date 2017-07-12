@@ -27,9 +27,8 @@ th{
 }
 
 #sourceImage{
-    /*max-height: 250px;
-    max-width: 100%;*/
-    width: 100%;
+    width: 70%;
+    margin: 5% 15%;
 }
 
 #imageDiv{
