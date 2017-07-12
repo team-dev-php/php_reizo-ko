@@ -6,7 +6,7 @@ function db_con(){
 	try {
 	//localhost用
 	$pdo = new PDO('mysql:dbname=shoheikoya_gs_db;charset=utf8;host=localhost','root','root');
-
+	
 
 	} catch (PDOException $e) {
 	  exit('データベースに接続できませんでした。'.$e->getMessage());

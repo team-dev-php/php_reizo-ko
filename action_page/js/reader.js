@@ -7,7 +7,8 @@
 
 
             //=================micro soft computer vision API====================//
-            function processImage() {
+            function processImage(img_url) {
+                console.log(img_url);
                 $("#loading").show();
                 //microsoft Computer Vision APIのKey
                 var subscriptionKey = "253edd3abc2e4083a529927d9b1950ac";
@@ -18,8 +19,11 @@
                 };
 
                 //srcにurlを指定して、画像を表示する
-                var sourceImageUrl = document.getElementById("inputImage").value;
-                document.querySelector("#sourceImage").src = sourceImageUrl;
+                // var sourceImageUrl = document.getElementById("inputImage").value;
+                // document.querySelector("#sourceImage").src = sourceImageUrl;
+                
+                // img_urlで持ってきた$barcode=画像のURLを代入
+                var sourceImageUrl = img_url;
 
                 // Perform the REST API call.
                 $.ajax({
@@ -59,6 +63,7 @@
                         type: 'get',
                         url: "item_info.php",
                         data: {url: jan_url},
+                        async:false,
                         success: function(data){
                             let name = data.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'');
                             $("#item_name").val(name);
@@ -73,32 +78,29 @@
 
                     let search_data = "https://www.googleapis.com/customsearch/v1?key=AIzaSyDYHpU2Yz8_UGxDXmyxMfd9fwRLPHHy2Ac&cx=016327561336931600638:eog4mtqwlfm&searchType=image&q=" + num;
 
-                $.ajax({
-                    url: search_data, //読み込むファイルを指定
-                    cache: false, //キャッシュを保存するかの指定
-                    success: function(html){
-                        //データ取得後に実行する処理
-                        let checker = html.items;
-                        if(typeof checker === "undefined"){
-                            $("#sourceImage").attr("src","http://whisper1111.sakura.ne.jp/noimage.png");
-                            $('#regist_bt').removeClass().addClass("regist_bt_run btn btn-block btn-danger");
-                            $("#loading").fadeOut();
-                            $(".item_info").show();
-                            
-                            // $('#scan_bt').removeClass().addClass("scan_bt_off");
-                     }else{
-                         let item_image = html.items[0].link;
-                         $("#sourceImage").attr("src",item_image);
-                         $("#img_src").val(item_image);
-                         $('#regist_bt').removeClass().addClass("regist_bt_run btn btn-block btn-danger");
-                         $("#loading").fadeOut();
-                         $(".item_info").show();
-                         // $('#scan_bt').removeClass().addClass("scan_bt_off");
-                     }
-
-                    }
-                });
-
+                    $.ajax({
+                        url: search_data, //読み込むファイルを指定
+                        cache: false, //キャッシュを保存するかの指定
+                        success: function(html){
+                            //データ取得後に実行する処理
+                            let checker = html.items;
+                            if(typeof checker === "undefined"){
+                                $("#sourceImage").attr("src","http://whisper1111.sakura.ne.jp/noimage.png");
+                                $('#regist_bt').removeClass().addClass("regist_bt_run btn btn-block btn-danger");
+                                $("#loading").fadeOut();
+                                $(".item_info").show();
+                                // $('#scan_bt').removeClass().addClass("scan_bt_off");
+                         }else{
+                             let item_image = html.items[0].link;
+                             $("#sourceImage").attr("src",item_image);
+                             $("#img_src").val(item_image);
+                             $('#regist_bt').removeClass().addClass("regist_bt_run btn btn-block btn-danger");
+                             $("#loading").fadeOut();
+                             $(".item_info").show();
+                             // $('#scan_bt').removeClass().addClass("scan_bt_off");
+                         }
+                        }
+                    });
                 })
 
                 //========================エラーの表示========================//
