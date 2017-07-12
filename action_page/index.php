@@ -22,7 +22,7 @@ $barcode = $_POST['barcode'];
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    
+
     <!-- Theme CSS -->
     <link href="css/freelancer.min.css" rel="stylesheet">
 
@@ -34,11 +34,13 @@ $barcode = $_POST['barcode'];
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
     <!-- Image_div_css -->
     <!-- <link rel="stylesheet" href="css/main.css"> -->
-    
+
     <!-- javascripts -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
     <script src="jquery.xdomainajax.js"></script>
     <script src="js/reader.js"></script>
+
+
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -93,7 +95,7 @@ $barcode = $_POST['barcode'];
                     <input type="hidden" id="item_name" class="item_name" name="item_name">
                     <input type = "hidden" id="img_src" class="img_src" name="img_src">
                     <!-- <div class="scan_bt">スキャン</div> -->
-                    <div id="signin_btn" class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+
                     <button type="button" class="btn btn-primary btn-block scan_bt" onclick="processImage()" id="scan_bt">スキャン</button>
                     <div class="item_info text-center">
                         <h4>-Item Name-</h4>
@@ -104,7 +106,13 @@ $barcode = $_POST['barcode'];
                     </div>
                     <input type="hidden" name="user_name" value="">
                     <input type="hidden" name="user_email" value="">
-                    <input id="regist_bt" type="submit" class="regist_bt btn btn-block btn-danger" value="アイテムを登録！">
+
+                    <div class= "regist_box"><input id="regist_bt" type="submit" class="regist_bt btn btn-block btn-danger" value="アイテムを登録！">
+
+<!--                        <div id="signin_btn" class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>-->
+
+                        <div id="signin_btn" class="g-signin2" ></div>
+                        </div>
                 <button type="button" class="btn btn-primary btn-block scan_bt retry" onclick="retry()" id="retry">撮りなおす</button>
                 </form>
                 <!--バーコードの数字と読み込み画像のurl-->
@@ -143,7 +151,7 @@ $barcode = $_POST['barcode'];
     <!-- Contact Form JavaScript -->
     <script src="js/jqBootstrapValidation.js"></script>
     <script src="js/contact_me.js"></script>
-    
+
     <!-- Google Login javascript -->
     <script>
       function onSignIn(googleUser) {
@@ -159,7 +167,7 @@ $barcode = $_POST['barcode'];
         // The ID token you need to pass to your backend:
         var id_token = googleUser.getAuthResponse().id_token;
         console.log("ID Token: " + id_token);
-        $("#signin_btn").hide();
+        //$("#signin_btn").hide();
         $("#user-name").html("<h3>Hello "+profile.getGivenName()+"</h3>");
         $("input[name='user_name']").val(profile.getName());
         $("input[name='user_email']").val(profile.getEmail());
@@ -169,6 +177,7 @@ $barcode = $_POST['barcode'];
 
     <!-- Theme JavaScript -->
     <script src="js/freelancer.min.js"></script>
+    <script src="js/google.merge.js"></script>
 
 </body>
 
