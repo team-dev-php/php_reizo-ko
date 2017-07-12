@@ -125,10 +125,8 @@
                             
                                 file_data.append('file',file);
 
-                                console.log(file_data.get('file'));
                                 var data = {file : file_data};
-                                console.log(data);
-
+                                
                                 $.ajax({
                                     url:"img_url_create.php",
                                     method:'POST',
