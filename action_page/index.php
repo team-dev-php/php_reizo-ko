@@ -1,7 +1,3 @@
-<!-- <?php
-$barcode = $_POST['barcode'];
-?> -->
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -89,14 +85,74 @@ $barcode = $_POST['barcode'];
             <div class="col-lg-8 col-log-offset-2">
                 <form action="mypage.php" method="post" class="form">
                     <div id="user-name" class="text-center"></div>
+                    <!-- 画像表示 -->
                     <div id="imageDiv" class="img_area">
-                        <div class="img_block"><img id="sourceImage" src='<?php echo $barcode; ?>'/></div>
+                        <div class="img_block">
+                        <img id="sourceImage" class="img-responsive" src="" alt="" width="50%">
+                        </div>
                     </div>
-                    <input type="hidden" id="item_name" class="item_name" name="item_name">
-                    <input type = "hidden" id="img_src" class="img_src" name="img_src">
-                    <!-- <div class="scan_bt">スキャン</div> -->
 
-                    <button type="button" class="btn btn-primary btn-block scan_bt" onclick="processImage()" id="scan_bt">スキャン</button>
+                    <!-- /画像表示 -->
+                    <!-- Google Login Button -->
+                    <div id="signin_btn" class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+                    <!-- /Google Login Button -->
+
+                    <!-- <button type="button" class="btn btn-primary btn-block scan_bt" onclick="processImage()" id="scan_bt">スキャン</button>
+                     -->
+                    <form id="form_img" method="post" action="">
+                        <!-- カメラで商品を撮影-->
+                        <input type="file" name="file" id="upfile" accept="image/*" capture="camera" />
+                        <!-- /カメラで商品を撮影 -->
+                    </form>
+                    <!-- カメラで取った写真画像を表示 -->
+                    <script>
+                        $(document).on('change','#upfile',function() {
+                            if (this.files.length > 0) {
+                                // 選択されたファイル情報を取得
+                                var file = this.files[0];
+                                // console.log(file);
+
+                                // readerのresultプロパティに、データURLとしてエンコードされたファイルデータを格納
+                                var reader = new FileReader();
+                                reader.readAsDataURL(file);
+
+                                reader.onload = function() {
+                                    $('#sourceImage').attr('src', reader.result);
+                                    // $('#file').val(reader.result);
+                                    // crop();
+                                }
+                                 // var files = this.dataTransfer.files;
+                                 // console.log(files);
+                                var file_data = new FormData();
+
+                            
+                                file_data.append('file',file);
+
+                                var data = {file : file_data};
+                                
+                                $.ajax({
+                                    url:"img_url_create.php",
+                                    method:'POST',
+                                    data:file_data,
+                                    processData: false,
+                                    contentType: false
+                                }).done((img_src)=>{
+                                    console.log(img_src);
+                                    processImage(img_src);
+
+                                }).fail(function(jqXHR, textStatus, errorThrown){
+                                    // Display error message.
+                                    var errorString = (errorThrown === "") ? "Error. " : errorThrown + " (" + jqXHR.status + "): ";
+                                    errorString += (jqXHR.responseText === "") ? "" : (jQuery.parseJSON(jqXHR.responseText).message) ?
+                                        jQuery.parseJSON(jqXHR.responseText).message : jQuery.parseJSON(jqXHR.responseText).error.message;
+                                    alert(errorString);
+                                });
+                            }
+                        });
+                    </script>
+                    <!-- /カメラで取った写真画像を表示 -->
+                    <!-- 商品情報表示 -->
+
                     <div class="item_info text-center">
                         <h4>-Item Name-</h4>
                         <h4><span class="item_name"></span></h4>
@@ -104,6 +160,10 @@ $barcode = $_POST['barcode'];
                         <h4><span class="item_category"></span></h4>
                         <h4></h4>
                     </div>
+                    <!-- /商品情報表示 -->
+                    <!-- DBへ登録する情報のinput -->
+                    <input type="hidden" id="item_name" class="item_name" name="item_name">
+                    <input type = "hidden" id="img_src" class="img_src" name="img_src">
                     <input type="hidden" name="user_name" value="">
                     <input type="hidden" name="user_email" value="">
 
@@ -114,6 +174,8 @@ $barcode = $_POST['barcode'];
                         <div id="signin_btn" class="g-signin2" ></div>
                         </div>
                 <button type="button" class="btn btn-primary btn-block scan_bt retry" onclick="retry()" id="retry">撮りなおす</button>
+                    <!-- /DBへ登録する情報のinput -->
+
                 </form>
                 <!--バーコードの数字と読み込み画像のurl-->
                 <!--最終的には削除する-->
