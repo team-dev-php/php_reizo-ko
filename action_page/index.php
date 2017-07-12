@@ -99,11 +99,11 @@
 
                     <!-- <button type="button" class="btn btn-primary btn-block scan_bt" onclick="processImage()" id="scan_bt">スキャン</button>
                      -->
-                    <form id="form_img" method="post" action="">
+                    <!-- <form id="form_img" method="post" action=""> -->
                         <!-- カメラで商品を撮影-->
                         <input type="file" name="file" id="upfile" accept="image/*" capture="camera" />
                         <!-- /カメラで商品を撮影 -->
-                    </form>
+                    <!-- </form> -->
                     <!-- カメラで取った写真画像を表示 -->
                     <script>
                         $(document).on('change','#upfile',function() {
@@ -124,12 +124,9 @@
                                  // var files = this.dataTransfer.files;
                                  // console.log(files);
                                 var file_data = new FormData();
-
-                            
                                 file_data.append('file',file);
-
                                 var data = {file : file_data};
-                                
+
                                 $.ajax({
                                     url:"img_url_create.php",
                                     method:'POST',
@@ -170,9 +167,8 @@
                     <div class= "regist_box"><input id="regist_bt" type="submit" class="regist_bt btn btn-block btn-danger" value="アイテムを登録！">
 
 <!--                        <div id="signin_btn" class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>-->
-
                         <div id="signin_btn" class="g-signin2" ></div>
-                        </div>
+                    </div>
                 <button type="button" class="btn btn-primary btn-block scan_bt retry" onclick="retry()" id="retry">撮りなおす</button>
                     <!-- /DBへ登録する情報のinput -->
 
