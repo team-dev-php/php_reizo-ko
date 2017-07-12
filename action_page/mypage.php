@@ -21,24 +21,33 @@ $pdo = db_con();
     }
 
     //データ登録SQL作成
-    $stmt1 = $pdo->prepare("INSERT INTO item_table(id, item_name, url, indate, end_date)VALUES(NULL, :item_name, :url, sysdate(), sysdate() + INTERVAL 1 WEEK)");
+    $stmt1 = $pdo->prepare("INSERT INTO item_table(id, name, item_name, url, indate, end_date)VALUES(0, :name, :item_name, :url, sysdate(), sysdate() + INTERVAL 1 WEEK)");
+    $stmt1->bindValue(':name', $user_name, PDO::PARAM_STR);
     $stmt1->bindValue(':item_name', $item_name, PDO::PARAM_STR);  //Integer（数値の場合 PDO::PARAM_INT)
     $stmt1->bindValue(':url', $url, PDO::PARAM_STR);
     $status = $stmt1->execute();//上記が全て実行された後の結果を$statusに格納
 
     //User情報をDBで確認、null➜insert, あったらOK
-    $stmt2 = $pdo->prepare("SELECT 'id' FROM user_table WHERE 'name'= :user_name");
-    $stmt2->bindValue(':user_name', $user_name, PDO::PARAM_STR);
-    $status = $stmt2->execute();
-    
-    //nullの場合はuser情報を新規登録(Insert文)
-    
+    $stmt3 = $pdo->prepare("SELECT * FROM user_table WHERE name = :user_name");
+    $stmt3->bindValue(':user_name', $user_name , PDO::PARAM_INT);
+    $status = $stmt3->execute();
+    if(isset($status)){
 
-//2.user_nameからuser_idをDBから取得(select文)
-    
+    }else{
+        //nullの場合はuser情報を新規登録(Insert文)
+        $stmt2 = $pdo->prepare("INSERT INTO user_table(id, name, email, item_count, kanri_flg, life_flg)VALUES(NULL, :name, :email, NULL, NULL, NULL)");
+        $stmt2->bindValue(':name', $user_name, PDO::PARAM_STR);
+        $stmt2->bindValue(':email', $user_email, PDO::PARAM_STR);
+        $status = $stmt2->execute();
+    }
+//2.user_nameからuser_idをDBから取得(select文)…いらないんじゃね?
+    // $stmt3 = $pdo->prepare("SELECT 'name' FROM user_table WHERE 'name'= :user_name");
+    // $stmt3->bindValue(':user_name', $user_name, PDO::PARAM_STR);
+    // $status = $stmt3->execute();
+
 //3.user_nameでitem一覧をDBから取得(select文)
-    //データ登録SQL作成
-    $stmt = $pdo->prepare("SELECT * FROM item_table");
+    $stmt = $pdo->prepare("SELECT * FROM item_table WHERE name = :user_name");
+    $stmt->bindValue(':user_name', $user_name , PDO::PARAM_INT);
     $status = $stmt->execute();
 
     //データ表示
@@ -69,6 +78,7 @@ $pdo = db_con();
         // $view .= '[削除]';
         // $view .= '</a>';
         $view .= "</tr>";
+        
       }
 
     }
@@ -95,7 +105,7 @@ $pdo = db_con();
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    
+
     <!-- Theme CSS -->
     <link href="css/freelancer.min.css" rel="stylesheet">
 
@@ -107,7 +117,7 @@ $pdo = db_con();
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
     <!-- Image_div_css -->
     <!-- <link rel="stylesheet" href="css/main.css"> -->
-    
+
     <!-- javascripts -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
     <script src="jquery.xdomainajax.js"></script>
@@ -141,7 +151,7 @@ $pdo = db_con();
             </div>
             <div class="col-lg-8 col-log-offset-2">
                 <div class="container text-center">
-                  <h4>冷蔵中アイテム一覧</h4>          
+                  <h4>冷蔵中アイテム一覧</h4>
                   <table class="table table-condensed">
                     <thead>
                       <tr>
@@ -195,7 +205,7 @@ $pdo = db_con();
     <!-- Contact Form JavaScript -->
     <script src="js/jqBootstrapValidation.js"></script>
     <script src="js/contact_me.js"></script>
-    
+
     <!-- Theme JavaScript -->
     <script src="js/freelancer.min.js"></script>
 
