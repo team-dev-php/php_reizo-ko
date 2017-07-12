@@ -166,8 +166,8 @@
 
                     <div class= "regist_box"><input id="regist_bt" type="submit" class="regist_bt btn btn-block btn-danger" value="アイテムを登録！">
 
-<!--                        <div id="signin_btn" class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>-->
-                        <div id="signin_btn" class="g-signin2" ></div>
+                        <div id="signin_btn" class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+
                     </div>
                 <button type="button" class="btn btn-primary btn-block scan_bt retry" onclick="retry()" id="retry">撮りなおす</button>
                     <!-- /DBへ登録する情報のinput -->
@@ -235,7 +235,7 @@
 
     <!-- Theme JavaScript -->
     <script src="js/freelancer.min.js"></script>
-    <script src="js/google.merge.js"></script>
+    <script src="js/google_merge.js"></script>
 
 </body>
 
