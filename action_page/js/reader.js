@@ -8,7 +8,7 @@
 
             //=================micro soft computer vision API====================//
             function processImage(img_url) {
-                console.log(img_url);
+                // console.log(img_url);
                 $("#loading").show();
                 //microsoft Computer Vision APIのKey
                 var subscriptionKey = "253edd3abc2e4083a529927d9b1950ac";

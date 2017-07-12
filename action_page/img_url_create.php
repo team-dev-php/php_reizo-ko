@@ -16,10 +16,13 @@ if(isset($_FILES['file'])){
 
   //imgディレクトリのURL
   //取得した時刻を使用してユニーク名にする
-  $barcode = 'http://ryutakeda.sakura.ne.jp/gs/work/php_reizo-ko/reader/img/'.$time.'.jpg';
+  // $barcode = 'localhost:8888/team-work/php_reizo-ko/action_page/img/'.$time.'.jpg';
+
+  $barcode = 'http://shoheikoya.sakura.ne.jp/gs/team-dev/action_page/img/'.$time.'.jpg';
 
    }
-
+}else{
+  $barcode = "test.jpg";
 }
 echo $barcode;
 ?>
