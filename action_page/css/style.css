@@ -156,3 +156,10 @@ th{
 #page-top{
     height: 700px;
 }
+
+@media (min-width: 1200px) {
+  .login_page{
+    height: 50px;
+    margin: 30% 0;
+    }
+}

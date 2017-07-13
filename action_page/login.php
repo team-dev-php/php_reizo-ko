@@ -112,7 +112,7 @@ if( isset($_SESSION['user_name']) != "") {
 		  	console.log("login success!");
             var url = window.location.href;
             url = url.replace("login.php","");
-            window.location(url + "/mypage.php");
+            window.location.href = url + "/mypage.php";
 		  });
 		}
     </script>

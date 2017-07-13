@@ -80,7 +80,8 @@ if(isset($_SESSION["user_name"]) == ""){
       }
 
     }
-//4.アイテム情報を$viewに整形して代入
+
+    
 ?>
 
 <!DOCTYPE html>
@@ -120,6 +121,7 @@ if(isset($_SESSION["user_name"]) == ""){
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
     <script src="jquery.xdomainajax.js"></script>
     <script src="js/reader.js"></script>
+    <script src="js/recipe_generat.js"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -140,7 +142,7 @@ if(isset($_SESSION["user_name"]) == ""){
     <!-- Navigation -->
     <?php include (dirname(__FILE__).'/navbar.php'); ?>
     <!-- /Navigation -->
-    <section id="page-top">
+    <section id="">
         <div class="contatainer">
             <div class="col-lg-12 text-center">
                 <h2>My page</h2>
@@ -161,6 +163,14 @@ if(isset($_SESSION["user_name"]) == ""){
                 <tbody>
                 <?=$view?>
                 </tbody>
+              </table>
+            </div>
+            <div class="container text-center">
+              <hr class="star-primary">
+              <h4>おすすめシェアレシピ！</h4>
+              <!-- ajaxでphpからhtmlを取得して表示 -->
+              <table id="recipe" class="table table-condensed">
+                
               </table>
             </div>
         </div>
