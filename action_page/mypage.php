@@ -71,9 +71,9 @@ if(isset($_SESSION["user_name"]) == ""){
         $view .= $result["end_date"];
         $view .="</td>";
         $view .="<td>";
-        // $view .= '<a href = "delete.php?id='.$result["id"].'" >';
-        // $view .= '[削除]';
-        // $view .= '</a>';
+        $view .= '<a href = "delete.php?id='.$result["id"].'" >';
+        $view .= '[削除]';
+        $view .= '</a>';
         $view .="</td>";
         $view .= "</tr>";
         
