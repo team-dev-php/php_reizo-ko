@@ -82,7 +82,7 @@
                 <h2>Register Item</h2>
                 <hr class="star-primary">
             </div>
-            <div class="">
+            
                 <form action="mypage.php" method="post" class="form">
                     <div id="user-name" class="text-center"></div>
                     <!-- 画像表示 -->
@@ -93,9 +93,6 @@
                     </div>
 
                     <!-- /画像表示 -->
-                    <!-- Google Login Button -->
-                    <div id="signin_btn" class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
-                    <!-- /Google Login Button -->
 
                     <!-- <button type="button" class="btn btn-primary btn-block scan_bt" onclick="processImage()" id="scan_bt">スキャン</button>
                      -->
@@ -167,10 +164,6 @@
 
                     <div class= "regist_box"><input id="regist_bt" type="submit" class="regist_bt btn btn-block btn-danger" value="アイテムを登録！">
                         <div id="signin_btn" class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
-                       </div>
-
-<!--                        <div id="signin_btn" class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>-->
-                        <div id="signin_btn" class="g-signin2" ></div>
                     </div>
 
                 <button type="button" class="btn btn-primary btn-block scan_bt retry" onclick="retry()" id="retry">撮りなおす</button>
@@ -229,7 +222,7 @@
         // The ID token you need to pass to your backend:
         var id_token = googleUser.getAuthResponse().id_token;
         console.log("ID Token: " + id_token);
-        //$("#signin_btn").hide();
+        $("#signin_btn").css("display","none");
         $("#user-name").html("<h3>Hello "+profile.getGivenName()+"</h3>");
         $("input[name='user_name']").val(profile.getName());
         $("input[name='user_email']").val(profile.getEmail());
