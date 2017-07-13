@@ -147,38 +147,36 @@ if(isset($_SESSION["user_name"]) == ""){
                 <div id="user-name" class="text-center"><h3>For <?=$user_name?></h3></div>
                 <hr class="star-primary">
             </div>
-            <div class="col-lg-8 col-log-offset-2">
-                <div class="container text-center">
-                  <h4>冷蔵中アイテム一覧</h4>
-                  <table class="table table-condensed">
-                    <thead>
-                      <tr>
-                        <th>Item Name</th>
-                        <th>保存開始日</th>
-                        <th>保存期限</th>
-                        <th>オプション</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                    <?=$view?>
-                      <!-- <tr>
-                        <td>John</td>
-                        <td>Doe</td>
-                        <td>john@example.com</td>
-                      </tr>
-                      <tr>
-                        <td>Mary</td>
-                        <td>Moe</td>
-                        <td>mary@example.com</td>
-                      </tr>
-                      <tr>
-                        <td>July</td>
-                        <td>Dooley</td>
-                        <td>july@example.com</td>
-                      </tr> -->
-                    </tbody>
-                  </table>
-                </div>
+            <div class="container text-center">
+              <h4>冷蔵中アイテム一覧</h4>
+              <table class="table table-condensed">
+                <thead>
+                  <tr>
+                    <th>Item Name</th>
+                    <th>保存開始日</th>
+                    <th>保存期限</th>
+                    <th>オプション</th>
+                  </tr>
+                </thead>
+                <tbody>
+                <?=$view?>
+                  <!-- <tr>
+                    <td>John</td>
+                    <td>Doe</td>
+                    <td>john@example.com</td>
+                  </tr>
+                  <tr>
+                    <td>Mary</td>
+                    <td>Moe</td>
+                    <td>mary@example.com</td>
+                  </tr>
+                  <tr>
+                    <td>July</td>
+                    <td>Dooley</td>
+                    <td>july@example.com</td>
+                  </tr> -->
+                </tbody>
+              </table>
             </div>
         </div>
     </section>
