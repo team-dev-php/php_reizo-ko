@@ -58,20 +58,20 @@ if( isset($_SESSION['user_name']) != "") {
     <!-- Navigation -->
     <?php include (dirname(__FILE__).'/navbar.php'); ?>
     <!-- /Navigation -->
-    <section id="page-top">
-        <div class="contatainer">
+    <section style="background:url('img/background.jpg');
+    background-size: cover;">
+        <div class="contatainer login_page">
             <div class="text-center">
-                <h2>ログインページ</h2>
-                <hr class="star-primary">
+                <h2 class="logo_text">Frigo</h2>
             </div>
-            <div class="col-lg-8 col-log-offset-2">
+            <div class="login">
                 <div class="g-signin2" data-onsuccess="onSignIn"></div>
             </div>
         </div>
     </section>
     <!-- Footer -->
     <?php include (dirname(__FILE__).'/footer.php'); ?>
-
+    
     <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
     <div class="scroll-top page-scroll hidden-sm hidden-xs hidden-lg hidden-md">
         <a class="btn btn-primary" href="#page-top">

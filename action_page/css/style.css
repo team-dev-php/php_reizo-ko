@@ -131,3 +131,28 @@ th{
     font-weight: 700;
     text-align: center; 
 }
+.abcRioButtonLightBlue {
+    background-color: #fff;
+    color: #757575;
+    width: 50%!important;
+    margin: 0 25%;
+}
+
+/*.login{
+    height: 20%;
+    margin: 10%;
+}*/
+
+.login_page{
+    height: 50px;
+    margin: 63% 0;
+}
+
+.logo_text{
+     color: white;
+     margin: 10px;
+}
+
+#page-top{
+    height: 700px;
+}
