@@ -101,7 +101,7 @@
                      -->
                     <!-- <form id="form_img" method="post" action=""> -->
                         <!-- カメラで商品を撮影-->
-                        <input type="file" name="file" id="upfile" accept="image/*" capture="camera" />
+                        <input type="file" name="file" id="upfile" accept="image/*" capture="camera" class="btn btn-block camera-btn"/>
                         <!-- /カメラで商品を撮影 -->
                     <!-- </form> -->
                     <!-- カメラで取った写真画像を表示 -->
@@ -168,7 +168,7 @@
                     <div class= "regist_box"><input id="regist_bt" type="submit" class="regist_bt btn btn-block btn-danger" value="アイテムを登録！">
                         <div id="signin_btn" class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
                        </div>
-                       
+
 <!--                        <div id="signin_btn" class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>-->
                         <div id="signin_btn" class="g-signin2" ></div>
                     </div>

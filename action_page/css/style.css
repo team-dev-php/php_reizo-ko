@@ -121,3 +121,13 @@ th{
     margin: 0 auto;
     display: none;
 }
+
+.camera-btn{
+    width: 80%;
+    margin: 10px auto;
+    color: #fff;
+    background-color: #F44336;
+    /*border-color: #2C3E50; */
+    font-weight: 700;
+    text-align: center; 
+}
