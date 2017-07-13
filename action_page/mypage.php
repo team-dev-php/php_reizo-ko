@@ -1,31 +1,38 @@
 <?php
-$url = $_POST['img_src'];
-$item_name = $_POST['item_name'];
-$user_name = $_POST['user_name'];
-$user_email = $_POST['user_email'];
-
+session_start();
 //外部ファイル読み込み
 include("functions.php");
 
 //DB接続
 $pdo = db_con();
 
-//1.上記情報をDBにInsert
-    //Item情報をDBにInsert
-    //入力チェック（受信確認処理追加）
-    if(
-        !isset($_POST["item_name"]) || $_POST["item_name"] == "" ||
-        !isset($_POST["img_src"]) || $_POST["img_src"] == ""
-    ){
-        exit("ParamError");
-    }
+if(isset($_SESSION["user_name"]) == ""){
 
-    //データ登録SQL作成
-    $stmt1 = $pdo->prepare("INSERT INTO item_table(id, name, item_name, url, indate, end_date)VALUES(0, :name, :item_name, :url, sysdate(), sysdate() + INTERVAL 1 WEEK)");
-    $stmt1->bindValue(':name', $user_name, PDO::PARAM_STR);
-    $stmt1->bindValue(':item_name', $item_name, PDO::PARAM_STR);  //Integer（数値の場合 PDO::PARAM_INT)
-    $stmt1->bindValue(':url', $url, PDO::PARAM_STR);
-    $status = $stmt1->execute();//上記が全て実行された後の結果を$statusに格納
+    header("Location: login.php");
+    exit;
+}else if(isset($_SESSION["user_name"]) != ""){
+    $user_name = $_SESSION["user_name"];
+    $user_email = $_SESSION["user_email"];
+    if(!isset($_POST["item_name"]) || $_POST["item_name"] == "" ||
+        !isset($_POST["img_src"]) || $_POST["img_src"] == ""){
+    //postで受け取るデータがない場合は、何もitem_tableに入れない。    
+    }else{
+        //item情報をitem_tableにInsert
+        $url = $_POST['img_src'];
+        $item_name = $_POST['item_name'];
+        $user_name = $_POST['user_name'];
+        $user_email = $_POST['user_email'];
+
+        //データ登録SQL作成
+        $stmt1 = $pdo->prepare("INSERT INTO item_table(id, name, item_name, url, indate, end_date)VALUES(0, :name, :item_name, :url, sysdate(), sysdate() + INTERVAL 1 WEEK)");
+        $stmt1->bindValue(':name', $user_name, PDO::PARAM_STR);
+        $stmt1->bindValue(':item_name', $item_name, PDO::PARAM_STR);  //Integer（数値の場合 PDO::PARAM_INT)
+        $stmt1->bindValue(':url', $url, PDO::PARAM_STR);
+        $status = $stmt1->execute();//上記が全て実行された後の結果を$statusに格納
+    }
+}
+
+//1.上記情報をDBにInsert
 
     
     //nullの場合はuser情報を新規登録(Insert文)
@@ -63,14 +70,11 @@ $pdo = db_con();
         $view .= "</td><td>";
         $view .= $result["end_date"];
         $view .="</td>";
-        // $view .= " ";
-        // $view .= $result["indate"];
-        // $view .= " ";
-        // $view .= $result["end_date"];
-        // $view .= '</a>';
+        $view .="<td>";
         // $view .= '<a href = "delete.php?id='.$result["id"].'" >';
         // $view .= '[削除]';
         // $view .= '</a>';
+        $view .="</td>";
         $view .= "</tr>";
         
       }
@@ -152,6 +156,7 @@ $pdo = db_con();
                         <th>Item Name</th>
                         <th>保存開始日</th>
                         <th>保存期限</th>
+                        <th>オプション</th>
                       </tr>
                     </thead>
                     <tbody>
