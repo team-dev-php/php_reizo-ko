@@ -33,8 +33,8 @@ $pdo = db_con();
       //Selectデータの数だけ自動でループしてくれる
       while( $result = $stmt->fetch(PDO::FETCH_ASSOC)){
        //$end_itemsに入れていく。
-        $item_date =[$result["item_name"],$result["end_date"]];
-        $end_items[$result["user"]] = $item_date;
+        $item_date =[$result["user"],$result["item_name"],$result["end_date"]];
+        $end_items[] = $item_date;
 
       }
 
