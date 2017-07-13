@@ -71,127 +71,106 @@ if(isset($_SESSION["user_name"]) == ""){
 
     <!-- Navigation -->
     <?php include (dirname(__FILE__).'/navbar.php'); ?>
-    <!-- Header -->
-  <!--   <header>
-        <div class="container" id="maincontent" tabindex="-1">
-            <div class="row">
-                <div class="col-lg-12">
-                    <img class="img-responsive" src="img/profile.png" alt="">
-                    <div class="intro-text">
-                        <h1 class="name">Start Bootstrap</h1>
-                        <hr class="star-light">
-                        <span class="skills">Web Developer - Graphic Artist - User Experience Designer</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header> -->
+    <!-- /Navigation -->
+
     <section id="page-top">
         <div class="contatainer">
             <div class="text-center">
                 <h2>Register Item</h2>
                 <hr class="star-primary">
             </div>
-            
-                <form action="mypage.php" method="post" class="form">
-                    <div id="user-name" class="text-center"></div>
-                    <!-- 画像表示 -->
-                    <div id="imageDiv" class="img_area">
-                        <div class="img_block">
-                        <img id="sourceImage" class="img-responsive" src="" alt="" width="50%">
-                        </div>
+            <form action="mypage.php" method="post" class="form">
+                <div id="user-name" class="text-center"></div>
+                <!-- 画像表示 -->
+                <div id="imageDiv" class="img_area">
+                    <div class="img_block">
+                    <img id="sourceImage" class="img-responsive" src="" alt="" width="50%">
                     </div>
+                </div>
+                <!-- /画像表示 -->
+                <!-- カメラで商品を撮影-->
+                <input type="file" name="file" id="upfile" accept="image/*" capture="camera" class="btn btn-block camera-btn"/>
+                <!-- /カメラで商品を撮影 -->
+                <!-- </form> -->
+                <!-- カメラで取った写真画像を表示 -->
+                <script>
+                    $(document).on('change','#upfile',function() {
+                        if (this.files.length > 0) {
+                            // 選択されたファイル情報を取得
+                            var file = this.files[0];
+                            // console.log(file);
 
-                    <!-- /画像表示 -->
+                            // readerのresultプロパティに、データURLとしてエンコードされたファイルデータを格納
+                            var reader = new FileReader();
+                            reader.readAsDataURL(file);
 
-                    <!-- <button type="button" class="btn btn-primary btn-block scan_bt" onclick="processImage()" id="scan_bt">スキャン</button>
-                     -->
-                    <!-- <form id="form_img" method="post" action=""> -->
-                        <!-- カメラで商品を撮影-->
-                        <input type="file" name="file" id="upfile" accept="image/*" capture="camera" class="btn btn-block camera-btn"/>
-                        <!-- /カメラで商品を撮影 -->
-                    <!-- </form> -->
-                    <!-- カメラで取った写真画像を表示 -->
-                    <script>
-                        $(document).on('change','#upfile',function() {
-                            if (this.files.length > 0) {
-                                // 選択されたファイル情報を取得
-                                var file = this.files[0];
-                                // console.log(file);
-
-                                // readerのresultプロパティに、データURLとしてエンコードされたファイルデータを格納
-                                var reader = new FileReader();
-                                reader.readAsDataURL(file);
-
-                                reader.onload = function() {
-                                    $('#sourceImage').attr('src', reader.result);
-                                    // $('#file').val(reader.result);
-                                    // crop();
-                                }
-                                 // var files = this.dataTransfer.files;
-                                 // console.log(files);
-                                var file_data = new FormData();
-
-                                file_data.append('file',file);
-                                var data = {file : file_data};
-
-                                $.ajax({
-                                    url:"img_url_create.php",
-                                    method:'POST',
-                                    data:file_data,
-                                    processData: false,
-                                    contentType: false
-                                }).done((img_src)=>{
-                                    console.log(img_src);
-                                    processImage(img_src);
-
-                                }).fail(function(jqXHR, textStatus, errorThrown){
-                                    // Display error message.
-                                    var errorString = (errorThrown === "") ? "Error. " : errorThrown + " (" + jqXHR.status + "): ";
-                                    errorString += (jqXHR.responseText === "") ? "" : (jQuery.parseJSON(jqXHR.responseText).message) ?
-                                        jQuery.parseJSON(jqXHR.responseText).message : jQuery.parseJSON(jqXHR.responseText).error.message;
-                                    alert(errorString);
-                                });
+                            reader.onload = function() {
+                                $('#sourceImage').attr('src', reader.result);
+                                // $('#file').val(reader.result);
+                                // crop();
                             }
-                        });
-                    </script>
-                    <!-- /カメラで取った写真画像を表示 -->
-                    <!-- 商品情報表示 -->
+                             // var files = this.dataTransfer.files;
+                             // console.log(files);
+                            var file_data = new FormData();
 
-                    <div class="item_info text-center">
-                        <h4>-Item Name-</h4>
-                        <h4><span class="item_name"></span></h4>
-                        <h4>-Category-</h4>
-                        <h4><span class="item_category"></span></h4>
-                        <h4></h4>
-                    </div>
-                    <!-- /商品情報表示 -->
-                    <!-- DBへ登録する情報のinput -->
-                    <input type="hidden" id="item_name" class="item_name" name="item_name">
-                    <input type = "hidden" id="img_src" class="img_src" name="img_src">
-                    <input type="hidden" name="user_name" value="">
-                    <input type="hidden" name="user_email" value="">
+                            file_data.append('file',file);
+                            var data = {file : file_data};
 
-                    <div class= "regist_box"><input id="regist_bt" type="submit" class="regist_bt btn btn-block btn-danger" value="アイテムを登録！">
-                        <div id="signin_btn" class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
-                    </div>
+                            $.ajax({
+                                url:"img_url_create.php",
+                                method:'POST',
+                                data:file_data,
+                                processData: false,
+                                contentType: false
+                            }).done((img_src)=>{
+                                console.log(img_src);
+                                processImage(img_src);
+
+                            }).fail(function(jqXHR, textStatus, errorThrown){
+                                // Display error message.
+                                var errorString = (errorThrown === "") ? "Error. " : errorThrown + " (" + jqXHR.status + "): ";
+                                errorString += (jqXHR.responseText === "") ? "" : (jQuery.parseJSON(jqXHR.responseText).message) ?
+                                    jQuery.parseJSON(jqXHR.responseText).message : jQuery.parseJSON(jqXHR.responseText).error.message;
+                                alert(errorString);
+                            });
+                        }
+                    });
+                </script>
+                <!-- /カメラで取った写真画像を表示 -->
+                <!-- 商品情報表示 -->
+                <div class="item_info text-center">
+                    <h4>-アイテム名-</h4>
+                    <h4><span class="item_name"></span></h4>
+                    <h4>-カテゴリー-</h4>
+                    <h4><span class="item_category"></span></h4>
+                    <h4>-消費期限-</h4>
+                    <h4><span class="item_end_date"></span></h4>
+                </div>
+                <!-- /商品情報表示 -->
+                <!-- DBへ登録する情報のinput -->
+                <input type="hidden" id="item_name" class="item_name" name="item_name">
+                <input type = "hidden" id="img_src" class="img_src" name="img_src">
+                <input type="hidden" name="user_name" value="">
+                <input type="hidden" name="user_email" value="">
+
+                <div class= "regist_box"><input id="regist_bt" type="submit" class="regist_bt btn btn-block btn-danger" value="アイテムを登録！">
+                    <div id="signin_btn" class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+                </div>
 
                 <button type="button" class="btn btn-primary btn-block scan_bt retry" onclick="retry()" id="retry">撮りなおす</button>
-                    <!-- /DBへ登録する情報のinput -->
-
-                </form>
-                <!--バーコードの数字と読み込み画像のurl-->
-                <!--最終的には削除する-->
-                <!--<input type="text" name="inputImage" id="inputImage" value="http://livedoor.blogimg.jp/jdash/imgs/1/7/17bbcf9b.jpg" style="width:200px; height:30px;" />-->
-                <div id="jsonOutput">
-                    <input type="hidden" id="numberArea" class="UIInput" value="読み取った番号">
-                </div>
-                <!--/バーコードの数字と読み込み画像のurl-->
-                <!--/最終的には削除する-->
-
-                <!--POSTで受け取ったバーコードをsrcに入れる-->
-                <input type="hidden" name="inputImage" id="inputImage" value='<?php echo $barcode; ?>'/>
+                <!-- /DBへ登録する情報のinput -->
+            </form>
+            <!--バーコードの数字と読み込み画像のurl-->
+            <!--最終的には削除する-->
+            <!--<input type="text" name="inputImage" id="inputImage" value="http://livedoor.blogimg.jp/jdash/imgs/1/7/17bbcf9b.jpg" style="width:200px; height:30px;" />-->
+            <div id="jsonOutput">
+                <input type="hidden" id="numberArea" class="UIInput" value="読み取った番号">
             </div>
+            <!--/バーコードの数字と読み込み画像のurl-->
+            <!--/最終的には削除する-->
+
+            <!--POSTで受け取ったバーコードをsrcに入れる-->
+            <input type="hidden" name="inputImage" id="inputImage" value='<?php echo $barcode; ?>'/>
         </div>
     </section>
     <!-- Footer -->
@@ -203,7 +182,24 @@ if(isset($_SESSION["user_name"]) == ""){
             <i class="fa fa-chevron-up"></i>
         </a>
     </div>
-
+    <!-- モーダルウィンドウの中身 -->
+    <div class="modal fade" id="myModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Modal タイトル</h4>
+          </div>
+          <div class="modal-body">
+            <input type="text" id="mordal_item_name" value="" placeholder="アイテム名">
+            <input type="text" id="mordal_end_date" value="" placeholder="消費期限">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary item_comfirm" data-dismiss="modal">OK</button>
+           </div>
+        </div>
+      </div>
+    </div>
     <!-- jQuery -->
     <script src="js/jquery.min.js"></script>
 

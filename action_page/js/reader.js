@@ -66,14 +66,20 @@
                         async:false,
                         success: function(data){
                             let name = data.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'');
-                            $("#item_name").val(name);
-                            $(".item_name").html(name);
-                            // $(".item_category").html();
+                            //モーダルに値(item_name,category,end_date)を入れておく
+                            $("#mordal_item_name").val(name);
+                            // $("#mordal_item_category").val(name);
+                            var now = new Date();
+                            var year = now.getFullYear();
+                            var mon = now.getMonth()+1; //１を足すこと
+                            var day = now.getDate();
+                            
+                            let end_date = year+"-"+mon+"-"+day;
+                            $("#mordal_end_date").val(end_date);
+                            $('#myModal').modal();
+                            
                         }
                     });
-
-
-
                     //========googleのcustom search APIで検索結果から商品画像を取得========//
 
                     let search_data = "https://www.googleapis.com/customsearch/v1?key=AIzaSyC_89rrj-YSKjko1pVgQyqIqdLkBwkrKMA&cx=016327561336931600638:eog4mtqwlfm&searchType=image&q=" + num;
