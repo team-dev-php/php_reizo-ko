@@ -17,7 +17,7 @@ $pdo = db_con();
     // $end_date1 = sysdate() + INTERVAL 1 DAY;
     // $end_date2 = sysdate() + INTERVAL 2 DAY;
     // $end_date3 = sysdate() + INTERVAL 3 DAY;
-    $stmt = $pdo->prepare("SELECT * FROM item_table WHERE end_date = sysdate() + INTERVAL 1 DAY or end_date = sysdate() + INTERVAL 2 DAY or end_date = sysdate() + INTERVAL 3 DAY");
+    $stmt = $pdo->prepare("SELECT * FROM item_table WHERE end_date = curdate() + INTERVAL 1 DAY or end_date = curdate() + INTERVAL 2 DAY or end_date = curdate() + INTERVAL 3 DAY");
     // $stmt->bindValue(':end_date1', $end_date1 , PDO::PARAM_STR);
     // $stmt->bindValue(':end_date2', $end_date2 , PDO::PARAM_STR);
     // $stmt->bindValue(':end_date3', $end_date3 , PDO::PARAM_STR);
@@ -33,7 +33,7 @@ $pdo = db_con();
       //Selectデータの数だけ自動でループしてくれる
       while( $result = $stmt->fetch(PDO::FETCH_ASSOC)){
        //$end_itemsに入れていく。
-        $item_date =[$result["user"],$result["item_name"],$result["end_date"]];
+        $item_date =[$result["name"],$result["item_name"],$result["end_date"]];
         $end_items[] = $item_date;
 
       }
