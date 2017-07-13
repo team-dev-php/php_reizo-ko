@@ -21,7 +21,7 @@
                 //srcにurlを指定して、画像を表示する
                 // var sourceImageUrl = document.getElementById("inputImage").value;
                 // document.querySelector("#sourceImage").src = sourceImageUrl;
-                
+
                 // img_urlで持ってきた$barcode=画像のURLを代入
                 var sourceImageUrl = img_url;
 
@@ -76,7 +76,7 @@
 
                     //========googleのcustom search APIで検索結果から商品画像を取得========//
 
-                    let search_data = "https://www.googleapis.com/customsearch/v1?key=AIzaSyDYHpU2Yz8_UGxDXmyxMfd9fwRLPHHy2Ac&cx=016327561336931600638:eog4mtqwlfm&searchType=image&q=" + num;
+                    let search_data = "https://www.googleapis.com/customsearch/v1?key=AIzaSyC_89rrj-YSKjko1pVgQyqIqdLkBwkrKMA&cx=016327561336931600638:eog4mtqwlfm&searchType=image&q=" + num;
 
                     $.ajax({
                         url: search_data, //読み込むファイルを指定
