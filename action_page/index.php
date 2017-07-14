@@ -12,7 +12,6 @@ if(isset($_SESSION["user_name"]) == ""){
 <html lang="en">
 
 <head>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -46,6 +45,8 @@ if(isset($_SESSION["user_name"]) == ""){
     <script src="jquery.xdomainajax.js"></script>
     <script src="js/reader.js"></script>
     <script src="js/item_conf.js"></script>
+    <script src="js/file_upload.js"></script>
+    <script src="js/google_login.js"></script>
 
 
 
@@ -59,17 +60,18 @@ if(isset($_SESSION["user_name"]) == ""){
 </head>
 
 <body id="" class="index">
-<div id="loading" class="text-center">
-    <div class="row">
-        <img class="loading_img" src="http://gsacademy.tokyo/data/images/header_title.png" alt="G's ACADEMY TOKYO">
-        <div class="container">
-            <img src="img/loading.gif" alt="Loading...">
-            <h4>画像を解析中...</h4>
+    <!-- <div id="loading" class="text-center">
+        <div class="row">
+            <img class="loading_img" src="http://gsacademy.tokyo/data/images/header_title.png" alt="G's ACADEMY TOKYO">
+            <div class="container">
+                <img src="img/loading.gif" alt="Loading...">
+                <h4>画像を解析中...</h4>
+            </div>
         </div>
+    </div> -->
+    <div id="skipnav">
+        <a href="#maincontent">Skip to main content</a>
     </div>
-</div>
-<div id="skipnav"><a href="#maincontent">Skip to main content</a></div>
-
     <!-- Navigation -->
     <?php include (dirname(__FILE__).'/navbar.php'); ?>
     <!-- /Navigation -->
@@ -80,80 +82,20 @@ if(isset($_SESSION["user_name"]) == ""){
                 <h2>Register Item</h2>
                 <hr class="star-primary">
             </div>
-            <!-- <form action="" method="post" class="form"> -->
-                <div id="user-name" class="text-center"></div>
-                <!-- 画像表示 -->
-                <div id="imageDiv" class="img_area">
-                    <div class="img_block">
-                    <img id="sourceImage" class="img-responsive" src="" alt="" width="50%">
-                    </div>
+            <div id="user-name" class="text-center"></div>
+            <!-- 画像表示 -->
+            <div id="imageDiv" class="img_area">
+                <div class="img_block">
+                <img id="sourceImage" class="img-responsive" src="" alt="" width="50%">
                 </div>
-                <!-- /画像表示 -->
-                <!-- カメラで商品を撮影-->
-                <label for="upfile" class="btn btn-danger btn-block camera-btn">
-                    ＋写真を選択
-                    <input type="file" name="file" id="upfile" accept="image/*" capture="camera" style="display:none;">
-                </label>
-                <!-- /カメラで商品を撮影 -->
-                <!-- </form> -->
-                <!-- カメラで取った写真画像を表示 -->
-                <script>
-                    $(document).on('change','#upfile',function() {
-                        if (this.files.length > 0) {
-                            // 選択されたファイル情報を取得
-                            var file = this.files[0];
-                            // console.log(file);
-
-                            // readerのresultプロパティに、データURLとしてエンコードされたファイルデータを格納
-                            var reader = new FileReader();
-                            reader.readAsDataURL(file);
-
-                            reader.onload = function() {
-                                $('#sourceImage').attr('src', reader.result);
-                                // $('#file').val(reader.result);
-                                // crop();
-                            }
-                             // var files = this.dataTransfer.files;
-                             // console.log(files);
-                            var file_data = new FormData();
-
-                            file_data.append('file',file);
-                            var data = {file : file_data};
-
-                            $.ajax({
-                                url:"img_url_create.php",
-                                method:'POST',
-                                data:file_data,
-                                processData: false,
-                                contentType: false
-                            }).done((img_src)=>{
-                                console.log(img_src);
-                                processImage(img_src);
-
-                            }).fail(function(jqXHR, textStatus, errorThrown){
-                                // Display error message.
-                                var errorString = (errorThrown === "") ? "Error. " : errorThrown + " (" + jqXHR.status + "): ";
-                                errorString += (jqXHR.responseText === "") ? "" : (jQuery.parseJSON(jqXHR.responseText).message) ?
-                                    jQuery.parseJSON(jqXHR.responseText).message : jQuery.parseJSON(jqXHR.responseText).error.message;
-                                alert(errorString);
-                            });
-                        }
-                    });
-                </script>
-                <!-- /カメラで取った写真画像を表示 -->
-                <!-- 商品情報表示 -->
-                <!-- <div class="item_info text-center">
-                    <h4>-アイテム名-</h4>
-                    <h4><span class="item_name"></span></h4>
-                    <h4>-カテゴリー-</h4>
-                    <h4><span class="item_category"></span></h4>
-                    <h4>-消費期限-</h4>
-                    <h4><span class="item_end_date"></span></h4>
-                </div> -->
-            <!-- </form> -->
-            <!--バーコードの数字と読み込み画像のurl-->
-            <!--最終的には削除する-->
-            <!--<input type="text" name="inputImage" id="inputImage" value="http://livedoor.blogimg.jp/jdash/imgs/1/7/17bbcf9b.jpg" style="width:200px; height:30px;" />-->
+            </div>
+            <!-- /画像表示 -->
+            <!-- カメラで商品を撮影-->
+            <label for="upfile" class="btn btn-danger btn-block camera-btn">
+                ＋写真を選択
+                <input type="file" name="file" id="upfile" accept="image/*" capture="camera" style="display:none;">
+            </label>
+            <!-- /カメラで商品を撮影 -->
             <div id="jsonOutput">
                 <input type="hidden" id="numberArea" class="UIInput" value="読み取った番号">
             </div>
@@ -223,6 +165,7 @@ if(isset($_SESSION["user_name"]) == ""){
         </div>
       </div>
     </div>
+
     <!-- jQuery -->
     <script src="js/jquery.min.js"></script>
 
