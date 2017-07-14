@@ -196,8 +196,8 @@ footer{
     display: none;
 }
 .dropdown-menu{
-    top: -100%;
-    left: -50%;
+    top: -130%;
+    left: -65%;
     text-align: center;
 }
 #gathering_btn{

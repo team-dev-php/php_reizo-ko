@@ -56,7 +56,18 @@ if( isset($_SESSION['user_name']) != "") {
 <div id="skipnav"><a href="#maincontent">Skip to main content</a></div>
 
     <!-- Navigation -->
-    <?php include (dirname(__FILE__).'/navbar.php'); ?>
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll sp-text-center">
+                <!-- <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                </button> -->
+                <a class="navbar-brand" href="#page-top">frigo</a>
+            </div>
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
     <!-- /Navigation -->
     <section style="background:url('img/background.jpg');
     background-size: cover;">
