@@ -2,7 +2,7 @@
 session_start();
 if( isset($_SESSION['user_name']) != "") {
   // ログイン済みの場合はリダイレクト
-  header("Location: mypage.php");
+  header("Location: index.php");
 }
 ?>
 <!DOCTYPE html>
