@@ -88,56 +88,6 @@ if(isset($_SESSION["user_name"]) == ""){
             <i class="fa fa-chevron-up"></i>
         </a>
     </div>
-    <!-- モーダルウィンドウの中身 -->
-    <div class="modal fade" id="myModal">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title text-center">アイテム情報確認</h4>
-          </div>
-          <div class="modal-body row">
-            <div class="list-group">
-                <div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-1">アイテム名</h5>
-                  <!-- <small class="text-muted">3 days ago</small> -->
-                </div>
-                <p class="mb-1">
-                <input type="text" id="mordal_item_name" value="" placeholder="アイテム名">
-                </p>
-                <p class="text-muted">※スキャン結果が正しくない場合は変更してください。</p>
-              <!-- </a> -->
-              <!-- <a href="#" class="list-group-item list-group-item-action flex-column align-items-start"> -->
-                <div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-1">消費期限</h5>
-                  <!-- <small class="text-muted">3 days ago</small> -->
-                </div>
-                <p class="mb-1">
-                    <input type="text" id="mordal_end_date" value="" placeholder="消費期限">
-                </p>
-                <p class="text-muted">デフォルト値は本日より7日後です。<br>(=G's ACADEMYの冷蔵庫での保存期限)</p>
-              <!-- </a> -->
-            </div>
-          </div>
-          <div class="modal-footer">
-            <form action="mypage.php" method="post" class="form">
-                <!-- DBへ登録する情報のinput -->
-                <!-- <input type="hidden" id="item_category" class="item_category" name="item_category"> -->
-                <input type="hidden" id="item_name" class="item_name" name="item_name" value="">
-                <input type="hidden" id="item_end_date" class="item_end_date" name="item_end_date" value="">
-                <input type = "hidden" id="img_src" class="img_src" name="img_src" value="">
-                <input type="hidden" name="user_name" value="">
-                <input type="hidden" name="user_email" value="">
-                <div class= "regist_box"><input id="regist_bt" type="submit" class="regist_bt btn btn-block btn-danger" value="アイテムを登録！">
-                    <div id="signin_btn" class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
-                </div>
-                <button type="button" class="close btn btn-primary btn-block" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">戻る</span></button>
-                <!-- /DBへ登録する情報のinput -->
-            </form>
-           </div>
-        </div>
-      </div>
-    </div>
 
     <!-- jQuery -->
     <script src="js/jquery.min.js"></script>
