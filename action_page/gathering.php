@@ -93,9 +93,6 @@ if(isset($_SESSION["user_name"]) == ""){
 
     
 ?>
-<input type="checkbox" id="music" name="username" value="name">
-    <label for="name">name</label>
-
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -157,7 +154,7 @@ if(isset($_SESSION["user_name"]) == ""){
         <div class="contatainer">
             <div class="container text-center">
               <h4>Friends List</h4>
-              <table class="table table-condensed">
+              <table class="table table-condensed" style="margin-bottom: 0;">
                 <thead>
                   <tr>
                     <!-- <th>Item Name</th>
@@ -169,7 +166,10 @@ if(isset($_SESSION["user_name"]) == ""){
                 <tbody style="overflow: scroll;">
                 <?=$view?>
                 </tbody>
+
               </table>
+              <!-- .search_share_recipeでajax➜phpにpost➜tableセクションを動的に変更 -->
+            <button class="btn btn-block search_share_recipe" style="background-color: #18BC9C;color: white;">シェアレシピを検索</button>
             </div>
             <!-- <div class="container text-center">
               <hr class="star-primary">
@@ -179,6 +179,32 @@ if(isset($_SESSION["user_name"]) == ""){
                 
               </table>
             </div> -->
+            <script>
+            $(".search_share_recipe").on("click",()=>{
+                //チェックが入ってたユーザーのuser_nameを全部取得し、user_names[]に入れて送る
+                let test = $("input[name='username']").map(
+                    function () {
+                        return $(this).val();
+                    }).get();
+                console.log(test);
+
+                $.ajax({
+                    url:"share_recipe.php",
+                    data:{"user_names[]":$("input[name='username']").map(
+                    function () {
+                        return $(this).val();
+                    }).get()},
+                    method:"post"
+                }).done((data)=>{
+                    console.log(JSON.parse(data));
+                    //レシピ表示用javascriptを記載。ごーーーくううううううううううううううううううううううううん！
+
+
+
+
+                });
+            });
+            </script>
         </div>
     </section>
     <!-- Gathering!Button-->
