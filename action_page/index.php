@@ -70,7 +70,7 @@ if(isset($_SESSION["user_name"]) == ""){
     <section id="">
         <div class="contatainer">
             <div class="container text-center">
-              <h4>おすすめシェアレシピ！</h4>
+              <h4>おすすめシェアレシピ</h4>
               <hr class="star-primary">
               <!-- ajaxでphpからhtmlを取得して表示 -->
               <table id="recipe" class="table table-condensed">

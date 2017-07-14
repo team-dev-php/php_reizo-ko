@@ -38,7 +38,7 @@
                     <span class="sr-only">Toggle navigation</spana> Menu <i class="fa fa-bars"></i>
                 </button> -->
                 <div class="btn-group" style="width:80%;margin: 0 auto;">
-                  <button type="button" class="btn btn-primary" style="font-size: 25px;width: 25%;margin: 1.5px 0 auto!important;"><a href="index.php"><i class="glyphicon glyphicon-home"></i></a></button>
+                  <button type="button" class="btn btn-primary" style="font-size: 25px;width: 25%;margin: 1.5px 0 auto!important;"><a href="index.php"><i class="glyphicon glyphicon-cutlery"></i></a></button>
                   <div class="btn-group" style="width: 25%;margin: 1.5px 0 auto!important;">
                     <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" style="font-size:25px;width: 100%;margin: 1.5px 0 auto!important;">
                         <i class="glyphicon glyphicon-camera" aria-hidden="true"></i><span class="caret"></span>
@@ -56,7 +56,7 @@
                     </ul>
                   </div>
                   <button type="button" class="btn btn-primary" style="font-size: 25px;width: 25%;margin: 1.5px 0 auto!important;">
-                  <a href="gathering.php"><i class="glyphicon glyphicon-cutlery"></i></a></button>
+                  <a href="gathering.php"><i class="glyphicon glyphicon-search"></i></a></button>
                   <button type="button" class="btn btn-primary" style="font-size: 25px;width: 25%;margin: 1.5px 0 auto!important;"><a href="mypage.php"><i class="glyphicon glyphicon-user"></i></a></button>
                 </div>
             </div>

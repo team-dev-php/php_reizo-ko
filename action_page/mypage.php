@@ -151,11 +151,10 @@ if(isset($_SESSION["user_name"]) == ""){
         <div class="contatainer">
             <div class="col-lg-12 text-center">
                 <h2>My page</h2>
-                <div id="user-name" class="text-center"><h3>For <?=$user_name?></h3></div>
                 <hr class="star-primary">
             </div>
             <div class="container text-center">
-              <h4>冷蔵中アイテム一覧</h4>
+              <h4><?=$user_name?>の冷蔵内アイテム一覧</h4>
               <table class="table table-condensed">
                 <thead>
                   <tr>
