@@ -182,7 +182,7 @@ if(isset($_SESSION["user_name"]) == ""){
             <script>
             $(".search_share_recipe").on("click",()=>{
                 //チェックが入ってたユーザーのuser_nameを全部取得し、user_names[]に入れて送る
-                let test = $("input[name='username']").map(
+                let test = $("input[name='username']:checked").map(
                     function () {
                         return $(this).val();
                     }).get();
@@ -190,7 +190,7 @@ if(isset($_SESSION["user_name"]) == ""){
 
                 $.ajax({
                     url:"share_recipe.php",
-                    data:{"user_names[]":$("input[name='username']").map(
+                    data:{"user_names[]":$("input[name='username']:checked").map(
                     function () {
                         return $(this).val();
                     }).get()},
