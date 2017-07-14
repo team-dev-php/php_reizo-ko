@@ -33,7 +33,7 @@ th{
 
 #imageDiv{
     width: 80%;
-    height: 260px;
+    height: 380px;
     /* display: flex; */
     /* flex-direction: column; */
     /* align-items: center; */
@@ -155,6 +155,26 @@ th{
 
 #page-top{
     height: 700px;
+}
+
+#mordal_item_name{
+    text-align:center;
+    width: 80%;
+    margin: 0 10%;
+}
+#mordal_end_date{
+    text-align:center;
+    width: 80%;
+    margin: 0 10%;
+}
+.text-muted{
+    width: 90%;
+    margin: 5%;
+    font-size: 85%;
+    text-align: center;
+}
+.mb-1{
+    text-align: center;
 }
 
 @media (min-width: 1200px) {

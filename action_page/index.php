@@ -45,6 +45,7 @@ if(isset($_SESSION["user_name"]) == ""){
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
     <script src="jquery.xdomainajax.js"></script>
     <script src="js/reader.js"></script>
+    <script src="js/item_conf.js"></script>
 
 
 
@@ -57,7 +58,7 @@ if(isset($_SESSION["user_name"]) == ""){
 
 </head>
 
-<body id="page-top" class="index">
+<body id="" class="index">
 <div id="loading" class="text-center">
     <div class="row">
         <img class="loading_img" src="http://gsacademy.tokyo/data/images/header_title.png" alt="G's ACADEMY TOKYO">
@@ -73,7 +74,7 @@ if(isset($_SESSION["user_name"]) == ""){
     <?php include (dirname(__FILE__).'/navbar.php'); ?>
     <!-- /Navigation -->
 
-    <section id="page-top">
+    <section id="">
         <div class="contatainer">
             <div class="text-center">
                 <h2>Register Item</h2>
@@ -141,15 +142,17 @@ if(isset($_SESSION["user_name"]) == ""){
                 <div class="item_info text-center">
                     <h4>-アイテム名-</h4>
                     <h4><span class="item_name"></span></h4>
-                    <h4>-カテゴリー-</h4>
-                    <h4><span class="item_category"></span></h4>
+                    <!-- <h4>-カテゴリー-</h4>
+                    <h4><span class="item_category"></span></h4> -->
                     <h4>-消費期限-</h4>
                     <h4><span class="item_end_date"></span></h4>
                 </div>
                 <!-- /商品情報表示 -->
                 <!-- DBへ登録する情報のinput -->
-                <input type="hidden" id="item_name" class="item_name" name="item_name">
-                <input type = "hidden" id="img_src" class="img_src" name="img_src">
+                <input type="hidden" id="item_name" class="item_name" name="item_name" value="">
+                <!-- <input type="hidden" id="item_category" class="item_category" name="item_category"> -->
+                <input type="hidden" id="item_end_date" class="item_end_date" name="item_end_date" value="">
+                <input type = "hidden" id="img_src" class="img_src" name="img_src" value="">
                 <input type="hidden" name="user_name" value="">
                 <input type="hidden" name="user_email" value="">
 
@@ -188,11 +191,33 @@ if(isset($_SESSION["user_name"]) == ""){
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title">Modal タイトル</h4>
+            <h4 class="modal-title text-center">アイテム情報確認</h4>
           </div>
-          <div class="modal-body">
-            <input type="text" id="mordal_item_name" value="" placeholder="アイテム名">
-            <input type="text" id="mordal_end_date" value="" placeholder="消費期限">
+          <div class="modal-body row">
+            
+            
+            <div class="list-group">
+<!--               <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+ -->                <div class="d-flex w-100 justify-content-between">
+                  <h5 class="mb-1">アイテム名</h5>
+                  <!-- <small class="text-muted">3 days ago</small> -->
+                </div>
+                <p class="mb-1">
+                <input type="text" id="mordal_item_name" value="" placeholder="アイテム名">
+                </p>
+                <p class="text-muted">※スキャン結果が正しくない場合は変更してください。</p>
+              <!-- </a> -->
+              <!-- <a href="#" class="list-group-item list-group-item-action flex-column align-items-start"> -->
+                <div class="d-flex w-100 justify-content-between">
+                  <h5 class="mb-1">消費期限</h5>
+                  <!-- <small class="text-muted">3 days ago</small> -->
+                </div>
+                <p class="mb-1">
+                <input type="text" id="mordal_end_date" value="" placeholder="消費期限">
+                </p>
+                <p class="text-muted">デフォルト値は本日より7日後です。<br>(=G's ACADEMYの冷蔵庫での保存期限)</p>
+              <!-- </a> -->
+            </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-primary item_comfirm" data-dismiss="modal">OK</button>

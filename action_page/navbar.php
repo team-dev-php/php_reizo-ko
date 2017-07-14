@@ -20,9 +20,9 @@
                     <li class="page-scroll">
                         <a href="mypage.php">My Page</a>
                     </li>
-                    <!-- <li class="page-scroll">
-                        <a href="#contact">Contact</a>
-                    </li> -->
+                    <li class="page-scroll">
+                        <a href="gathering.php">Gathering</a>
+                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

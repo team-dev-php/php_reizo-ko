@@ -20,14 +20,17 @@ if(isset($_SESSION["user_name"]) == ""){
         //item情報をitem_tableにInsert
         $url = $_POST['img_src'];
         $item_name = $_POST['item_name'];
+        $item_end_date = $_POST['item_end_date'];
         $user_name = $_POST['user_name'];
         $user_email = $_POST['user_email'];
 
         //データ登録SQL作成
-        $stmt1 = $pdo->prepare("INSERT INTO item_table(id, name, item_name, url, indate, end_date)VALUES(0, :name, :item_name, :url, sysdate(), sysdate() + INTERVAL 1 WEEK)");
+        $stmt1 = $pdo->prepare("INSERT INTO item_table(id, name, item_name, url, indate, end_date)VALUES(0, :name, :item_name, :url, sysdate(), STR_TO_DATE(:item_end_date ,'%Y-%m-%d'))");
         $stmt1->bindValue(':name', $user_name, PDO::PARAM_STR);
         $stmt1->bindValue(':item_name', $item_name, PDO::PARAM_STR);  //Integer（数値の場合 PDO::PARAM_INT)
+        // date("Y-m-d", strtotime($item_end_date))
         $stmt1->bindValue(':url', $url, PDO::PARAM_STR);
+         $stmt1->bindValue(':item_end_date', date("Y-m-d", strtotime($item_end_date)), PDO::PARAM_STR);
         $status = $stmt1->execute();//上記が全て実行された後の結果を$statusに格納
     }
 }

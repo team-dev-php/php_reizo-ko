@@ -70,10 +70,11 @@
                             $("#mordal_item_name").val(name);
                             // $("#mordal_item_category").val(name);
                             var now = new Date();
+                             //default消費期限値…本日から7日後
+                            now.setDate(now.getDate() + 7);
                             var year = now.getFullYear();
                             var mon = now.getMonth()+1; //１を足すこと
                             var day = now.getDate();
-                            
                             let end_date = year+"-"+mon+"-"+day;
                             $("#mordal_end_date").val(end_date);
                             $('#myModal').modal();
