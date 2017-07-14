@@ -60,15 +60,6 @@ if(isset($_SESSION["user_name"]) == ""){
 </head>
 
 <body id="" class="index">
-    <!-- <div id="loading" class="text-center">
-        <div class="row">
-            <img class="loading_img" src="http://gsacademy.tokyo/data/images/header_title.png" alt="G's ACADEMY TOKYO">
-            <div class="container">
-                <img src="img/loading.gif" alt="Loading...">
-                <h4>画像を解析中...</h4>
-            </div>
-        </div>
-    </div> -->
     <div id="skipnav">
         <a href="#maincontent">Skip to main content</a>
     </div>
@@ -78,32 +69,14 @@ if(isset($_SESSION["user_name"]) == ""){
 
     <section id="">
         <div class="contatainer">
-            <div class="text-center">
-                <h2>Register Item</h2>
-                <hr class="star-primary">
+            <div class="container text-center">
+              <h4>おすすめシェアレシピ！</h4>
+              <hr class="star-primary">
+              <!-- ajaxでphpからhtmlを取得して表示 -->
+              <table id="recipe" class="table table-condensed">
+                
+              </table>
             </div>
-            <div id="user-name" class="text-center"></div>
-            <!-- 画像表示 -->
-            <div id="imageDiv" class="img_area">
-                <div class="img_block">
-                <img id="sourceImage" class="img-responsive" src="" alt="" width="50%">
-                </div>
-            </div>
-            <!-- /画像表示 -->
-            <!-- カメラで商品を撮影-->
-            <label for="upfile" class="btn btn-danger btn-block camera-btn">
-                ＋写真を選択
-                <input type="file" name="file" id="upfile" accept="image/*" capture="camera" style="display:none;">
-            </label>
-            <!-- /カメラで商品を撮影 -->
-            <div id="jsonOutput">
-                <input type="hidden" id="numberArea" class="UIInput" value="読み取った番号">
-            </div>
-            <!--/バーコードの数字と読み込み画像のurl-->
-            <!--/最終的には削除する-->
-
-            <!--POSTで受け取ったバーコードをsrcに入れる-->
-            <input type="hidden" name="inputImage" id="inputImage" value='<?php echo $barcode; ?>'/>
         </div>
     </section>
     <!-- Footer -->

@@ -170,14 +170,6 @@ if(isset($_SESSION["user_name"]) == ""){
                 </tbody>
               </table>
             </div>
-            <div class="container text-center">
-              <hr class="star-primary">
-              <h4>おすすめシェアレシピ！</h4>
-              <!-- ajaxでphpからhtmlを取得して表示 -->
-              <table id="recipe" class="table table-condensed">
-                
-              </table>
-            </div>
         </div>
     </section>
     <!-- Footer -->
