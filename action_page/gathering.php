@@ -142,7 +142,7 @@ if(isset($_SESSION["user_name"]) == ""){
     <!-- Navigation -->
     <?php include (dirname(__FILE__).'/navbar.php'); ?>
     <!-- /Navigation -->
-    <section id="">
+    <section id="page-top">
         <div class="contatainer">
             <div class="container text-center">
               <h4>Friends List</h4>
@@ -155,7 +155,7 @@ if(isset($_SESSION["user_name"]) == ""){
                     <th>オプション</th> -->
                   </tr>
                 </thead>
-                <tbody>
+                <tbody style="overflow: scroll;">
                 <?=$view?>
                 </tbody>
               </table>

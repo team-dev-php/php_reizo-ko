@@ -145,7 +145,7 @@ if(isset($_SESSION["user_name"]) == ""){
     <!-- Navigation -->
     <?php include (dirname(__FILE__).'/navbar.php'); ?>
     <!-- /Navigation -->
-    <section id="">
+    <section id="page-top">
         <div class="contatainer">
             <div class="col-lg-12 text-center">
                 <h2>My page</h2>

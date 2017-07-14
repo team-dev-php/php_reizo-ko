@@ -182,6 +182,13 @@ th{
     margin:10px auto;
 }
 
+label {
+  /*color: white;  
+  background-color: red;
+  padding: 6px;
+  border-radius: 12px;*/
+}
+
 @media (min-width: 1200px) {
   .login_page{
     height: 50px;
