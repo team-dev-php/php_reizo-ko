@@ -177,9 +177,45 @@ th{
     text-align: center;
 }
 
+.sp-text-center{
+    text-align: center;
+}
+.navbar-brand{
+    width: 100%;
+}
+.navbar-fixed-bottom{
+    bottom:0;
+    position: fixed;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+    /*margin-bottom: -20px;*/
+    margin-top: 20px;
+}
+footer{
+    display: none;
+}
+.dropdown-menu{
+    top: -100%;
+    left: -50%;
+    text-align: center;
+}
 @media (min-width: 1200px) {
-  .login_page{
-    height: 50px;
-    margin: 30% 0;
+    .login_page{
+        height: 50px;
+        margin: 30% 0;
     }
+    .sp-text-center{
+        text-align: left;
+    }
+    .navbar-brand{
+        width: 25%;
+    }
+    .navbar-fixed-bottom{
+        display: none;
+    }
+    footer{
+        display: block;
+    }
+
 }

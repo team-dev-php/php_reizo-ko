@@ -28,7 +28,7 @@ if(isset($_SESSION["user_name"]) == ""){
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <!-- Theme CSS -->
     <link href="css/freelancer.min.css" rel="stylesheet">
 
