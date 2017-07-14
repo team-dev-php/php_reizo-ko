@@ -63,9 +63,12 @@
         </div>
         <!-- /.container-fluid -->
     </nav>
-    <div id="loading" class="text-center">
+    <div class="row">
         <img class="loading_img" src="http://gsacademy.tokyo/data/images/header_title.png" alt="G's ACADEMY TOKYO">
-        <h4>画像を解析中...</h4> 
+        <div class="container">
+            <img src="img/loading.gif" alt="Loading...">
+            <h4>画像を解析中...</h4>
+        </div>
     </div>
     
     <section id="" style="display: none;">
