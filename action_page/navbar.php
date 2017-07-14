@@ -63,7 +63,7 @@
         </div>
         <!-- /.container-fluid -->
     </nav>
-    <div class="row">
+    <div id="loading" class="text-center" >
         <img class="loading_img" src="http://gsacademy.tokyo/data/images/header_title.png" alt="G's ACADEMY TOKYO">
         <div class="container">
             <img src="img/loading.gif" alt="Loading...">
