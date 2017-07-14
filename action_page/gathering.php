@@ -69,20 +69,23 @@ if(isset($_SESSION["user_name"]) == ""){
         }else{
             $view .= "<tr>";
             // $view .= '<a href = "detail.php?id='.$result["id"].'" >';
-            $view .="<td>";
-            $view .= $result["name"];
+            $view .='<td class="text-center">';
+            $view .= '<label for="'.$result["id"].'">'.$result["name"].'</label>';
             $view .= "</td>";
             // $view .="<td>";
             // $view .= $result["indate"];
             // $view .= "</td><td>";
             // $view .= $result["end_date"];
             // $view .="</td>";
+            $view .="<td>";
+            $view .='<input type="checkbox" id="'.$result["id"].'" name="username" value="'.$result["name"].'">';
             // $view .="<td>";
             // $view .= '<a href = "delete.php?id='.$result["id"].'" >';
             // $view .= '[削除]';
             // $view .= '</a>';
             // $view .="</td>";
             $view .= "</tr>";
+
         }
       }
 
@@ -90,6 +93,8 @@ if(isset($_SESSION["user_name"]) == ""){
 
     
 ?>
+<input type="checkbox" id="music" name="username" value="name">
+    <label for="name">name</label>
 
 <!DOCTYPE html>
 <html lang="ja">
