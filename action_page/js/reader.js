@@ -76,9 +76,11 @@
                             var mon = now.getMonth()+1; //１を足すこと
                             var day = now.getDate();
                             let end_date = year+"-"+mon+"-"+day;
-                            $("#mordal_end_date").val(end_date);
                             $('#myModal').modal();
-                            
+                            $("#mordal_item_name").val(name);
+                            $("#item_name").val(name);
+                            $("#item_end_date").val(end_date);
+                            $("#mordal_end_date").val(end_date);
                         }
                     });
                     //========googleのcustom search APIで検索結果から商品画像を取得========//
@@ -101,6 +103,9 @@
                              let item_image = html.items[0].link;
                              $("#sourceImage").attr("src",item_image);
                              $("#img_src").val(item_image);
+                             // $("#item_name").val(item_name);
+                             // $("#category").val(category);
+                             // $("#item_end_date").val(item_name);
                              $('#regist_bt').removeClass().addClass("regist_bt_run btn btn-block btn-danger");
                              $("#loading").fadeOut();
                              $(".item_info").show();

@@ -50,8 +50,8 @@ if(isset($_SESSION["user_name"]) == ""){
     // $status = $stmt3->execute();
 
 //3.user_nameでitem一覧をDBから取得(select文)
-    $stmt = $pdo->prepare("SELECT * FROM item_table WHERE name = :user_name");
-    $stmt->bindValue(':user_name', $user_name , PDO::PARAM_INT);
+    $stmt = $pdo->prepare("SELECT * FROM user_table");
+    // $stmt->bindValue(':user_name', $user_name , PDO::PARAM_INT);
     $status = $stmt->execute();
 
     //データ表示
@@ -64,22 +64,26 @@ if(isset($_SESSION["user_name"]) == ""){
     }else{
       //Selectデータの数だけ自動でループしてくれる
       while( $result = $stmt->fetch(PDO::FETCH_ASSOC)){
-        $view .= "<tr>";
-        // $view .= '<a href = "detail.php?id='.$result["id"].'" >';
-        $view .="<td>";
-        $view .= $result["item_name"];
-        $view .= "</td><td>";
-        $view .= $result["indate"];
-        $view .= "</td><td>";
-        $view .= $result["end_date"];
-        $view .="</td>";
-        $view .="<td>";
-        $view .= '<a href = "delete.php?id='.$result["id"].'" >';
-        $view .= '[削除]';
-        $view .= '</a>';
-        $view .="</td>";
-        $view .= "</tr>";
-        
+        if($result == ""){
+
+        }else{
+            $view .= "<tr>";
+            // $view .= '<a href = "detail.php?id='.$result["id"].'" >';
+            $view .="<td>";
+            $view .= $result["name"];
+            $view .= "</td>";
+            // $view .="<td>";
+            // $view .= $result["indate"];
+            // $view .= "</td><td>";
+            // $view .= $result["end_date"];
+            // $view .="</td>";
+            // $view .="<td>";
+            // $view .= '<a href = "delete.php?id='.$result["id"].'" >';
+            // $view .= '[削除]';
+            // $view .= '</a>';
+            // $view .="</td>";
+            $view .= "</tr>";
+        }
       }
 
     }
@@ -125,6 +129,7 @@ if(isset($_SESSION["user_name"]) == ""){
     <script src="jquery.xdomainajax.js"></script>
     <script src="js/reader.js"></script>
     <script src="js/recipe_generat.js"></script>
+    <script src="js/gathering.js"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -136,48 +141,42 @@ if(isset($_SESSION["user_name"]) == ""){
 </head>
 
 <body id="" class="index">
-<div id="loading" class="text-center">
-    <img class="loading_img" src="http://gsacademy.tokyo/data/images/header_title.png" alt="G's ACADEMY TOKYO">
-    <h4>画像を解析中...</h4>
-</div>
-<div id="skipnav"><a href="#maincontent">Skip to main content</a></div>
-
+<!-- <div id="skipnav"><a href="#maincontent">Skip to main content</a></div>
+ -->
     <!-- Navigation -->
     <?php include (dirname(__FILE__).'/navbar.php'); ?>
     <!-- /Navigation -->
     <section id="page-top">
         <div class="contatainer">
-            <div class="col-lg-12 text-center">
-                <h2>My page</h2>
-                <div id="user-name" class="text-center"><h3>For <?=$user_name?></h3></div>
-                <hr class="star-primary">
-            </div>
             <div class="container text-center">
-              <h4>冷蔵中アイテム一覧</h4>
+              <h4>Friends List</h4>
               <table class="table table-condensed">
                 <thead>
                   <tr>
-                    <th>Item Name</th>
+                    <!-- <th>Item Name</th>
                     <th>保存開始日</th>
                     <th>保存期限</th>
-                    <th>オプション</th>
+                    <th>オプション</th> -->
                   </tr>
                 </thead>
-                <tbody>
+                <tbody style="overflow: scroll;">
                 <?=$view?>
                 </tbody>
               </table>
             </div>
-            <div class="container text-center">
+            <!-- <div class="container text-center">
               <hr class="star-primary">
               <h4>おすすめシェアレシピ！</h4>
-              <!-- ajaxでphpからhtmlを取得して表示 -->
+              //ajaxでphpからhtmlを取得して表示
               <table id="recipe" class="table table-condensed">
                 
               </table>
-            </div>
+            </div> -->
         </div>
     </section>
+    <!-- Gathering!Button-->
+    <input id="gathering_btn" type="submit" class="btn btn-block btn-danger" value="シェアレシピを検索">
+    <!-- /Gathering!Button -->
     <!-- Footer -->
     <?php include (dirname(__FILE__).'/footer.php'); ?>
 

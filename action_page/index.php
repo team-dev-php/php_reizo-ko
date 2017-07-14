@@ -80,7 +80,7 @@ if(isset($_SESSION["user_name"]) == ""){
                 <h2>Register Item</h2>
                 <hr class="star-primary">
             </div>
-            <form action="mypage.php" method="post" class="form">
+            <!-- <form action="" method="post" class="form"> -->
                 <div id="user-name" class="text-center"></div>
                 <!-- 画像表示 -->
                 <div id="imageDiv" class="img_area">
@@ -90,7 +90,10 @@ if(isset($_SESSION["user_name"]) == ""){
                 </div>
                 <!-- /画像表示 -->
                 <!-- カメラで商品を撮影-->
-                <input type="file" name="file" id="upfile" accept="image/*" capture="camera" class="btn btn-block camera-btn"/>
+                <label for="upfile" class="btn btn-danger btn-block camera-btn">
+                    ＋写真を選択
+                    <input type="file" name="file" id="upfile" accept="image/*" capture="camera" style="display:none;">
+                </label>
                 <!-- /カメラで商品を撮影 -->
                 <!-- </form> -->
                 <!-- カメラで取った写真画像を表示 -->
@@ -139,30 +142,15 @@ if(isset($_SESSION["user_name"]) == ""){
                 </script>
                 <!-- /カメラで取った写真画像を表示 -->
                 <!-- 商品情報表示 -->
-                <div class="item_info text-center">
+                <!-- <div class="item_info text-center">
                     <h4>-アイテム名-</h4>
                     <h4><span class="item_name"></span></h4>
-                    <!-- <h4>-カテゴリー-</h4>
-                    <h4><span class="item_category"></span></h4> -->
+                    <h4>-カテゴリー-</h4>
+                    <h4><span class="item_category"></span></h4>
                     <h4>-消費期限-</h4>
                     <h4><span class="item_end_date"></span></h4>
-                </div>
-                <!-- /商品情報表示 -->
-                <!-- DBへ登録する情報のinput -->
-                <input type="hidden" id="item_name" class="item_name" name="item_name" value="">
-                <!-- <input type="hidden" id="item_category" class="item_category" name="item_category"> -->
-                <input type="hidden" id="item_end_date" class="item_end_date" name="item_end_date" value="">
-                <input type = "hidden" id="img_src" class="img_src" name="img_src" value="">
-                <input type="hidden" name="user_name" value="">
-                <input type="hidden" name="user_email" value="">
-
-                <div class= "regist_box"><input id="regist_bt" type="submit" class="regist_bt btn btn-block btn-danger" value="アイテムを登録！">
-                    <div id="signin_btn" class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
-                </div>
-
-                <button type="button" class="btn btn-primary btn-block scan_bt retry" onclick="retry()" id="retry">撮りなおす</button>
-                <!-- /DBへ登録する情報のinput -->
-            </form>
+                </div> -->
+            <!-- </form> -->
             <!--バーコードの数字と読み込み画像のurl-->
             <!--最終的には削除する-->
             <!--<input type="text" name="inputImage" id="inputImage" value="http://livedoor.blogimg.jp/jdash/imgs/1/7/17bbcf9b.jpg" style="width:200px; height:30px;" />-->
@@ -194,12 +182,9 @@ if(isset($_SESSION["user_name"]) == ""){
             <h4 class="modal-title text-center">アイテム情報確認</h4>
           </div>
           <div class="modal-body row">
-            
-            
             <div class="list-group">
-<!--               <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
- -->                <div class="d-flex w-100 justify-content-between">
-                  <h5 class="mb-1">アイテム名</h5>
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">アイテム名</h5>
                   <!-- <small class="text-muted">3 days ago</small> -->
                 </div>
                 <p class="mb-1">
@@ -209,18 +194,31 @@ if(isset($_SESSION["user_name"]) == ""){
               <!-- </a> -->
               <!-- <a href="#" class="list-group-item list-group-item-action flex-column align-items-start"> -->
                 <div class="d-flex w-100 justify-content-between">
-                  <h5 class="mb-1">消費期限</h5>
+                    <h5 class="mb-1">消費期限</h5>
                   <!-- <small class="text-muted">3 days ago</small> -->
                 </div>
                 <p class="mb-1">
-                <input type="text" id="mordal_end_date" value="" placeholder="消費期限">
+                    <input type="text" id="mordal_end_date" value="" placeholder="消費期限">
                 </p>
                 <p class="text-muted">デフォルト値は本日より7日後です。<br>(=G's ACADEMYの冷蔵庫での保存期限)</p>
               <!-- </a> -->
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-primary item_comfirm" data-dismiss="modal">OK</button>
+            <form action="mypage.php" method="post" class="form">
+                <!-- DBへ登録する情報のinput -->
+                <!-- <input type="hidden" id="item_category" class="item_category" name="item_category"> -->
+                <input type="hidden" id="item_name" class="item_name" name="item_name" value="">
+                <input type="hidden" id="item_end_date" class="item_end_date" name="item_end_date" value="">
+                <input type = "hidden" id="img_src" class="img_src" name="img_src" value="">
+                <input type="hidden" name="user_name" value="">
+                <input type="hidden" name="user_email" value="">
+                <div class= "regist_box"><input id="regist_bt" type="submit" class="regist_bt btn btn-block btn-danger" value="アイテムを登録！">
+                    <div id="signin_btn" class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+                </div>
+                <button type="button" class="close btn btn-primary btn-block" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">戻る</span></button>
+                <!-- /DBへ登録する情報のinput -->
+            </form>
            </div>
         </div>
       </div>

@@ -4,9 +4,10 @@ $(document).on("click",".item_comfirm",()=>{
 	// console.log(item_name);
 	// console.log(end_date);
 	$(".item_name").html(item_name);
-	$("#item_name").val(item_name);
+	$(".item_name").val(item_name);
+	
 	// $("#category").val(category);
 	$(".item_end_date").html(end_date);
-	$("#item_end_date").val(end_date);
+	$(".item_end_date").val(item_name);
 
 });
