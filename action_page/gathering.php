@@ -64,22 +64,26 @@ if(isset($_SESSION["user_name"]) == ""){
     }else{
       //Selectデータの数だけ自動でループしてくれる
       while( $result = $stmt->fetch(PDO::FETCH_ASSOC)){
-        $view .= "<tr>";
-        // $view .= '<a href = "detail.php?id='.$result["id"].'" >';
-        $view .="<td>";
-        $view .= $result["name"];
-        $view .= "</td><td>";
-        // // $view .= $result["indate"];
-        // $view .= "</td><td>";
-        // // $view .= $result["end_date"];
-        // $view .="</td>";
-        // $view .="<td>";
-        // $view .= '<a href = "delete.php?id='.$result["id"].'" >';
-        // $view .= '[削除]';
-        // $view .= '</a>';
-        $view .="</td>";
-        $view .= "</tr>";
-        
+        if($result == ""){
+
+        }else{
+            $view .= "<tr>";
+            // $view .= '<a href = "detail.php?id='.$result["id"].'" >';
+            $view .="<td>";
+            $view .= $result["name"];
+            $view .= "</td>";
+            // $view .="<td>";
+            // $view .= $result["indate"];
+            // $view .= "</td><td>";
+            // $view .= $result["end_date"];
+            // $view .="</td>";
+            // $view .="<td>";
+            // $view .= '<a href = "delete.php?id='.$result["id"].'" >';
+            // $view .= '[削除]';
+            // $view .= '</a>';
+            // $view .="</td>";
+            $view .= "</tr>";
+        }
       }
 
     }
