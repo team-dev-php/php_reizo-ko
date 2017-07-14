@@ -177,6 +177,11 @@ th{
     text-align: center;
 }
 
+#gathering_btn{
+    width: 80%;
+    margin:10px auto;
+}
+
 @media (min-width: 1200px) {
   .login_page{
     height: 50px;

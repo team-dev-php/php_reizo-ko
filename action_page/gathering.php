@@ -50,8 +50,8 @@ if(isset($_SESSION["user_name"]) == ""){
     // $status = $stmt3->execute();
 
 //3.user_nameでitem一覧をDBから取得(select文)
-    $stmt = $pdo->prepare("SELECT * FROM item_table WHERE name = :user_name");
-    $stmt->bindValue(':user_name', $user_name , PDO::PARAM_INT);
+    $stmt = $pdo->prepare("SELECT * FROM user_table");
+    // $stmt->bindValue(':user_name', $user_name , PDO::PARAM_INT);
     $status = $stmt->execute();
 
     //データ表示
@@ -67,16 +67,16 @@ if(isset($_SESSION["user_name"]) == ""){
         $view .= "<tr>";
         // $view .= '<a href = "detail.php?id='.$result["id"].'" >';
         $view .="<td>";
-        $view .= $result["item_name"];
+        $view .= $result["name"];
         $view .= "</td><td>";
-        $view .= $result["indate"];
-        $view .= "</td><td>";
-        $view .= $result["end_date"];
-        $view .="</td>";
-        $view .="<td>";
-        $view .= '<a href = "delete.php?id='.$result["id"].'" >';
-        $view .= '[削除]';
-        $view .= '</a>';
+        // // $view .= $result["indate"];
+        // $view .= "</td><td>";
+        // // $view .= $result["end_date"];
+        // $view .="</td>";
+        // $view .="<td>";
+        // $view .= '<a href = "delete.php?id='.$result["id"].'" >';
+        // $view .= '[削除]';
+        // $view .= '</a>';
         $view .="</td>";
         $view .= "</tr>";
         
