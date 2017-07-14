@@ -1,0 +1,185 @@
+button{
+    margin-top: 10px!important;
+    margin-bottom: 10px!important;
+}
+th{
+    text-align: center;
+}
+
+.scan_bt{
+    margin: 0 auto;
+    width: 80%;
+}
+
+.scan_bt_off{
+    margin: 0 auto;
+    width: 80%;
+    opacity: 0.4;
+}
+
+.img_block{
+    max-height: 250px;
+    max-width: 330px;
+}
+
+.img_area{
+    border: .5px solid #a5a5a5;
+}
+
+#sourceImage{
+    width: 70%;
+    margin: 5% 15%;
+}
+
+#imageDiv{
+    width: 80%;
+    height: 380px;
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* align-items: center; */
+    line-height: 260px;
+    margin: 0 auto;
+}
+
+.abcRioButtonBlue{
+    background-color: #4285f4;
+    width: 80%!important;
+    margin: 0 auto;
+}
+
+.regist_box{
+    position:relative;
+}
+
+.regist_bt{
+    width: 90%!important;
+    line-height: 2.8;
+    margin: 0 auto;
+    color: #fff;
+    background-color: rgba(217, 83, 79, 0.22);
+     border-color: rgba(0, 0, 0, 0)!important;
+    pointer-events: none;
+}
+
+.regist_bt_run{
+    width: 90%!important;
+    line-height: 2.8;
+    margin: 0 auto;
+    color: #fff;
+    background-color: rgb(217, 83, 79);
+    border-color: #d43f3a;
+}
+
+#signin_btn{
+    opacity: 0;
+    position:absolute;
+    top: 10px;
+    left: 20px;
+    width: 90%!important;
+    line-height: 2.8;
+    margin: 0 auto;
+    color: #fff;
+    background-color: rgb(217, 83, 79);
+    border-color: #d43f3a;
+}
+
+.signin_btn_hide{
+    z-index: -1;
+    position:absolute;
+    top: 10px;
+    left: 20px;
+    width: 90%!important;
+    line-height: 2.8;
+    margin: 0 auto;
+    color: #fff;
+    background-color: rgb(217, 83, 79);
+    border-color: #d43f3a;
+}
+
+
+
+#loading{
+    background:rgba(255, 255, 255, 0.85);
+    height:100%;
+    left:0;
+    position:fixed;
+    top:0;
+    width:100%;
+    z-index:10;
+    display: none;
+    /*margin-top:80%;*/
+}
+.loading_img{
+    width: 80%;
+    /* height: 40%; */
+    margin-top: 70%;
+    /* margin: auto 0; */
+}
+
+.item_info{
+    width: 80%;
+    margin: 0 auto;
+    display: none;
+}
+
+.camera-btn{
+    width: 80%;
+    margin: 10px auto;
+    color: #fff;
+    background-color: #F44336;
+    /*border-color: #2C3E50; */
+    font-weight: 700;
+    text-align: center; 
+}
+.abcRioButtonLightBlue {
+    background-color: #fff;
+    color: #757575;
+    width: 50%!important;
+    margin: 0 25%;
+}
+
+/*.login{
+    height: 20%;
+    margin: 10%;
+}*/
+
+.login_page{
+    height: 50px;
+    margin: 63% 0;
+}
+
+.logo_text{
+     color: white;
+     margin: 10px;
+}
+
+#page-top{
+    height: 700px;
+}
+
+#mordal_item_name{
+    text-align:center;
+    width: 80%;
+    margin: 0 10%;
+}
+#mordal_end_date{
+    text-align:center;
+    width: 80%;
+    margin: 0 10%;
+}
+.text-muted{
+    width: 90%;
+    margin: 5%;
+    font-size: 85%;
+    text-align: center;
+}
+.mb-1{
+    text-align: center;
+}
+
+@media (min-width: 1200px) {
+  .login_page{
+    height: 50px;
+    margin: 30% 0;
+    }
+}
