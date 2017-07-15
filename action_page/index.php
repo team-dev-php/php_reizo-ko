@@ -1,12 +1,4 @@
-<?php
-session_start();
-if(isset($_SESSION["user_name"]) == ""){
-
-    header("Location: login.php");
-    exit;
-}
-?>
-
+<?php include (dirname(__FILE__).'/item_count.php'); ?>
 
 <!DOCTYPE html>
 <html lang="en">
