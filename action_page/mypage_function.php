@@ -19,6 +19,11 @@ if(isset($_SESSION["user_name"]) == ""){
         $item_end_date = $_POST['item_end_date'];
         $user_name = $_POST['user_name'];
         $user_email = $_POST['user_email'];
+        //frigo_itemlog_tableにアイテム情報を追加
+        $stmt0 = $pdo->prepare("INSERT INTO frigo_itemlog_table(name,item_name,indate,finish_flg)VALUES(:name, :item_name, sysdate(),0)");
+        $stmt0->bindValue(':name', $user_name, PDO::PARAM_STR);
+        $stmt0->bindValue(':item_name', $item_name, PDO::PARAM_STR);
+        $status0 = $stmt0->execute();
 
         //データ登録SQL作成
         $stmt1 = $pdo->prepare("INSERT INTO item_table(id, name, item_name, url, indate, end_date)VALUES(0, :name, :item_name, :url, sysdate(), STR_TO_DATE(:item_end_date ,'%Y-%m-%d'))");
@@ -47,7 +52,7 @@ if(isset($_SESSION["user_name"]) == ""){
 
 //3.user_nameでitem一覧をDBから取得(select文)
     $stmt = $pdo->prepare("SELECT * FROM item_table WHERE name = :user_name");
-    $stmt->bindValue(':user_name', $user_name , PDO::PARAM_INT);
+    $stmt->bindValue(':user_name', $user_name , PDO::PARAM_STR);
     $status = $stmt->execute();
 
     //データ表示
@@ -79,6 +84,39 @@ if(isset($_SESSION["user_name"]) == ""){
       }
 
     }
+//4.user_nameで、lifelog_tableから過去の保存情報一式を取得して表示
+    $stmt4 = $pdo->prepare("SELECT * FROM frigo_itemlog_table WHERE name = :user_name");
+    $stmt4->bindValue(':user_name', $user_name , PDO::PARAM_STR);
+    $status4 = $stmt4->execute();
 
+    //データ表示
+    $itemlog="";
+    if($status4==false){
+      //execute（SQL実行時にエラーがある場合）
+      $error = $stmt4->errorInfo();
+      exit("ErrorQuery:".$error[2]);
+
+    }else{
+      //Selectデータの数だけ自動でループしてくれる
+      while( $result = $stmt4->fetch(PDO::FETCH_ASSOC)){
+        $itemlog .= "<tr>";
+        // $view .= '<a href = "detail.php?id='.$result["id"].'" >';
+        $itemlog .="<td>";
+        $itemlog .= $result["item_name"];
+        $itemlog .= "</td><td>";
+        $itemlog .= $result["indate"];
+        $itemlog .= "</td><td>";
+        $itemlog .= $result["end_date"];
+        $itemlog .="</td>";
+        $itemlog .="<td>";
+        // $itemlog .= '<a href = "delete.php?id='.$result["id"].'" style="color:#18BC9C;">';
+        // $itemlog .= '[削除]';
+        // $itemlog .= '</a>';
+        $itemlog .="</td>";
+        $itemlog .= "</tr>";
+        
+      }
+
+    }
     
 ?>

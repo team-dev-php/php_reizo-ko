@@ -15,13 +15,13 @@
                         <a href="#page-top"></a>
                     </li>
                     <li class="page-scroll">
-                        <a href="index.php">Scan Item</a>
+                        <a href="index.php">シェアレシピ/Share Recipe</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="mypage.php">My Page</a>
+                        <a href="mypage.php">マイページ/My Page</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="gathering.php">Gathering</a>
+                        <a href="gathering.php">友達とシェアレシピ/Gathering</a>
                     </li>
                 </ul>
             </div>

@@ -17,9 +17,9 @@ if(isset($_FILES['file'])){
   //imgディレクトリのURL
   //取得した時刻を使用してユニーク名にする
   //localhost用
-  // $barcode = 'localhost:8888/team-work/php_reizo-ko/action_page/img/'.$time.'.jpg';
+  // $barcode = 'http://localhost:8888/team-work/php_reizo-ko/action_page/img/'.$time.'.jpg';
 
-  //本番環境用 
+  // //本番環境用 
   $barcode = 'http://shoheikoya.sakura.ne.jp/gs/team-dev/action_page/img/'.$time.'.jpg';
 
    }

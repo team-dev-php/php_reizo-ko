@@ -234,5 +234,8 @@ a{
     footer{
         display: block;
     }
+    .navbar-custom{
+        padding: 0;
+    }
 
 }
