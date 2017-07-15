@@ -73,6 +73,9 @@ if(isset($_SESSION["user_name"]) == ""){
             $view .='<td class="text-center">';
             $view .= '<label for="'.$result["id"].'">'.$result["name"].'</label>';
             $view .= "</td>";
+            $view .='<td class="text-center">';
+            $view .= '<label for="'.$result["id"].'">'.$result["item_count"].'</label>';
+            $view .= "</td>";
             // $view .="<td>";
             // $view .= $result["indate"];
             // $view .= "</td><td>";
@@ -158,10 +161,10 @@ if(isset($_SESSION["user_name"]) == ""){
               <table class="table table-condensed" style="margin-bottom: 0;">
                 <thead>
                   <tr>
-                    <!-- <th>Item Name</th>
-                    <th>保存開始日</th>
-                    <th>保存期限</th>
-                    <th>オプション</th> -->
+                    <th>Friend's name</th>
+                    <th>保存中アイテム数</th>
+                    <th>選択</th>
+                   <!--  <th>オプション</th> -->
                   </tr>
                 </thead>
                 <tbody style="overflow: scroll;">
