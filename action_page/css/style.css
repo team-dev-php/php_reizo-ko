@@ -105,7 +105,7 @@ th{
     position:fixed;
     top:0;
     width:100%;
-    z-index:10;
+    z-index:10000;
     display: none;
     /*margin-top:80%;*/
 }

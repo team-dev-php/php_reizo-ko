@@ -112,7 +112,7 @@
                   <!-- <small class="text-muted">3 days ago</small> -->
                 </div>
                 <p class="mb-1">
-                <input type="text" id="mordal_item_name" value="" placeholder="アイテム名">
+                <input type="text" id="mordal_item_name" value="" placeholder="アイテム名" form="item_data" name="item_name" required>
                 </p>
                 <p class="text-muted">※スキャン結果が正しくない場合は変更してください。</p>
               <!-- </a> -->
@@ -122,18 +122,19 @@
                   <!-- <small class="text-muted">3 days ago</small> -->
                 </div>
                 <p class="mb-1">
-                    <input type="text" id="mordal_end_date" value="" placeholder="消費期限">
+                    <input type="text" id="mordal_end_date" value="" placeholder="消費期限" form="item_data" name="item_end_date" required>
                 </p>
                 <p class="text-muted">デフォルト値は本日より7日後です。<br>(=G's ACADEMYの冷蔵庫での保存期限)</p>
               <!-- </a> -->
             </div>
           </div>
           <div class="modal-footer">
-            <form action="mypage.php" method="post" class="form">
+            <form id="item_data" action="mypage.php" method="post" class="form">
                 <!-- DBへ登録する情報のinput -->
                 <!-- <input type="hidden" id="item_category" class="item_category" name="item_category"> -->
-                <input type="hidden" id="item_name" class="item_name" name="item_name" value="">
-                <input type="hidden" id="item_end_date" class="item_end_date" name="item_end_date" value="">
+                <!-- <input type="hidden" id="item_name" class="item_name" name="item_name" value="">
+                <input type="hidden" id="item_end_date" class="item_end_date" name="item_end_date" value=""> -->
+
                 <input type = "hidden" id="img_src" class="img_src" name="img_src" value="">
                 <input type="hidden" name="user_name" value="">
                 <input type="hidden" name="user_email" value="">
