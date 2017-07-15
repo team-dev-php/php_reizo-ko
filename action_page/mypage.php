@@ -1,10 +1,7 @@
 <?php include (dirname(__FILE__).'/item_count.php'); ?>
 
+<?php include (dirname(__FILE__).'/mypage_function.php'); ?>
 <?php
-// session_start();
-// //外部ファイル読み込み
-// include("functions.php");
-
 //DB接続
 $pdo = db_con();
 
