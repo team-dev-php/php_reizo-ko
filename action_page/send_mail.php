@@ -49,11 +49,11 @@
 			mb_language("Japanese");
 			mb_internal_encoding("UTF-8");
 
-			// $to      = $email;
+			// $to = $email;
 			$to = 's.koyama1011@gmail.com';
 			$subject = $items[0][0].'を使って友達とご飯会を開こう';
-			$message = "テスト";
-			// $message = $user_name.'さん。こんちは！'."\r\n".$user_name.'さんが保存中の'.$items[0][0].'がもうすぐ消費期限を迎えます。その前にFrigoをチェックしよう。'."\r\n"."http://shoheikoya.sakura.ne.jp/gs/team-dev/action_page/";
+			// $message = "テスト";
+			$message = $user_name.'さん。こんちは！'."\r\n".$user_name.'さんが保存中の'.$items[0][0].'がもうすぐ消費期限を迎えます。その前にFrigoをチェックしよう。'."\r\n"."http://shoheikoya.sakura.ne.jp/gs/team-dev/action_page/";
 			$headers = 'From: customer_share_recipe@frigo.com'."\r\n";
 			// echo $message;
 			if (mb_send_mail($to, $subject, $message, $headers))
