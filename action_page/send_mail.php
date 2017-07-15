@@ -48,8 +48,9 @@
 	    	// 3.メール内容を生成して、送信！
 			mb_language("Japanese");
 			mb_internal_encoding("UTF-8");
-
+			//本番用
 			// $to = $email;
+			//テスト用
 			$to = 's.koyama1011@gmail.com';
 			$subject = $items[0][0].'を使って友達とご飯会を開こう';
 			// $message = "テスト";
