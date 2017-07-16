@@ -14,7 +14,7 @@ if(isset($_SESSION["user_name"]) == ""){
     }else{
         $icon = "test.jpg";
     }
-    $stmt = $pdo->prepare("SELECT `favorite_dish`,`belong_to`,`icon` FROM user_table WHERE name = :user_name");
+    $stmt = $pdo->prepare("SELECT `id`,`favorite_dish`,`belong_to`,`address`,`icon` FROM user_table WHERE name = :user_name");
     $stmt->bindValue(':user_name', $user_name , PDO::PARAM_STR);
     $status = $stmt->execute();
 
@@ -28,9 +28,12 @@ if(isset($_SESSION["user_name"]) == ""){
 
     }else{
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        $id = $result["id"];
         $belong_to = $result["belong_to"];
         $favorite_dish = $result["favorite_dish"];
         $icon = $result["icon"];
+        $address = $result["address"];
+        // echo $address;
         if($belong_to == null){
          $belong_to ="未設定";   
         }
@@ -40,9 +43,14 @@ if(isset($_SESSION["user_name"]) == ""){
         if($icon == null){
             $icon = "test.jpg";
         }
+        if($address ==null){
+            $address = "未設定";
+        }
+        $_SESSION["id"] = $id;
         $_SESSION["belong_to"] = $belong_to;
         $_SESSION["favorite_dish"] = $favorite_dish;
         $_SESSION["icon"] = $icon;
+        $_SESSION["address"] = $address;
     }
 
     if(!isset($_POST["item_name"]) || $_POST["item_name"] == "" ||

@@ -55,16 +55,17 @@
                 <div class="card">
                     <h4>ユーザープロフィール</h4>
                   <img src=<?=$icon?> alt="John" style="width:50%">
-                  <div class="container">
-                    <h1><?=$user_name?></h1>
+                  
+                    <h4><?=$user_name?></h4>
                     <h4>所属：<?=$belong_to?></h4>
+                    <h4>居住エリア:<?=$address?></h4>
                     <h4>大好物：<?=$favorite_dish?></h4>
                     <a href="#" class="sns_icon"><i class="fa fa-dribbble"></i></a> 
                     <a href="#" class="sns_icon"><i class="fa fa-twitter"></i></a> 
                     <a href="#" class="sns_icon"><i class="fa fa-linkedin"></i></a> 
                     <a href="#" class="sns_icon"><i class="fa fa-facebook"></i></a> 
                     <p><button class="btn btn_block frigo_btn profile_edit">プロフィールを編集</button></p>
-                  </div>
+                  
                 </div>
             </div>
             <!-- /プロフィールページ -->
@@ -102,73 +103,59 @@
             </div>
 
         </div>
-    </section>
-    <!-- Footer -->
+        <!-- Footer -->
     <?php include (dirname(__FILE__).'/footer.php'); ?>
-    <script>
-        $(".profile_edit").on("click",()=>{
-            $("#profile_modal").modal();
-        });
-        $(".profile_save").on("click",()=>{
-            $(".save_text").html("保存完了しました。");
-            $.ajax({
-                url:"profile_edit.php",
-                method:"post",
-                data:{
-                    user_name:user_name,
-                    user_email:user_email,
-                    img_src:img_src,
-                    favorite_dish:favorite_dish,
-                    belong_to:belong_to,
-                }
-            }).done((data)=>{
-                $(".save_text").html("保存完了しました。");
-                $("#profile_edit").modal();
-            });
-        });
-    </script>
+    </section>
 
     <!-- modal window -->
     <div class="modal fade" id="profile_modal">
       <div class="modal-dialog">
-        <div class="modal-content">
+        <!-- <div class="modal-content"> -->
+        <div class="card" style="background: white;">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <h4 class="modal-title text-center">アイテム情報確認</h4>
           </div>
           <form id="profile_edit" action="profile_edit.php" method="post" class="form">
+            <input type="hidden" name="user_id" value=<?=$id?> >
               <div class="modal-body row">
                 <div class="list-group">
-                    <!-- DBへ登録する情報のinput -->
-                    <!-- <input type="hidden" id="item_category" class="item_category" name="item_category"> -->
-                    <!-- <input type="hidden" id="item_name" class="item_name" name="item_name" value="">
-                    <input type="hidden" id="item_end_date" class="item_end_date" name="item_end_date" value=""> -->
-                    
-                    <!-- <div class="d-flex w-100 justify-content-between">
-                        <h5 class="mb-1"></h5>
-                    </div> -->
-                    <input type = "text" id="img_src" class="img_src" name="img_src" value="">
+                    <img src=<?=$icon?> alt="user_icon"  style="width:50%">
+                    <input type = "hidden" id="edit_img_src" value=<?=$icon?>>
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">ユーザー名:</h5>
+                    </div>
                     <p class="mb-1">
-                        <h4>ユーザー名:<input type="text" name="user_name" value=""></h4>
+                        <input type="text" name="edit_user_name" value=<?=$user_name?> class="text-center" required>
                     </p>
-                    <!-- <p class="text-muted">※スキャン結果が正しくない場合は変更してください。</p> -->
-                    <!-- <div class="d-flex w-100 justify-content-between">
-                        <h5 class="mb-1">消費期限</h5>
-                    </div> -->
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">e-mail:</h5>
+                    </div>
                     <p class="mb-1">
-                       <h4>e-mail:<input type="text" name="user_email" value=""></h4>
+                       <input type="text" name="edit_user_email" value=<?=$user_email?> class="text-center" required>
                     </p>
-                    <!-- <p class="text-muted">デフォルト値は本日より7日後です。<br>(=G's ACADEMYの冷蔵庫での保存期限)</p> -->
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">居住エリア:</h5>
+                    </div>
                     <p class="mb-1">
-                        <h4>所属:<input type="text" name="belong_to" value=""></h4>
+                        <input type="text" name="address" value=<?=$address?> class="text-center" required>
                     </p>
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">所属:</h5>
+                    </div>
                     <p class="mb-1">
-                        <h4>大好物:<input type="text" name="favorite_dish" value=""></h4>
+                        <input type="text" name="belong_to" value=<?=$belong_to?> class="text-center" required>
+                    </p>
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">大好物:</h5>
+                    </div>
+                    <p class="mb-1">
+                        <input type="text" name="favorite_dish" value=<?=$favorite_dish?> class="text-center" required>
                     </p>
                 </div>
               </div>
               <div class="modal-footer">
-                <button type="button" class="frigo_btn close btn btn-block profile_save" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="save_text">保存</span></button>
+                <button type="button" id="profile_save" class="frigo_btn close btn btn-block " data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="save_text">保存</span></button>
                 <!-- /DBへ登録する情報のinput -->
                </div>
            </form>
@@ -201,6 +188,36 @@
 
     <!-- Theme JavaScript -->
     <script src="js/freelancer.min.js"></script>
+    <script>
+        $(".profile_edit").on("click",()=>{
+            $("#profile_modal").modal();
+            $(".save_text").html("保存");
+        });
+        $("#profile_save").on("click",()=>{
+            console.log("cliked");
+            console.log($('#edit_img_src').val());
+
+            $(".save_text").html("保存完了しました。");
+
+            $.ajax({
+                url:"profile_edit.php",
+                method:"post",
+                data:{
+                    user_id:$('input[name="user_id"]').val(),
+                    user_name:$('input[name="edit_user_name"]').val(),
+                    user_email:$('input[name="edit_user_email"]').val(),
+                    icon:$('#edit_img_src').val(),
+                    favorite_dish:$('input[name="favorite_dish"]').val(),
+                    belong_to:$('input[name="belong_to"]').val(),
+                    address:$('input[name="address"]').val()
+                   
+                }
+            }).done((data)=>{
+                console.log("done");
+                // alert("保存完了しました。");
+            });
+        });
+    </script>
 
 </body>
 

@@ -235,11 +235,11 @@ a{
     background: #18BC9C!important;
     color: white;
     display: inline-block;
-    padding: 6px 12px;
+    padding: 6px 12px!important;
     margin-bottom: 0;
-    font-size: 14px;
+    font-size: 14px!important;
     font-weight: 400;
-    line-height: 1.42857143;
+    line-height: 1.42857143!important;
     text-align: center;
     white-space: nowrap;
     vertical-align: middle;
@@ -277,7 +277,10 @@ a{
         display: none;
     }
     footer{
-        display: block;
+    display: block;
+    position: relative;
+    width: 100%;
+    bottom: 0;
     }
     .navbar-custom{
         padding: 0;

@@ -210,10 +210,10 @@ if(isset($_SESSION["user_name"]) == ""){
             });
             </script>
         </div>
-    </section>
-    <!-- Gathering!Button-->
+         <!-- Gathering!Button-->
     <input id="gathering_btn" type="submit" class="btn btn-block btn-danger" value="シェアレシピを検索">
     <!-- /Gathering!Button -->
+    </section>
     <!-- Footer -->
     <?php include (dirname(__FILE__).'/footer.php'); ?>
 
