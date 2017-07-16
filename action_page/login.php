@@ -117,7 +117,8 @@ if( isset($_SESSION['user_name']) != "") {
 		  	method:"post",
 		  	data:{
 		  		user_name:profile.getName(),
-		  		user_email:profile.getEmail()
+		  		user_email:profile.getEmail(),
+                icon:profile.getImageUrl()
 		  	}
 		  }).done(()=>{
 		  	console.log("login success!");

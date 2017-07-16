@@ -16,4 +16,18 @@
         $("input[name='user_name']").val(profile.getName());
         $("input[name='user_email']").val(profile.getEmail());
         // $("#connected4o1hzjnrynxt").html(profile.getName()+"さんこんちは");
+        $.ajax({
+            url:"./logincheck.php",
+            method:"post",
+            data:{
+                user_name:profile.getName(),
+                user_email:profile.getEmail(),
+                icon:profile.getImageUrl()
+            }
+          }).done(()=>{
+            console.log("proflie情報をSession変数に代入完了!");
+            // var url = window.location.href;
+            // url = url.replace("login.php","");
+            // window.location.href = url + "/mypage.php";
+          });
       };

@@ -9,6 +9,42 @@ if(isset($_SESSION["user_name"]) == ""){
 }else if(isset($_SESSION["user_name"]) != ""){
     $user_name = $_SESSION["user_name"];
     $user_email = $_SESSION["user_email"];
+    if(isset($_SESSION["icon"])){
+        $icon = $_SESSION['icon'];
+    }else{
+        $icon = "test.jpg";
+    }
+    $stmt = $pdo->prepare("SELECT `favorite_dish`,`belong_to`,`icon` FROM user_table WHERE name = :user_name");
+    $stmt->bindValue(':user_name', $user_name , PDO::PARAM_STR);
+    $status = $stmt->execute();
+
+    //データ表示
+    $belong_to ="";
+    $favorite_dish ="";
+    if($status==false){
+      //execute（SQL実行時にエラーがある場合）
+      $error = $stmt->errorInfo();
+      exit("ErrorQuery:".$error[2]);
+
+    }else{
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        $belong_to = $result["belong_to"];
+        $favorite_dish = $result["favorite_dish"];
+        $icon = $result["icon"];
+        if($belong_to == null){
+         $belong_to ="未設定";   
+        }
+        if($favorite_dish == null){
+            $favorite_dish = "未設定";
+        }
+        if($icon == null){
+            $icon = "test.jpg";
+        }
+        $_SESSION["belong_to"] = $belong_to;
+        $_SESSION["favorite_dish"] = $favorite_dish;
+        $_SESSION["icon"] = $icon;
+    }
+
     if(!isset($_POST["item_name"]) || $_POST["item_name"] == "" ||
         !isset($_POST["img_src"]) || $_POST["img_src"] == ""){
     //postで受け取るデータがない場合は、何もitem_tableに入れない。    
