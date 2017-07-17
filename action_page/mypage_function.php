@@ -8,14 +8,14 @@ if(isset($_SESSION["user_id"]) == ""){
     exit;
 }else if(isset($_SESSION["user_id"]) != ""){
     $user_id = $_SESSION["user_id"];
-    $user_name = $_SESSION["user_name"];
+    $user_nickname = $_SESSION["user_nickname"];
     $user_email = $_SESSION["user_email"];
     if(isset($_SESSION["icon"])){
         $icon = $_SESSION['icon'];
     }else{
         $icon = "test.jpg";
     }
-    $stmt = $pdo->prepare("SELECT `id`,`favorite_dish`,`belong_to`,`address`,`icon` FROM user_table WHERE id = :id");
+    $stmt = $pdo->prepare("SELECT `id`,'user_nickname',`favorite_dish`,`belong_to`,`address`,`icon` FROM user_table WHERE id = :id");
     $stmt->bindValue(':id', $user_id, PDO::PARAM_STR);
     $status = $stmt->execute();
 
@@ -30,6 +30,7 @@ if(isset($_SESSION["user_id"]) == ""){
     }else{
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
         $id = $result["id"];
+        $user_nickname = $result["user_nickname"];
         $belong_to = $result["belong_to"];
         $favorite_dish = $result["favorite_dish"];
         $icon = $result["icon"];
@@ -48,6 +49,7 @@ if(isset($_SESSION["user_id"]) == ""){
             $address = "未設定";
         }
         $_SESSION["id"] = $id;
+        $_SESSION["user_nickname"] = $user_nickname;
         $_SESSION["belong_to"] = $belong_to;
         $_SESSION["favorite_dish"] = $favorite_dish;
         $_SESSION["icon"] = $icon;
@@ -62,7 +64,7 @@ if(isset($_SESSION["user_id"]) == ""){
         $url = $_POST['img_src'];
         $item_name = $_POST['item_name'];
         $item_end_date = $_POST['item_end_date'];
-        $user_name = $_POST['user_name'];
+        $user_nickname = $_POST['user_nickname'];
         $user_email = $_POST['user_email'];
         //frigo_itemlog_tableにアイテム情報を追加
         $stmt0 = $pdo->prepare("INSERT INTO frigo_itemlog_table(name,item_name,indate,finish_flg)VALUES(:name, :item_name, sysdate(),0)");
@@ -85,8 +87,8 @@ if(isset($_SESSION["user_id"]) == ""){
 
     
     //nullの場合はuser情報を新規登録(Insert文)
-    $stmt2 = $pdo->prepare("INSERT INTO user_table(name, email, item_count, kanri_flg, life_flg)VALUES(:name, :email, NULL, NULL, NULL)");
-    $stmt2->bindValue(':name', $user_name, PDO::PARAM_STR);
+    $stmt2 = $pdo->prepare("INSERT INTO user_table(user_nickname, email, item_count, kanri_flg, life_flg)VALUES(:nickname, :email, NULL, NULL, NULL)");
+    $stmt2->bindValue(':nickname', $user_nickname, PDO::PARAM_STR);
     $stmt2->bindValue(':email', $user_email, PDO::PARAM_STR);
     $status = $stmt2->execute();
  
@@ -97,7 +99,7 @@ if(isset($_SESSION["user_id"]) == ""){
 
 //3.user_nameでitem一覧をDBから取得(select文)
     $stmt = $pdo->prepare("SELECT * FROM item_table WHERE name = :user_name");
-    $stmt->bindValue(':user_name', $user_name , PDO::PARAM_STR);
+    $stmt->bindValue(':user_name', $user_nickname , PDO::PARAM_STR);
     $status = $stmt->execute();
 
     //データ表示
@@ -131,7 +133,7 @@ if(isset($_SESSION["user_id"]) == ""){
     }
 //4.user_nameで、lifelog_tableから過去の保存情報一式を取得して表示
     $stmt4 = $pdo->prepare("SELECT * FROM frigo_itemlog_table WHERE name = :user_name");
-    $stmt4->bindValue(':user_name', $user_name , PDO::PARAM_STR);
+    $stmt4->bindValue(':user_name', $user_nickname , PDO::PARAM_STR);
     $status4 = $stmt4->execute();
 
     //データ表示

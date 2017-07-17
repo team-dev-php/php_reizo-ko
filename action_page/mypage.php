@@ -56,7 +56,7 @@
                     <h4>ユーザープロフィール</h4>
                   <img src=<?=$icon?> alt="user_icon" class="user_icon" style="width:50%">
                   
-                    <h4><span class="update_name"><?=$user_name?></span></h4>
+                    <h4><span class="update_name"><?=$user_nickname?></span></h4>
                     <h4>所属：<span class="update_belong_to"><?=$belong_to?></span></h4>
                     <h4>居住エリア:<span class="update_address"><?=$address?></span></h4>
                     <h4>大好物：<span class="update_favorite_dish"><?=$favorite_dish?></span></h4>
@@ -126,14 +126,14 @@
                         <h5 class="mb-1">ユーザー名:</h5>
                     </div>
                     <p class="mb-1">
-                        <input type="text" name="edit_user_name" value=<?=$user_name?> class="text-center" required>
+                        <input type="text" name="edit_user_name" value=<?=$user_nickname?> class="text-center edit_user_name" required>
                     </p>
-                    <div class="d-flex w-100 justify-content-between">
+                    <!-- <div class="d-flex w-100 justify-content-between">
                         <h5 class="mb-1">e-mail:</h5>
-                    </div>
-                    <p class="mb-1">
+                    </div> -->
+                    <!-- <p class="mb-1">
                        <input type="text" name="edit_user_email" value=<?=$user_email?> class="text-center" required>
-                    </p>
+                    </p> -->
                     <div class="d-flex w-100 justify-content-between">
                         <h5 class="mb-1">居住エリア:</h5>
                     </div>
@@ -199,20 +199,21 @@
 
             $(".save_text").html("保存完了しました。");
              let user_id = $('input[name="user_id"]').val();
-             let user_name=$('input[name="edit_user_name"]').val();
-             let user_email=$('input[name="edit_user_email"]').val();
+             let user_nickname=$('input[name="edit_user_name"]').val();
+             // let user_email=$('input[name="edit_user_email"]').val();
              let icon=$('#edit_img_src').val();
              let favorite_dish=$('input[name="favorite_dish"]').val();
              let belong_to=$('input[name="belong_to"]').val();
              let address=$('input[name="address"]').val();
-
+             // console.log(user_nickname);
+             // console.log(user_id);
             $.ajax({
                 url:"profile_edit.php",
                 method:"post",
                 data:{
-                    user_id:$('input[name="user_id"]').val(),
-                    user_name:$('input[name="edit_user_name"]').val(),
-                    user_email:$('input[name="edit_user_email"]').val(),
+                    user_id:user_id,
+                    user_nickname:user_nickname,
+                    // user_email:$('input[name="edit_user_email"]').val(),
                     icon:$('#edit_img_src').val(),
                     favorite_dish:$('input[name="favorite_dish"]').val(),
                     belong_to:$('input[name="belong_to"]').val(),
@@ -221,12 +222,14 @@
                 }
             }).done((data)=>{
                 console.log("done");
-                $(".update_name").html(user_name);
-                $(".update_email").html(user_email);
+                $(".update_name").html(user_nickname);
+                // $(".update_email").html(user_email);
                 $(".user_icon").attr("src",icon);
                 $(".update_favorite_dish").html(favorite_dish);
                 $(".update_belong_to").html(belong_to);
                 $(".update_address").html(address);
+                $(".edit_user_name").html(user_nickname);
+
                 // alert("保存完了しました。");
             });
         });

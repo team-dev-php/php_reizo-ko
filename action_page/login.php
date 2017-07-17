@@ -120,7 +120,8 @@ if( isset($_SESSION['user_id']) != "") {
 		  		user_email:profile.getEmail(),
                 icon:profile.getImageUrl()
 		  	}
-		  }).done(()=>{
+		  }).done((data)=>{
+            console.log(data);
 		  	console.log("login success!");
             var url = window.location.href;
             url = url.replace("login.php","");
