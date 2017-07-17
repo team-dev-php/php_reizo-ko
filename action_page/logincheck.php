@@ -29,7 +29,7 @@
     // }
     if(isset($result)){
     	//2.ある場合、値をdbから取得し、それをセッション変数に代入
-    	$stmt2 = $pdo->prepare("SELECT 'id','user_nickname' FROM user_table WHERE name = :user_name and email = :user_email");
+    	$stmt2 = $pdo->prepare("SELECT `id`,`user_nickname` FROM user_table WHERE name = :user_name and email = :user_email");
 	    $stmt2->bindValue(':user_name',$_POST['user_name'],PDO::PARAM_STR);
 	    $stmt2->bindValue(':user_email',$_POST['user_email'],PDO::PARAM_STR);
 	    $result = $stmt2->execute();
@@ -44,7 +44,7 @@
 	    $stmt2->bindValue(':user_email',$_POST['user_email'],PDO::PARAM_STR);
 	    $result = $stmt2->execute();
 
-	    $stmt3 = $pdo->prepare("SELECT 'id','user_nickname' FROM user_table WHERE name = :user_name and email = :user_email");
+	    $stmt3 = $pdo->prepare("SELECT `id`,`user_nickname` FROM user_table WHERE name = :user_name and email = :user_email");
 	    $stmt3->bindValue(':user_name',$_POST['user_name'],PDO::PARAM_STR);
 	    $stmt3->bindValue(':user_email',$_POST['user_email'],PDO::PARAM_STR);
 	    $result = $stmt3->execute();

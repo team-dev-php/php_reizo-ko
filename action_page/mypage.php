@@ -55,7 +55,6 @@
                 <div class="card">
                     <h4>ユーザープロフィール</h4>
                   <img src=<?=$icon?> alt="user_icon" class="user_icon" style="width:50%">
-                  
                     <h4><span class="update_name"><?=$user_nickname?></span></h4>
                     <h4>所属：<span class="update_belong_to"><?=$belong_to?></span></h4>
                     <h4>居住エリア:<span class="update_address"><?=$address?></span></h4>
@@ -70,7 +69,7 @@
             </div>
             <!-- /プロフィールページ -->
             <div class="container text-center">
-                <h4><?=$user_name?>の保存中アイテム一覧</h4>
+                <h4><span class="update_name"><?=$user_nickname?></span>の保存中アイテム一覧</h4>
                 <table class="table table-condensed">
                     <thead>
                         <tr>

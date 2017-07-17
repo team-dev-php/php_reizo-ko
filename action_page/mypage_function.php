@@ -15,7 +15,7 @@ if(isset($_SESSION["user_id"]) == ""){
     }else{
         $icon = "test.jpg";
     }
-    $stmt = $pdo->prepare("SELECT `id`,'user_nickname',`favorite_dish`,`belong_to`,`address`,`icon` FROM user_table WHERE id = :id");
+    $stmt = $pdo->prepare("SELECT `id`,`user_nickname`,`favorite_dish`,`belong_to`,`address`,`icon` FROM user_table WHERE id = :id");
     $stmt->bindValue(':id', $user_id, PDO::PARAM_STR);
     $status = $stmt->execute();
 
@@ -64,7 +64,7 @@ if(isset($_SESSION["user_id"]) == ""){
         $url = $_POST['img_src'];
         $item_name = $_POST['item_name'];
         $item_end_date = $_POST['item_end_date'];
-        $user_nickname = $_POST['user_nickname'];
+        // $user_nickname = $_POST['user_nickname'];
         $user_email = $_POST['user_email'];
         //frigo_itemlog_tableにアイテム情報を追加
         $stmt0 = $pdo->prepare("INSERT INTO frigo_itemlog_table(name,item_name,indate,finish_flg)VALUES(:name, :item_name, sysdate(),0)");
