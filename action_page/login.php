@@ -1,6 +1,6 @@
 <?php
 session_start();
-if( isset($_SESSION['user_name']) != "") {
+if( isset($_SESSION['user_id']) != "") {
   // ログイン済みの場合はリダイレクト
   header("Location: index.php");
 }
@@ -124,7 +124,7 @@ if( isset($_SESSION['user_name']) != "") {
 		  	console.log("login success!");
             var url = window.location.href;
             url = url.replace("login.php","");
-            window.location.href = url + "/mypage.php";
+            window.location.href = url + "/index.php";
 		  });
 		}
     </script>

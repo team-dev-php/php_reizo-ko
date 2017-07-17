@@ -54,12 +54,12 @@
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
                 <div class="card">
                     <h4>ユーザープロフィール</h4>
-                  <img src=<?=$icon?> alt="John" style="width:50%">
+                  <img src=<?=$icon?> alt="user_icon" class="user_icon" style="width:50%">
                   
-                    <h4><?=$user_name?></h4>
-                    <h4>所属：<?=$belong_to?></h4>
-                    <h4>居住エリア:<?=$address?></h4>
-                    <h4>大好物：<?=$favorite_dish?></h4>
+                    <h4><span class="update_name"><?=$user_name?></span></h4>
+                    <h4>所属：<span class="update_belong_to"><?=$belong_to?></span></h4>
+                    <h4>居住エリア:<span class="update_address"><?=$address?></span></h4>
+                    <h4>大好物：<span class="update_favorite_dish"><?=$favorite_dish?></span></h4>
                     <a href="#" class="sns_icon"><i class="fa fa-dribbble"></i></a> 
                     <a href="#" class="sns_icon"><i class="fa fa-twitter"></i></a> 
                     <a href="#" class="sns_icon"><i class="fa fa-linkedin"></i></a> 
@@ -198,6 +198,13 @@
             console.log($('#edit_img_src').val());
 
             $(".save_text").html("保存完了しました。");
+             let user_id = $('input[name="user_id"]').val();
+             let user_name=$('input[name="edit_user_name"]').val();
+             let user_email=$('input[name="edit_user_email"]').val();
+             let icon=$('#edit_img_src').val();
+             let favorite_dish=$('input[name="favorite_dish"]').val();
+             let belong_to=$('input[name="belong_to"]').val();
+             let address=$('input[name="address"]').val();
 
             $.ajax({
                 url:"profile_edit.php",
@@ -214,6 +221,12 @@
                 }
             }).done((data)=>{
                 console.log("done");
+                $(".update_name").html(user_name);
+                $(".update_email").html(user_email);
+                $(".user_icon").attr("src",icon);
+                $(".update_favorite_dish").html(favorite_dish);
+                $(".update_belong_to").html(belong_to);
+                $(".update_address").html(address);
                 // alert("保存完了しました。");
             });
         });

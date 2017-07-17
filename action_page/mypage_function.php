@@ -2,11 +2,12 @@
 //DB接続
 $pdo = db_con();
 
-if(isset($_SESSION["user_name"]) == ""){
+if(isset($_SESSION["user_id"]) == ""){
 
     header("Location: login.php");
     exit;
-}else if(isset($_SESSION["user_name"]) != ""){
+}else if(isset($_SESSION["user_id"]) != ""){
+    $user_id = $_SESSION["user_id"];
     $user_name = $_SESSION["user_name"];
     $user_email = $_SESSION["user_email"];
     if(isset($_SESSION["icon"])){
@@ -14,8 +15,8 @@ if(isset($_SESSION["user_name"]) == ""){
     }else{
         $icon = "test.jpg";
     }
-    $stmt = $pdo->prepare("SELECT `id`,`favorite_dish`,`belong_to`,`address`,`icon` FROM user_table WHERE name = :user_name");
-    $stmt->bindValue(':user_name', $user_name , PDO::PARAM_STR);
+    $stmt = $pdo->prepare("SELECT `id`,`favorite_dish`,`belong_to`,`address`,`icon` FROM user_table WHERE id = :id");
+    $stmt->bindValue(':id', $user_id, PDO::PARAM_STR);
     $status = $stmt->execute();
 
     //データ表示
