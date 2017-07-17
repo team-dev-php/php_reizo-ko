@@ -63,19 +63,23 @@ if(isset($_SESSION["user_id"]) == ""){
         //item情報をitem_tableにInsert
         $url = $_POST['img_src'];
         $item_name = $_POST['item_name'];
+        $item_category = $_POST['item_category'];
         $item_end_date = $_POST['item_end_date'];
         // $user_nickname = $_POST['user_nickname'];
         $user_email = $_POST['user_email'];
         //frigo_itemlog_tableにアイテム情報を追加
-        $stmt0 = $pdo->prepare("INSERT INTO frigo_itemlog_table(name,item_name,indate,finish_flg)VALUES(:name, :item_name, sysdate(),0)");
+        $stmt0 = $pdo->prepare("INSERT INTO frigo_itemlog_table(name,item_name,indate,category, finish_flg)VALUES(:name, :item_name, sysdate(),:item_category,0)");
         $stmt0->bindValue(':name', $user_name, PDO::PARAM_STR);
         $stmt0->bindValue(':item_name', $item_name, PDO::PARAM_STR);
+        $stmt0->bindValue(':item_category', $item_category, PDO::PARAM_STR);
         $status0 = $stmt0->execute();
 
         //データ登録SQL作成
-        $stmt1 = $pdo->prepare("INSERT INTO item_table(id, name, item_name, url, indate, end_date)VALUES(0, :name, :item_name, :url, sysdate(), STR_TO_DATE(:item_end_date ,'%Y-%m-%d'))");
+        $stmt1 = $pdo->prepare("INSERT INTO item_table(id, name, item_name, category, url, indate, end_date)VALUES(0, :name, :item_name, :category,:url, sysdate(), STR_TO_DATE(:item_end_date ,'%Y-%m-%d'))");
         $stmt1->bindValue(':name', $user_name, PDO::PARAM_STR);
-        $stmt1->bindValue(':item_name', $item_name, PDO::PARAM_STR);  //Integer（数値の場合 PDO::PARAM_INT)
+        $stmt1->bindValue(':item_name', $item_name, PDO::PARAM_STR); 
+        $stmt1->bindValue(':category', $item_category, PDO::PARAM_STR); 
+        //Integer（数値の場合 PDO::PARAM_INT)
         // date("Y-m-d", strtotime($item_end_date))
         $stmt1->bindValue(':url', $url, PDO::PARAM_STR);
          $stmt1->bindValue(':item_end_date', date("Y-m-d", strtotime($item_end_date)), PDO::PARAM_STR);
@@ -145,24 +149,41 @@ if(isset($_SESSION["user_id"]) == ""){
 
     }else{
       //Selectデータの数だけ自動でループしてくれる
+        $analitics[];
       while( $result = $stmt4->fetch(PDO::FETCH_ASSOC)){
-        $itemlog .= "<tr>";
-        // $view .= '<a href = "detail.php?id='.$result["id"].'" >';
-        $itemlog .="<td>";
-        $itemlog .= $result["item_name"];
-        $itemlog .= "</td><td>";
-        $itemlog .= $result["indate"];
-        $itemlog .= "</td><td>";
-        $itemlog .= $result["end_date"];
-        $itemlog .="</td>";
-        $itemlog .="<td>";
-        // $itemlog .= '<a href = "delete.php?id='.$result["id"].'" style="color:#18BC9C;">';
-        // $itemlog .= '[削除]';
-        // $itemlog .= '</a>';
-        $itemlog .="</td>";
-        $itemlog .= "</tr>";
+        if($result["category"] == "" ){
+            $category_name1++;
+        } else if($result["category"] == ){
+            $category_name2++;
+        } else if($result["category"] == ){
+            $category_name3++;
+        }
+
+        // $itemlog .= "<tr>";
+        // // $view .= '<a href = "detail.php?id='.$result["id"].'" >';
+        // $itemlog .="<td>";
+        // $itemlog .= $result["item_name"];
+        // $itemlog .= "</td><td>";
+        // $itemlog .= $result["indate"];
+        // $itemlog .= "</td><td>";
+        // $itemlog .= $result["end_date"];
+        // $itemlog .="</td>";
+        // $itemlog .="<td>";
+        // // $itemlog .= '<a href = "delete.php?id='.$result["id"].'" style="color:#18BC9C;">';
+        // // $itemlog .= '[削除]';
+        // // $itemlog .= '</a>';
+        // $itemlog .="</td>";
+        // $itemlog .= "</tr>";
         
       }
+      $analitics["category_name1"] = $category_name1;
+      $analitics["category_name2"] = $category_name2;
+      $analitics["category_name3"] = $category_name3;
+      ,
+      ,
+      ,
+      //分析用のオブジェクト[カテゴリ名：登録されている品目数]をjson形式で渡す。
+      echo json_encode($analitics);
 
     }
     

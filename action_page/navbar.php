@@ -115,6 +115,19 @@
                 <input type="text" id="mordal_item_name" value="" placeholder="アイテム名" form="item_data" name="item_name" required>
                 </p>
                 <p class="text-muted">※スキャン結果が正しくない場合は変更してください。</p>
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">カテゴリー</h5>
+                  <!-- <small class="text-muted">3 days ago</small> -->
+                </div>
+                <p class="mb-1">
+                <!-- <input type="text" id="mordal_item_category" value="" placeholder="カテゴリー" form="item_data" name="item_category" required> -->
+                <select id="mordal_item_category" form="item_data" name="item_category" required>
+                    <option value="サンプル1">サンプル1</option>
+                    <option value="サンプル2">サンプル2</option>
+                    <option value="サンプル3">サンプル3</option>
+                </select>
+                </p>
+                <p class="text-muted"></p>
               <!-- </a> -->
               <!-- <a href="#" class="list-group-item list-group-item-action flex-column align-items-start"> -->
                 <div class="d-flex w-100 justify-content-between">

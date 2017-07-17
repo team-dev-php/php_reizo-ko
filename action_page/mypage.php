@@ -93,12 +93,12 @@
                 <h4>現在までの保存記録分析</h4>
                 <table class="table table-condensed">
                     <thead>
-                        <tr>
+                        <!-- <tr>
                         <th>Item Name</th>
                         <th>保存開始日</th>
                         <th>保存期限</th>
-                        <!-- <th>オプション</th> -->
-                        </tr>
+                        <th>オプション</th>
+                        </tr> -->
                     </thead>
                     <tbody>
                         <?=$itemlog?>
