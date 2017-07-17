@@ -99,7 +99,7 @@ if(isset($_SESSION["user_id"]) == ""){
 
 //3.user_nameでitem一覧をDBから取得(select文)
     $stmt = $pdo->prepare("SELECT * FROM item_table WHERE name = :user_name");
-    $stmt->bindValue(':user_name', $user_nickname , PDO::PARAM_STR);
+    $stmt->bindValue(':user_name', $user_name , PDO::PARAM_STR);
     $status = $stmt->execute();
 
     //データ表示

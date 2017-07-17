@@ -68,6 +68,11 @@
                 </div>
             </div>
             <!-- /プロフィールページ -->
+            <!-- 残り物レシピ画像欄 -->
+            <div class="container text-center">
+                
+            </div>
+            <!-- /残り物レシピ画像欄 -->
             <div class="container text-center">
                 <h4><span class="update_name"><?=$user_nickname?></span>の保存中アイテム一覧</h4>
                 <table class="table table-condensed">
