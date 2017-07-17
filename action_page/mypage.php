@@ -101,7 +101,7 @@
                         </tr> -->
                     </thead>
                     <tbody>
-                        <?=$itemlog?>
+                        <!-- <?=$itemlog?> -->
                     </tbody>
                 </table>
             </div>
@@ -236,6 +236,14 @@
 
                 // alert("保存完了しました。");
             });
+        });
+
+        $.ajax({
+            url:"mypage_analitics.php",
+            method:"post"
+        }).done((data)=>{
+            // グラフ作成用オブジェクトデータ取得
+            console.log(JSON.parse(data));
         });
     </script>
 
