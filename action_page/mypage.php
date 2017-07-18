@@ -60,18 +60,20 @@
                     <h4>所属：<span class="update_belong_to"><?=$belong_to?></span></h4>
                     <h4>居住エリア:<span class="update_address"><?=$address?></span></h4>
                     <h4>大好物：<span class="update_favorite_dish"><?=$favorite_dish?></span></h4>
-                    <a href="#" class="sns_icon"><i class="fa fa-dribbble"></i></a> 
-                    <a href="#" class="sns_icon"><i class="fa fa-twitter"></i></a> 
-                    <a href="#" class="sns_icon"><i class="fa fa-linkedin"></i></a> 
-                    <a href="#" class="sns_icon"><i class="fa fa-facebook"></i></a> 
+                    <a href="#" class="sns_icon"><i class="fa fa-dribbble"></i></a>
+                    <a href="#" class="sns_icon"><i class="fa fa-twitter"></i></a>
+                    <a href="#" class="sns_icon"><i class="fa fa-linkedin"></i></a>
+                    <a href="#" class="sns_icon"><i class="fa fa-facebook"></i></a>
                     <p><button class="btn btn_block frigo_btn profile_edit">プロフィールを編集</button></p>
-                  
+
                 </div>
             </div>
             <!-- /プロフィールページ -->
+            <!-- /消費期限アラート -->
+            <div class="back"><div id="box"></div></div>
             <!-- 残り物レシピ画像欄 -->
             <div class="container text-center">
-                
+
             </div>
             <!-- /残り物レシピ画像欄 -->
             <div class="container text-center">
@@ -168,7 +170,7 @@
       </div>
     </div>
     <!-- /modal window for profile_edit-->
-    
+
     <!-- modal window for item_info -->
     <div class="modal fade" id="item_modal">
       <div class="modal-dialog">
@@ -247,7 +249,7 @@
     <script src="js/profile_edit.js"></script>
 
     <script>
-        
+
     </script>
 
 </body>
