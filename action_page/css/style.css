@@ -217,6 +217,51 @@ a{
 .table{
     margin-bottom: 50px;
 }
+
+.card {
+    box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    margin: auto;
+    text-align: center;
+}
+
+.sns_icon{
+    text-decoration: none;
+    font-size: 22px;
+    color: #18BC9C;
+}
+.frigo_btn{
+    opacity: 1!important;
+    background: #18BC9C!important;
+    color: white;
+    display: inline-block;
+    padding: 6px 12px!important;
+    margin-bottom: 0;
+    font-size: 14px!important;
+    font-weight: 400;
+    line-height: 1.42857143!important;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+.frigo_btn:hover{
+    background: #18BC9C;
+    color: white;
+}
+
+
+
 @media (min-width: 1200px) {
     .login_page{
         height: 50px;
@@ -232,7 +277,10 @@ a{
         display: none;
     }
     footer{
-        display: block;
+    display: block;
+    position: relative;
+    width: 100%;
+    bottom: 0;
     }
     .navbar-custom{
         padding: 0;

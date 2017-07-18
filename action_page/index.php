@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>G's Smart System</title>
+    <title>Frigo -Keep,Check,Share-</title>
     <!-- For Google Login -->
     <meta name="google-signin-scope" content="profile email">
     <meta name="google-signin-client_id" content="450529429350-lcpe9e24g7erlqcg39kh7nrvudputt3s.apps.googleusercontent.com">

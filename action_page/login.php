@@ -1,6 +1,6 @@
 <?php
 session_start();
-if( isset($_SESSION['user_name']) != "") {
+if( isset($_SESSION['user_id']) != "") {
   // ログイン済みの場合はリダイレクト
   header("Location: index.php");
 }
@@ -16,7 +16,7 @@ if( isset($_SESSION['user_name']) != "") {
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>G's Smart System</title>
+    <title>Frigo -Keep,Check,Share-</title>
     <!-- For Google Login -->
     <meta name="google-signin-scope" content="profile email">
     <meta name="google-signin-client_id" content="450529429350-lcpe9e24g7erlqcg39kh7nrvudputt3s.apps.googleusercontent.com">
@@ -117,13 +117,15 @@ if( isset($_SESSION['user_name']) != "") {
 		  	method:"post",
 		  	data:{
 		  		user_name:profile.getName(),
-		  		user_email:profile.getEmail()
+		  		user_email:profile.getEmail(),
+                icon:profile.getImageUrl()
 		  	}
-		  }).done(()=>{
+		  }).done((data)=>{
+            console.log(data);
 		  	console.log("login success!");
             var url = window.location.href;
             url = url.replace("login.php","");
-            window.location.href = url + "/mypage.php";
+            window.location.href = url + "/index.php";
 		  });
 		}
     </script>
