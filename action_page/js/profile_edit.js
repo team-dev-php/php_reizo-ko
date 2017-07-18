@@ -39,7 +39,6 @@ $(".profile_edit").on("click",()=>{
                 $(".update_address").html(address);
                 $(".edit_user_name").html(user_nickname);
 
-                // alert("保存完了しました。");
             });
         });
 

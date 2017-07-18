@@ -1,15 +1,8 @@
-$(document).on("click",".item_modal",()=>{
+$(document).on("click",".item_modal",(e)=>{
             $("#item_modal").modal();
-            // $(".save_text").html("保存");
-            // let item_id = $(this).attr('id');
-            let item_id = 2;
-            // $(document).ready(function() { // documentのロード完了後に
-            //   $('').each(function() { // #hogeがあれば
-            //     console.log($(this));      // 情報表示
-            //   });
-            // });
+            $(".save_text").html("保存");
+            let item_id = e.target.id;
 
-            console.log(item_id);
             $.ajax({
             url:"./item_info_modal.php",
             method:"post",
@@ -17,49 +10,51 @@ $(document).on("click",".item_modal",()=>{
                 item_id:item_id
             }
             }).done((data)=>{
-                // グラフ作成用オブジェクトデータ取得
-                console.log(data);
-                
+
+                let item_obj = JSON.parse(data);
+                console.log(item_obj);
+                $(".edit_item_src").attr("src",item_obj["url"]);
+                $(".edit_item_name").val(item_obj["item_name"]);
+                $(".item_category").val(item_obj["category"]);
+                $(".indate").val(item_obj["indate"]);
+                $(".end_date").val(item_obj["end_date"]);
+
             });
 
         });
-        // $("#profile_save").on("click",()=>{
-        //     console.log("cliked");
-        //     console.log($('#edit_img_src').val());
+$("#save_iteminfo").on("click",()=>{
 
-        //     $(".save_text").html("保存完了しました。");
-        //      let user_id = $('input[name="user_id"]').val();
-        //      let user_nickname=$('input[name="edit_user_name"]').val();
-        //      // let user_email=$('input[name="edit_user_email"]').val();
-        //      let icon=$('#edit_img_src').val();
-        //      let favorite_dish=$('input[name="favorite_dish"]').val();
-        //      let belong_to=$('input[name="belong_to"]').val();
-        //      let address=$('input[name="address"]').val();
-        //      // console.log(user_nickname);
-        //      // console.log(user_id);
-        //     $.ajax({
-        //         url:"./profile_edit.php",
-        //         method:"post",
-        //         data:{
-        //             user_id:user_id,
-        //             user_nickname:user_nickname,
-        //             // user_email:$('input[name="edit_user_email"]').val(),
-        //             icon:$('#edit_img_src').val(),
-        //             favorite_dish:$('input[name="favorite_dish"]').val(),
-        //             belong_to:$('input[name="belong_to"]').val(),
-        //             address:$('input[name="address"]').val()
-                   
-        //         }
-        //     }).done((data)=>{
-        //         console.log("done");
-        //         $(".update_name").html(user_nickname);
-        //         // $(".update_email").html(user_email);
-        //         $(".user_icon").attr("src",icon);
-        //         $(".update_favorite_dish").html(favorite_dish);
-        //         $(".update_belong_to").html(belong_to);
-        //         $(".update_address").html(address);
-        //         $(".edit_user_name").html(user_nickname);
-
-        //         // alert("保存完了しました。");
-        //     });
-        // });
+    $(".save_text").html("保存完了しました。");
+     let item_id = $('input[name="item_id"]').val();
+     let edit_item_name=$('input[name="edit_item_name"]').val();
+     // let user_email=$('input[name="edit_user_email"]').val();
+     let edit_item_src=$('.edit_item_src').attr("src");
+     let item_category=$('input[name="item_category"]').val();
+     let indate=$('input[name="indate"]').val();
+     let end_date=$('input[name="end_date"]').val();
+     // console.log(user_nickname);
+     // console.log(user_id);
+    $.ajax({
+        url:"./item_update.php",
+        method:"post",
+        data:{
+            item_id:item_id,
+            edit_item_name:edit_item_name,
+            edit_item_src:edit_item_src,
+            item_category:item_category,
+            indate:indate,
+            end_date:end_date
+        }
+    }).done((data)=>{
+        console.log("done");
+        // console.log(data);
+        $(".update_item_name").html(edit_item_name);
+        // $(".update_email").html(user_email);
+        $(".user_edit_item_src").attr("src",edit_item_src);
+        $(".update_item_category").html(item_category);
+        $(".update_indate").html(indate);
+        $(".update_end_date").html(end_date);
+        
+        // alert("保存完了しました。");
+    });
+});

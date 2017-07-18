@@ -179,45 +179,39 @@
             <h4 class="modal-title text-center">アイテム情報</h4>
           </div>
           <form id="item_info_edit" action="item_info_edit.php" method="post" class="form">
-            <input type="hidden" name="item_id" value=<?=$id?> >
+            <input type="hidden" name="item_id" value="">
               <div class="modal-body row">
                 <div class="list-group">
-                    <img src=<?=$icon?> alt="user_icon"  style="width:50%">
-                    <input type = "hidden" id="edit_img_src" value=<?=$icon?>>
+                    <img src="" alt="item_src"  style="width:50%" class="edit_item_src">
+                    <input type = "hidden" id="edit_item_src" value="" class="edit_item_src">
                     <div class="d-flex w-100 justify-content-between">
-                        <h5 class="mb-1">ユーザー名:</h5>
+                        <h5 class="mb-1">アイテム名:</h5>
                     </div>
                     <p class="mb-1">
-                        <input type="text" name="edit_user_name" value=<?=$user_nickname?> class="text-center edit_user_name" required>
-                    </p>
-                    <!-- <div class="d-flex w-100 justify-content-between">
-                        <h5 class="mb-1">e-mail:</h5>
-                    </div> -->
-                    <!-- <p class="mb-1">
-                       <input type="text" name="edit_user_email" value=<?=$user_email?> class="text-center" required>
-                    </p> -->
-                    <div class="d-flex w-100 justify-content-between">
-                        <h5 class="mb-1">居住エリア:</h5>
-                    </div>
-                    <p class="mb-1">
-                        <input type="text" name="address" value=<?=$address?> class="text-center" required>
+                        <input type="text" name="edit_item_name" value="" class="text-center edit_item_name" required>
                     </p>
                     <div class="d-flex w-100 justify-content-between">
-                        <h5 class="mb-1">所属:</h5>
+                        <h5 class="mb-1">カテゴリー:</h5>
                     </div>
                     <p class="mb-1">
-                        <input type="text" name="belong_to" value=<?=$belong_to?> class="text-center" required>
+                        <input type="text" name="item_category" value="" class="text-center item_category" required>
                     </p>
                     <div class="d-flex w-100 justify-content-between">
-                        <h5 class="mb-1">大好物:</h5>
+                        <h5 class="mb-1">保存開始日：</h5>
                     </div>
                     <p class="mb-1">
-                        <input type="text" name="favorite_dish" value=<?=$favorite_dish?> class="text-center" required>
+                        <input type="text" name="indate" value="" class="text-center indate" required>
+                    </p>
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">保存終了日:</h5>
+                    </div>
+                    <p class="mb-1">
+                        <input type="text" name="end_date" value="" class="text-center end_date" required>
                     </p>
                 </div>
               </div>
               <div class="modal-footer">
-                <button type="button" id="item_info_modal" class="frigo_btn close btn btn-block " data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="save_text">保存</span></button>
+                <button type="button" id="save_iteminfo" class="frigo_btn close btn btn-block " data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="save_text">保存</span></button>
                 <!-- /DBへ登録する情報のinput -->
                </div>
            </form>
