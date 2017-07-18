@@ -19,8 +19,11 @@ if(isset($_FILES['file'])){
   //localhost用
   // $barcode = 'http://localhost:8888/team-work/php_reizo-ko/action_page/img/'.$time.'.jpg';
 
-  // //本番環境用 
+  // //本番環境用
+      //koyama
   $barcode = 'http://shoheikoya.sakura.ne.jp/gs/team-dev/action_page/img/'.$time.'.jpg';
+      //kusumi
+  //$barcode = 'http://whisper1111.sakura.ne.jp/php_reizo-ko/action_page/img/'.$time.'.jpg';
 
    }
 }else{
