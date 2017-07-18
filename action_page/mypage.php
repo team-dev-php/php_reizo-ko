@@ -85,7 +85,7 @@
                         <th>オプション</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="item_list">
                         <?=$view?>
                     </tbody>
                 </table>

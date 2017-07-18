@@ -9,11 +9,12 @@
     
     include("functions.php");
     $pdo = db_con();
-    $stmt = $pdo->prepare("UPDATE user_table SET item_name = :edit_item_name, url = :edit_item_src, category = :item_category, indate = :indate, end_date = :end_date WHERE id = :item_id");
-	$stmt->bindValue(':item_id', $item_id, PDO::PARAM_STR);
+    $stmt = $pdo->prepare("UPDATE item_table SET item_name = :edit_item_name, category = :item_category, url = :edit_item_src, indate = :indate, end_date = :end_date WHERE id = :item_id");
+	  $stmt->bindValue(':item_id', $item_id, PDO::PARAM_STR);
     $stmt->bindValue(':edit_item_name', $edit_item_name, PDO::PARAM_STR);
     // $stmt->bindValue(':user_email', $user_email, PDO::PARAM_STR);
     $stmt->bindValue(':item_category', $item_category, PDO::PARAM_STR);
+    $stmt->bindValue(':edit_item_src', $edit_item_src, PDO::PARAM_STR);
     $stmt->bindValue(':indate', $indate, PDO::PARAM_STR);
     $stmt->bindValue(':end_date', $end_date, PDO::PARAM_STR);
     // $stmt->bindValue(':icon', $icon, PDO::PARAM_STR);

@@ -2,6 +2,7 @@ $(document).on("click",".item_modal",(e)=>{
             $("#item_modal").modal();
             $(".save_text").html("保存");
             let item_id = e.target.id;
+            $('input[name="item_id"]').val(item_id);
 
             $.ajax({
             url:"./item_info_modal.php",
@@ -22,7 +23,7 @@ $(document).on("click",".item_modal",(e)=>{
             });
 
         });
-$("#save_iteminfo").on("click",()=>{
+$(document).on("click","#save_iteminfo",()=>{
 
     $(".save_text").html("保存完了しました。");
      let item_id = $('input[name="item_id"]').val();
@@ -32,8 +33,8 @@ $("#save_iteminfo").on("click",()=>{
      let item_category=$('input[name="item_category"]').val();
      let indate=$('input[name="indate"]').val();
      let end_date=$('input[name="end_date"]').val();
-     // console.log(user_nickname);
-     // console.log(user_id);
+     console.log(item_id);
+     console.log(item_category);
     $.ajax({
         url:"./item_update.php",
         method:"post",
@@ -47,14 +48,16 @@ $("#save_iteminfo").on("click",()=>{
         }
     }).done((data)=>{
         console.log("done");
-        // console.log(data);
-        $(".update_item_name").html(edit_item_name);
-        // $(".update_email").html(user_email);
-        $(".user_edit_item_src").attr("src",edit_item_src);
-        $(".update_item_category").html(item_category);
-        $(".update_indate").html(indate);
-        $(".update_end_date").html(end_date);
-        
-        // alert("保存完了しました。");
+        console.log(data);
+        $.ajax({
+            url:"item_list.php",
+            method:"post",
+            data:{
+                item_id:item_id
+            }
+        }).done((data)=>{
+            console.log(data);
+            $("#item_list").html(data);
+        });
     });
 });
