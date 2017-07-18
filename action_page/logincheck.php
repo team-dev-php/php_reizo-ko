@@ -23,10 +23,12 @@
     	$stmt2 = $pdo->prepare("SELECT `id`,`user_nickname` FROM user_table WHERE name = :user_name and email = :user_email");
 	    $stmt2->bindValue(':user_name',$_POST['user_name'],PDO::PARAM_STR);
 	    $stmt2->bindValue(':user_email',$_POST['user_email'],PDO::PARAM_STR);
+
 	    $result2 = $stmt2->execute();
 	    while( $result2 = $stmt2->fetch(PDO::FETCH_ASSOC)){
     		$_SESSION["user_id"] = $result2["id"];
     		$_SESSION["user_nickname"] = $result2["user_nickname"];
+
     	}
     }else{
     	//3.ない場合、dbに情報を登録し、そのid含む値をセッション変数に代入
@@ -38,10 +40,12 @@
 	    $stmt3 = $pdo->prepare("SELECT `id`,`user_nickname` FROM user_table WHERE name = :user_name and email = :user_email");
 	    $stmt3->bindValue(':user_name',$_POST['user_name'],PDO::PARAM_STR);
 	    $stmt3->bindValue(':user_email',$_POST['user_email'],PDO::PARAM_STR);
-	    $result3 = $stmt3->execute();
-	    while( $result3 = $stmt3->fetch(PDO::FETCH_ASSOC)){
-    		$_SESSION["user_id"] = $result3["id"];
-    		$_SESSION["user_nickname"] = $result3["user_nickname"];
+
+	    $result = $stmt3->execute();
+	    while( $result = $stmt3->fetch(PDO::FETCH_ASSOC)){
+    		$_SESSION["user_id"] = $result["id"];
+    		$_SESSION["user_nickname"] = $result["user_nickname"];
+
     	}
     }
      echo $_SESSION["user_id"];

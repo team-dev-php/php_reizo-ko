@@ -11,9 +11,9 @@ $(".profile_edit").on("click",()=>{
              let user_nickname=$('input[name="edit_user_name"]').val();
              // let user_email=$('input[name="edit_user_email"]').val();
              let icon=$('#edit_img_src').val();
-             let favorite_dish=$('input[name="favorite_dish"]').val();
-             let belong_to=$('input[name="belong_to"]').val();
-             let address=$('input[name="address"]').val();
+             let favorite_dish=$('input[name="edit_favorite_dish"]').val();
+             let belong_to=$('input[name="edit_belong_to"]').val();
+             let address=$('input[name="edit_address"]').val();
              // console.log(user_nickname);
              // console.log(user_id);
             $.ajax({
@@ -23,10 +23,10 @@ $(".profile_edit").on("click",()=>{
                     user_id:user_id,
                     user_nickname:user_nickname,
                     // user_email:$('input[name="edit_user_email"]').val(),
-                    icon:$('#edit_img_src').val(),
-                    favorite_dish:$('input[name="favorite_dish"]').val(),
-                    belong_to:$('input[name="belong_to"]').val(),
-                    address:$('input[name="address"]').val()
+                    icon:icon,
+                    favorite_dish:favorite_dish,
+                    belong_to:belong_to,
+                    address:address
                    
                 }
             }).done((data)=>{
@@ -39,7 +39,6 @@ $(".profile_edit").on("click",()=>{
                 $(".update_address").html(address);
                 $(".edit_user_name").html(user_nickname);
 
-                // alert("保存完了しました。");
             });
         });
 

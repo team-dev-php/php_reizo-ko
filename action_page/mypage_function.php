@@ -119,7 +119,7 @@ if(isset($_SESSION["user_id"]) == ""){
       while( $result = $stmt->fetch(PDO::FETCH_ASSOC)){
         $view .= '<tr>';
         // $view .= '<a href = "detail.php?id='.$result["id"].'" >';
-        $view .='<td id="'.$result["id"].'">';
+        $view .='<td id="'.$result["id"].'" class="item_modal">';
         $view .= $result["item_name"];
         $view .= "</td><td>";
         $view .= $result["indate"];
