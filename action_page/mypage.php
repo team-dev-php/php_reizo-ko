@@ -33,6 +33,7 @@
     <script src="js/reader.js"></script>
     <script src="js/recipe_generat.js"></script>
     <script src="js/file_upload.js"></script>
+    <script src="js/item_info_modal.js"></script>
     <!-- <script src="js/google_login.js"></script> -->
 </head>
 
@@ -169,7 +170,6 @@
     <!-- /modal window for profile_edit-->
     
     <!-- modal window for item_info -->
-    <!-- modal window -->
     <div class="modal fade" id="item_modal">
       <div class="modal-dialog">
         <!-- <div class="modal-content"> -->
@@ -224,7 +224,6 @@
         </div>
       </div>
     </div>
-    <!-- /modal window -->
     <!-- /modal window for item_info -->
 
     <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
