@@ -1,4 +1,6 @@
 <?php
+    ini_set("display_errors", On);
+    error_reporting(E_ALL);
 	session_start();
 	// $_SESSION["user_id"] = $_POST['user_id'];
 	$_SESSION['user_name'] = $_POST["user_name"];
@@ -33,7 +35,7 @@
 	    $stmt2->bindValue(':user_name',$_POST['user_name'],PDO::PARAM_STR);
 	    $stmt2->bindValue(':user_email',$_POST['user_email'],PDO::PARAM_STR);
 	    $result = $stmt2->execute();
-	    while( $result = $stmt->fetch(PDO::FETCH_ASSOC)){
+	    while( $result = $stmt2->fetch(PDO::FETCH_ASSOC)){
     		$_SESSION["user_id"] = $result["id"];
     		$_SESSION["user_nickname"] = $result["user_nickname"];
     	}
@@ -48,7 +50,7 @@
 	    $stmt3->bindValue(':user_name',$_POST['user_name'],PDO::PARAM_STR);
 	    $stmt3->bindValue(':user_email',$_POST['user_email'],PDO::PARAM_STR);
 	    $result = $stmt3->execute();
-	    while( $result = $stmt->fetch(PDO::FETCH_ASSOC)){
+	    while( $result = $stmt3->fetch(PDO::FETCH_ASSOC)){
     		$_SESSION["user_id"] = $result["id"];
     		$_SESSION["user_nickname"] = $result["user_nickname"];
     	}
