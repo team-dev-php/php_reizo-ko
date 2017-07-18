@@ -52,7 +52,17 @@
                             </label>
                         <!-- /カメラで商品を撮影 -->
                       </li>
-                      <li><a href="#">アイテムを撮影</a></li>
+                      <li>
+
+                            <label for="upfile2" class="camera-btn">
+
+                                アイテムを撮影
+
+                            <input type="file" name="file" id="upfile2" accept="image/*" capture="camera" style="display:none;">
+
+                           </label>
+
+                      </li>
                     </ul>
                   </div>
                   <button type="button" class="btn btn-primary" style="font-size: 25px;width: 25%;margin: 1.5px 0 auto!important;">
@@ -70,7 +80,7 @@
             <h4>画像を解析中...</h4>
         </div>
     </div>
-    
+
     <section id="" style="display: none;">
         <div class="contatainer">
             <div class="text-center">
@@ -85,7 +95,7 @@
                 </div>
             </div>
             <!-- /画像表示 -->
-            
+
             <div id="jsonOutput">
                 <input type="hidden" id="numberArea" class="UIInput" value="読み取った番号">
             </div>
@@ -99,11 +109,15 @@
 
     <!-- カメラ撮影後の、モーダルウィンドウの中身 -->
     <div class="modal fade" id="myModal">
+
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <h4 class="modal-title text-center">アイテム情報確認</h4>
+          </div>
+          <div style="text-align:center;" class="">
+             <img id="sourceImage2" src="" alt="" >
           </div>
           <div class="modal-body row">
             <div class="list-group">
@@ -161,4 +175,3 @@
         </div>
       </div>
     </div>
-    
