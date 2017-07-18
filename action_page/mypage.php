@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>G's Smart System</title>
+    <title>Frigo -Keep,Check,Share-</title>
     <!-- For Google Login -->
     <meta name="google-signin-scope" content="profile email">
     <meta name="google-signin-client_id" content="450529429350-lcpe9e24g7erlqcg39kh7nrvudputt3s.apps.googleusercontent.com">
@@ -111,14 +111,14 @@
     <?php include (dirname(__FILE__).'/footer.php'); ?>
     </section>
 
-    <!-- modal window -->
+    <!-- modal window for profile_edit-->
     <div class="modal fade" id="profile_modal">
       <div class="modal-dialog">
         <!-- <div class="modal-content"> -->
         <div class="card" style="background: white;">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title text-center">アイテム情報確認</h4>
+            <h4 class="modal-title text-center">プロフィール情報確認</h4>
           </div>
           <form id="profile_edit" action="profile_edit.php" method="post" class="form">
             <input type="hidden" name="user_id" value=<?=$id?> >
@@ -166,9 +166,66 @@
         </div>
       </div>
     </div>
+    <!-- /modal window for profile_edit-->
+    
+    <!-- modal window for item_info -->
+    <!-- modal window -->
+    <div class="modal fade" id="item_modal">
+      <div class="modal-dialog">
+        <!-- <div class="modal-content"> -->
+        <div class="card" style="background: white;">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title text-center">アイテム情報</h4>
+          </div>
+          <form id="item_info_edit" action="item_info_edit.php" method="post" class="form">
+            <input type="hidden" name="item_id" value=<?=$id?> >
+              <div class="modal-body row">
+                <div class="list-group">
+                    <img src=<?=$icon?> alt="user_icon"  style="width:50%">
+                    <input type = "hidden" id="edit_img_src" value=<?=$icon?>>
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">ユーザー名:</h5>
+                    </div>
+                    <p class="mb-1">
+                        <input type="text" name="edit_user_name" value=<?=$user_nickname?> class="text-center edit_user_name" required>
+                    </p>
+                    <!-- <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">e-mail:</h5>
+                    </div> -->
+                    <!-- <p class="mb-1">
+                       <input type="text" name="edit_user_email" value=<?=$user_email?> class="text-center" required>
+                    </p> -->
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">居住エリア:</h5>
+                    </div>
+                    <p class="mb-1">
+                        <input type="text" name="address" value=<?=$address?> class="text-center" required>
+                    </p>
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">所属:</h5>
+                    </div>
+                    <p class="mb-1">
+                        <input type="text" name="belong_to" value=<?=$belong_to?> class="text-center" required>
+                    </p>
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">大好物:</h5>
+                    </div>
+                    <p class="mb-1">
+                        <input type="text" name="favorite_dish" value=<?=$favorite_dish?> class="text-center" required>
+                    </p>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" id="item_info_modal" class="frigo_btn close btn btn-block " data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="save_text">保存</span></button>
+                <!-- /DBへ登録する情報のinput -->
+               </div>
+           </form>
+        </div>
+      </div>
+    </div>
     <!-- /modal window -->
-
-
+    <!-- /modal window for item_info -->
 
     <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
     <div class="scroll-top page-scroll hidden-sm hidden-xs hidden-lg hidden-md">
@@ -192,59 +249,12 @@
 
     <!-- Theme JavaScript -->
     <script src="js/freelancer.min.js"></script>
+
+    <!-- プロフィール編集用js -->
+    <script src="js/profile_edit.js"></script>
+
     <script>
-        $(".profile_edit").on("click",()=>{
-            $("#profile_modal").modal();
-            $(".save_text").html("保存");
-        });
-        $("#profile_save").on("click",()=>{
-            console.log("cliked");
-            console.log($('#edit_img_src').val());
-
-            $(".save_text").html("保存完了しました。");
-             let user_id = $('input[name="user_id"]').val();
-             let user_nickname=$('input[name="edit_user_name"]').val();
-             // let user_email=$('input[name="edit_user_email"]').val();
-             let icon=$('#edit_img_src').val();
-             let favorite_dish=$('input[name="favorite_dish"]').val();
-             let belong_to=$('input[name="belong_to"]').val();
-             let address=$('input[name="address"]').val();
-             // console.log(user_nickname);
-             // console.log(user_id);
-            $.ajax({
-                url:"profile_edit.php",
-                method:"post",
-                data:{
-                    user_id:user_id,
-                    user_nickname:user_nickname,
-                    // user_email:$('input[name="edit_user_email"]').val(),
-                    icon:$('#edit_img_src').val(),
-                    favorite_dish:$('input[name="favorite_dish"]').val(),
-                    belong_to:$('input[name="belong_to"]').val(),
-                    address:$('input[name="address"]').val()
-                   
-                }
-            }).done((data)=>{
-                console.log("done");
-                $(".update_name").html(user_nickname);
-                // $(".update_email").html(user_email);
-                $(".user_icon").attr("src",icon);
-                $(".update_favorite_dish").html(favorite_dish);
-                $(".update_belong_to").html(belong_to);
-                $(".update_address").html(address);
-                $(".edit_user_name").html(user_nickname);
-
-                // alert("保存完了しました。");
-            });
-        });
-
-        $.ajax({
-            url:"mypage_analitics.php",
-            method:"post"
-        }).done((data)=>{
-            // グラフ作成用オブジェクトデータ取得
-            console.log(JSON.parse(data));
-        });
+        
     </script>
 
 </body>
