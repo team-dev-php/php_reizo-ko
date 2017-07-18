@@ -41,7 +41,7 @@
                   <button type="button" class="btn btn-primary" style="font-size: 25px;width: 25%;margin: 1.5px 0 auto!important;"><a href="index.php"><i class="glyphicon glyphicon-cutlery"></i></a></button>
                   <div class="btn-group" style="width: 25%;margin: 1.5px 0 auto!important;">
                     <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" style="font-size:25px;width: 100%;margin: 1.5px 0 auto!important;">
-                        <i class="glyphicon glyphicon-camera" aria-hidden="true"></i><span class="caret"></span>
+                        <i class="glyphicon glyphicon-camera" style="color: #fca800;" aria-hidden="true"></i><span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu" role="menu">
                       <li>

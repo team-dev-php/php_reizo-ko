@@ -6,6 +6,10 @@ th{
     text-align: center;
 }
 
+body{
+    color: #795548
+}
+
 .scan_bt{
     margin: 0 auto;
     width: 80%;
@@ -212,7 +216,7 @@ label {
   border-radius: 12px;*/
 }
 a{
-    color: white;
+    color: #fca800;
 }
 .table{
     margin-bottom: 50px;
@@ -260,8 +264,33 @@ a{
     color: white;
 }
 
+.navbar-custom{
+    background-color: white;
+    color: #fca800;
+}
+.navbar-brand{
+    color: #fca800!important;
+}
+
+.btn-primary{
+    background-color: white;
+    border: none;
+}
+
+.btn-primary:hover{
+    background-color: white;
+    border: none;
+}
 
 
+hr.star-primary {
+    border-color: #fca800;
+}
+
+hr.star-primary:after {
+    background-color: #fff;
+    color: #FCA800;
+}
 @media (min-width: 1200px) {
     .login_page{
         height: 50px;
