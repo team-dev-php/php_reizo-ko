@@ -1,6 +1,8 @@
 <?php
     $item_id = $_POST["item_id"];
-
+    
+    include("functions.php");
+    $pdo = db_con();
     $stmt = $pdo->prepare("SELECT * FROM item_table WHERE id = :item_id");
     $stmt->bindValue(':item_id', $item_id , PDO::PARAM_STR);
     $status = $stmt->execute();
@@ -25,6 +27,7 @@
         $item_info["end_date"] = $result["end_date"];
 
       }
-
-      echo json_encode($item_info);
+    }
+      $data = json_encode($item_info);
+      echo $data;
 ?>

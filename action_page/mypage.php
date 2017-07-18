@@ -126,7 +126,7 @@
               <div class="modal-body row">
                 <div class="list-group">
                     <img src=<?=$icon?> alt="user_icon"  style="width:50%">
-                    <input type = "hidden" id="edit_img_src" value=<?=$icon?>>
+                    <input type = "hidden" id="edit_img_src" name="edit_img_src" value=<?=$icon?>>
                     <div class="d-flex w-100 justify-content-between">
                         <h5 class="mb-1">ユーザー名:</h5>
                     </div>
@@ -143,19 +143,19 @@
                         <h5 class="mb-1">居住エリア:</h5>
                     </div>
                     <p class="mb-1">
-                        <input type="text" name="address" value=<?=$address?> class="text-center" required>
+                        <input type="text" name="edit_address" value=<?=$address?> class="text-center" required>
                     </p>
                     <div class="d-flex w-100 justify-content-between">
                         <h5 class="mb-1">所属:</h5>
                     </div>
                     <p class="mb-1">
-                        <input type="text" name="belong_to" value=<?=$belong_to?> class="text-center" required>
+                        <input type="text" name="edit_belong_to" value=<?=$belong_to?> class="text-center" required>
                     </p>
                     <div class="d-flex w-100 justify-content-between">
                         <h5 class="mb-1">大好物:</h5>
                     </div>
                     <p class="mb-1">
-                        <input type="text" name="favorite_dish" value=<?=$favorite_dish?> class="text-center" required>
+                        <input type="text" name="edit_favorite_dish" value=<?=$favorite_dish?> class="text-center" required>
                     </p>
                 </div>
               </div>

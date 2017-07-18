@@ -1,7 +1,8 @@
 $(document).on("click",".item_modal",()=>{
             $("#item_modal").modal();
             // $(".save_text").html("保存");
-            let item_id = $(this).attr('id');
+            // let item_id = $(this).attr('id');
+            let item_id = 2;
             // $(document).ready(function() { // documentのロード完了後に
             //   $('').each(function() { // #hogeがあれば
             //     console.log($(this));      // 情報表示
@@ -17,9 +18,8 @@ $(document).on("click",".item_modal",()=>{
             }
             }).done((data)=>{
                 // グラフ作成用オブジェクトデータ取得
-                console.log(JSON.parse(data));
+                console.log(data);
                 
-
             });
 
         });
