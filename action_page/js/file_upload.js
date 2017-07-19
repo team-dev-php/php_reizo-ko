@@ -57,6 +57,7 @@ $(document).on('change','#upfile2',function() {
 
                         reader.onload = function() {
                             $('#sourceImage2').attr('src', reader.result);
+                            $("#img_src").val(reader.result);//ここでモーダルのhiddenになってるinputタグに代入
                             // $('#file').val(reader.result);
                             // crop();
                         }
@@ -82,6 +83,7 @@ $(document).on('change','#upfile2',function() {
                             var mon = now.getMonth()+1; //１を足すこと
                             var day = now.getDate();
                             let end_date = year+"-"+mon+"-"+day;
+                            $('#regist_bt').removeClass().addClass("regist_bt_run btn btn-block btn-danger");
                             $('#myModal').modal();
                             $("#item_end_date").val(end_date);
                             $("#mordal_end_date").val(end_date);
