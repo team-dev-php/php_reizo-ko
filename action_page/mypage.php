@@ -23,6 +23,7 @@
     <link href="css/freelancer.min.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/alert.css">
     <!-- Custom Fonts -->
     <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
@@ -33,7 +34,6 @@
     <script src="js/reader.js"></script>
     <script src="js/recipe_generat.js"></script>
     <script src="js/file_upload.js"></script>
-    <script src="js/item_info_modal.js"></script>
     <!-- <script src="js/google_login.js"></script> -->
 </head>
 
@@ -60,18 +60,19 @@
                     <h4>所属：<span class="update_belong_to"><?=$belong_to?></span></h4>
                     <h4>居住エリア:<span class="update_address"><?=$address?></span></h4>
                     <h4>大好物：<span class="update_favorite_dish"><?=$favorite_dish?></span></h4>
-                    <a href="#" class="sns_icon"><i class="fa fa-dribbble"></i></a> 
-                    <a href="#" class="sns_icon"><i class="fa fa-twitter"></i></a> 
-                    <a href="#" class="sns_icon"><i class="fa fa-linkedin"></i></a> 
-                    <a href="#" class="sns_icon"><i class="fa fa-facebook"></i></a> 
+                    <a href="#" class="sns_icon"><i class="fa fa-dribbble"></i></a>
+                    <a href="#" class="sns_icon"><i class="fa fa-twitter"></i></a>
+                    <a href="#" class="sns_icon"><i class="fa fa-linkedin"></i></a>
+                    <a href="#" class="sns_icon"><i class="fa fa-facebook"></i></a>
                     <p><button class="btn btn_block frigo_btn profile_edit">プロフィールを編集</button></p>
-                  
+
                 </div>
             </div>
             <!-- /プロフィールページ -->
+            <div class="back"><div id="box"></div></div>
             <!-- 残り物レシピ画像欄 -->
             <div class="container text-center">
-                
+
             </div>
             <!-- /残り物レシピ画像欄 -->
             <div class="container text-center">
@@ -85,7 +86,7 @@
                         <th>オプション</th>
                         </tr>
                     </thead>
-                    <tbody id="item_list">
+                    <tbody>
                         <?=$view?>
                     </tbody>
                 </table>
@@ -126,7 +127,7 @@
               <div class="modal-body row">
                 <div class="list-group">
                     <img src=<?=$icon?> alt="user_icon"  style="width:50%">
-                    <input type = "hidden" id="edit_img_src" name="edit_img_src" value=<?=$icon?>>
+                    <input type = "hidden" id="edit_img_src" value=<?=$icon?>>
                     <div class="d-flex w-100 justify-content-between">
                         <h5 class="mb-1">ユーザー名:</h5>
                     </div>
@@ -143,19 +144,19 @@
                         <h5 class="mb-1">居住エリア:</h5>
                     </div>
                     <p class="mb-1">
-                        <input type="text" name="edit_address" value=<?=$address?> class="text-center" required>
+                        <input type="text" name="address" value=<?=$address?> class="text-center" required>
                     </p>
                     <div class="d-flex w-100 justify-content-between">
                         <h5 class="mb-1">所属:</h5>
                     </div>
                     <p class="mb-1">
-                        <input type="text" name="edit_belong_to" value=<?=$belong_to?> class="text-center" required>
+                        <input type="text" name="belong_to" value=<?=$belong_to?> class="text-center" required>
                     </p>
                     <div class="d-flex w-100 justify-content-between">
                         <h5 class="mb-1">大好物:</h5>
                     </div>
                     <p class="mb-1">
-                        <input type="text" name="edit_favorite_dish" value=<?=$favorite_dish?> class="text-center" required>
+                        <input type="text" name="favorite_dish" value=<?=$favorite_dish?> class="text-center" required>
                     </p>
                 </div>
               </div>
@@ -168,8 +169,9 @@
       </div>
     </div>
     <!-- /modal window for profile_edit-->
-    
+
     <!-- modal window for item_info -->
+    <!-- modal window -->
     <div class="modal fade" id="item_modal">
       <div class="modal-dialog">
         <!-- <div class="modal-content"> -->
@@ -179,45 +181,55 @@
             <h4 class="modal-title text-center">アイテム情報</h4>
           </div>
           <form id="item_info_edit" action="item_info_edit.php" method="post" class="form">
-            <input type="hidden" name="item_id" value="">
+            <input type="hidden" name="item_id" value=<?=$id?> >
               <div class="modal-body row">
                 <div class="list-group">
-                    <img src="" alt="item_src"  style="width:50%" class="edit_item_src">
-                    <input type = "hidden" id="edit_item_src" value="" class="edit_item_src">
+                    <img src=<?=$icon?> alt="user_icon"  style="width:50%">
+                    <input type = "hidden" id="edit_img_src" value=<?=$icon?>>
                     <div class="d-flex w-100 justify-content-between">
-                        <h5 class="mb-1">アイテム名:</h5>
+                        <h5 class="mb-1">ユーザー名:</h5>
                     </div>
                     <p class="mb-1">
-                        <input type="text" name="edit_item_name" value="" class="text-center edit_item_name" required>
+                        <input type="text" name="edit_user_name" value=<?=$user_nickname?> class="text-center edit_user_name" required>
+                    </p>
+                    <!-- <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">e-mail:</h5>
+                    </div> -->
+                    <!-- <p class="mb-1">
+                       <input type="text" name="edit_user_email" value=<?=$user_email?> class="text-center" required>
+                    </p> -->
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">居住エリア:</h5>
+                    </div>
+                    <p class="mb-1">
+                        <input type="text" name="address" value=<?=$address?> class="text-center" required>
                     </p>
                     <div class="d-flex w-100 justify-content-between">
-                        <h5 class="mb-1">カテゴリー:</h5>
+                        <h5 class="mb-1">所属:</h5>
                     </div>
                     <p class="mb-1">
-                        <input type="text" name="item_category" value="" class="text-center item_category" required>
+                        <input type="text" name="belong_to" value=<?=$belong_to?> class="text-center" required>
                     </p>
                     <div class="d-flex w-100 justify-content-between">
-                        <h5 class="mb-1">保存開始日：</h5>
+                        <h5 class="mb-1">大好物:</h5>
                     </div>
                     <p class="mb-1">
-                        <input type="text" name="indate" value="" class="text-center indate" required>
-                    </p>
-                    <div class="d-flex w-100 justify-content-between">
-                        <h5 class="mb-1">保存終了日:</h5>
-                    </div>
-                    <p class="mb-1">
-                        <input type="text" name="end_date" value="" class="text-center end_date" required>
+                        <input type="text" name="favorite_dish" value=<?=$favorite_dish?> class="text-center" required>
                     </p>
                 </div>
               </div>
+
+
+
               <div class="modal-footer">
-                <button type="button" id="save_iteminfo" class="frigo_btn close btn btn-block " data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="save_text">保存</span></button>
+                <button type="button" id="item_info_modal" class="frigo_btn close btn btn-block " data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="save_text">保存</span></button>
                 <!-- /DBへ登録する情報のinput -->
                </div>
            </form>
         </div>
       </div>
     </div>
+    <!-- /modal window -->
     <!-- /modal window for item_info -->
 
     <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
@@ -245,9 +257,11 @@
 
     <!-- プロフィール編集用js -->
     <script src="js/profile_edit.js"></script>
+    <!--消費期限アラート-->
+    <script src="js/alert.js"></script>
 
     <script>
-        
+
     </script>
 
 </body>
