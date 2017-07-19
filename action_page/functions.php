@@ -6,9 +6,9 @@ function db_con(){
     try {
     //localhost用
         //小山
-    //$pdo = new PDO('mysql:dbname=shoheikoya_gs_db;charset=utf8;host=localhost','root','root');
+    $pdo = new PDO('mysql:dbname=shoheikoya_gs_db;charset=utf8;host=localhost','root','root');
         //楠美
-    $pdo = new PDO('mysql:dbname=reizo_db;charset=utf8;host=localhost','root','');
+    // $pdo = new PDO('mysql:dbname=reizo_db;charset=utf8;host=localhost','root','');
 
     } catch (PDOException $e) {
       exit('データベースに接続できませんでした。'.$e->getMessage());

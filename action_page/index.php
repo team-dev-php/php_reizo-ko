@@ -62,7 +62,7 @@
 
     <section id="">
         <div class="contatainer">
-            <div class="container text-center">
+            <div class="text-center">
               <h4>おすすめシェアレシピ</h4>
               <hr class="star-primary">
 
