@@ -329,13 +329,13 @@ input[type="checkbox"].on-off:checked + ul{
 
 .join{
     z-index: 0;
-    border-radius: 5px;
+    border-radius: 3px;
     margin-left: 10%;
     margin-top: 21.5%;
     margin-bottom: 5.5%;
     width: 80%;
     text-align: center;
-    background: #ffdd7e;
+    background: #87c57b;
     color: #ffffff;
     font-size: 13px;
     line-height: 36px;
@@ -657,7 +657,7 @@ input[type="checkbox"].on-off:checked + ul{
 }
 
 .date{
-    margin-top: -1%;
+    margin-top: -5%;
     /* position: absolute; */
     opacity: 1;
     background-color: #f3d666;

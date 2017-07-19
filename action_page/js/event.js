@@ -455,10 +455,6 @@ function cook(){
                     halfinteg = halfinteg.join("<br>");
                     halfamt = halfamt.join("<br>");
 
-
-
-//-------------
-                    $(".flexb").after()
                     $('.listinteg'+idNum).html(halfinteg);
                     $('.listamt'+idNum).html(halfamt);
 
