@@ -6,9 +6,9 @@ function cook(){
     let count_show_hide=3;
     let plusnum = 0;
 
-    let foods_container = [['山田','えび','2017年7月10日'],['大島','ジャガイモ', '2017年7月1日'],['佐藤','わかめ', '2017年7月10日'],['大島','鶏肉','2017年7月10日'],['鈴本', '栗', '2017年7月10日'],['前田', 'トマト', '2017年7月10日'],['大島','牛肉', '2017年7月10日'],['大島', 'ハム', '2017年7月10日'],['山田','きゅうり', '2017年7月10日']];
+    let foods_container = [['山田','えび','2017年7月10日'],['大島','ジャガイモ', '2017年7月1日'],['佐藤','わかめ', '2017年7月10日'],['山田','鶏肉','2017年7月10日'],['鈴本', '栗', '2017年7月10日'],['佐藤', 'トマト', '2017年7月10日'],['山田','牛肉', '2017年7月10日'],['大島', 'ハム', '2017年7月10日'],['佐藤','きゅうり', '2017年7月10日'],['山田','アスパラガス','2017年7月10日']];
 
-    //    let foods_container = [['山田','エビ','2017年7月10日'],['高橋','ジャガイモ', '2017年7月1日'],['佐藤','わかめ', '2017年7月10日']];
+//        let foods_container = [['山田','エビ','2017年7月10日'],['高橋','ジャガイモ', '2017年7月1日'],['佐藤','わかめ', '2017年7月10日']];
 
     let userName = '山田'
     let usersFood = [];
@@ -449,36 +449,30 @@ function cook(){
                     let halfinteg = [];
                     let halfamt = [];
 
-                    for (let l = 0; l < halfamount.length; l+=2){
-                        halfinteg.push(halfamount[l]);
-                        halfamt.push(halfamount[l+1]);
-                    }
-
-                    console.log(halfinteg);
-                    console.log(halfamt);
-
-                    for(let y=0; y<halfinteg.length; y++){
-                        let hlig = $("<div>", {
-                            addClass : "listinteg",
-                            id:"hlig"+ y,
-                            on:{click: function(){
-                            }
-                               }
-                        });
-                        let hlat = $("<div>", {
-                            addClass : "listamt",
-                            id:"hlat"+ y,
-                            on:{click: function(){
-                            }
-                               }
-                        });
-
-                        $('.listinteg').append(hlig);
-                        $('.listinteg').append(hlat);
-
-                        $('#hlig'+y).html(halfinteg[y]);
-                        $('#hlat'+y).html(halfamt[y]);
-                    }
+//                    for (let l = 0; l < halfamount.length; l+=2){
+//                        halfinteg.push(halfamount[l]);
+//                        halfamt.push(halfamount[l+1]);
+//                    }
+//
+//                    console.log(halfinteg);
+//                    console.log(halfamt);
+//
+//                    for(let y=0; y<halfinteg.length; y++){
+//                        let hlig = $("<div>", {
+//                            addClass : "listinteg",
+//                            id:"hlig"+ y,
+//                        });
+//                        let hlat = $("<div>", {
+//                            addClass : "listamt",
+//                            id:"hlat"+ y,
+//                        });
+//
+//                        $('.listinteg').append(hlig);
+//                        $('.listinteg').append(hlat);
+//
+//                        $('#hlig'+y).html(halfinteg[y]);
+//                        $('#hlat'+y).html(halfamt[y]);
+//                    }
 
 
                     for(let g = 0; g<zairyoP.length; g++){
@@ -494,8 +488,6 @@ function cook(){
                         let b = a.replace("</div>","");
                         zairyo.push(b);
                     }
-
-
 
                     let jugdeArray = 0;
                     //参加不可能なイベントのhead+iにdisplay:none

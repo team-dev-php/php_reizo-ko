@@ -188,6 +188,9 @@ input[type="checkbox"].on-off:checked + ul{
     font-size: 13px;
     margin-top: 11%;
     margin-bottom: -20.5%;
+    width: 102%;
+    margin-left: -2px;
+    /* line-height: 2; */
 }
 
 .whitebox1{
