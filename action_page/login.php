@@ -82,7 +82,7 @@ if( isset($_SESSION['user_id']) != null) {
     </section>
     <!-- Footer -->
     <?php include (dirname(__FILE__).'/footer.php'); ?>
-    
+
     <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
     <div class="scroll-top page-scroll hidden-sm hidden-xs hidden-lg hidden-md">
         <a class="btn btn-primary" href="#page-top">
@@ -106,28 +106,28 @@ if( isset($_SESSION['user_id']) != null) {
     <!-- Theme JavaScript -->
     <script src="js/freelancer.min.js"></script>
     <script>
-    	function onSignIn(googleUser) {
-		  var profile = googleUser.getBasicProfile();
-		  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-		  console.log('Name: ' + profile.getName());
-		  console.log('Image URL: ' + profile.getImageUrl());
-		  console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-		  $.ajax({
-		  	url:"logincheck.php",
-		  	method:"post",
-		  	data:{
-		  		user_name:profile.getName(),
-		  		user_email:profile.getEmail(),
+        function onSignIn(googleUser) {
+          var profile = googleUser.getBasicProfile();
+          console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+          console.log('Name: ' + profile.getName());
+          console.log('Image URL: ' + profile.getImageUrl());
+          console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+          $.ajax({
+              url:"logincheck.php",
+              method:"post",
+              data:{
+                  user_name:profile.getName(),
+                  user_email:profile.getEmail(),
                 icon:profile.getImageUrl()
-		  	}
-		  }).done((data)=>{
+              }
+          }).done((data)=>{
             console.log(data);
-		  	console.log("login success!");
+              console.log("login success!");
             var url = window.location.href;
             url = url.replace("login.php","");
             window.location.href = url + "index.php";
-		  });
-		}
+          });
+        }
     </script>
 
 </body>

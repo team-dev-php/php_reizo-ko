@@ -384,8 +384,15 @@ function cook(){
                                 return String.fromCharCode(s.charCodeAt(0) - 65248);
                             });
 
-                            num = Number(num);
-                            num = num/2;
+                            if(num.includes("/")){
+                                let fnum = num.slice(0,1);
+                                fnum = Number(fnum);
+                                let snum = num.slice(2,3);
+                                snum = Number(snum);
+                                num = fnum/snum;
+                                num = num/2;
+                            }
+
 
                             if(num == 0.5){
                                 num = "1/2";
