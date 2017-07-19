@@ -267,6 +267,7 @@ a{
 .navbar-custom{
     background-color: white;
     color: #fca800;
+    box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2);
 }
 .navbar-brand{
     color: #fca800!important;
@@ -278,8 +279,8 @@ a{
 }
 
 .btn-primary:hover{
-    background-color: white;
-    border: none;
+    background-color: white!important;
+    border: none!important;
 }
 
 
