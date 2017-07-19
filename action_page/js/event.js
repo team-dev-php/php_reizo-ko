@@ -450,13 +450,28 @@ function cook(){
                     console.log(halfinteg);
                     console.log(halfamt);
 
+                    for(let y=0; y<halfinteg.length; y++){
+                        let hlig = $("<div>", {
+                            addClass : "listinteg",
+                            id:"hlig"+ y,
+                            on:{click: function(){
+                            }
+                               }
+                        });
+                        let hlat = $("<div>", {
+                            addClass : "listamt",
+                            id:"hlat"+ y,
+                            on:{click: function(){
+                            }
+                               }
+                        });
 
+                        $('.listinteg').append(hlig);
+                        $('.listinteg').append(hlat);
 
-                    halfinteg = halfinteg.join("<br>");
-                    halfamt = halfamt.join("<br>");
-
-                    $('.listinteg'+idNum).html(halfinteg);
-                    $('.listamt'+idNum).html(halfamt);
+                        $('#hlig'+y).html(halfinteg[y]);
+                        $('#hlat'+y).html(halfamt[y]);
+                    }
 
 
                     for(let g = 0; g<zairyoP.length; g++){
