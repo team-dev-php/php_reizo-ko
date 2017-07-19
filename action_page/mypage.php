@@ -54,7 +54,7 @@
                 <!-- Add icon library -->
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
                 <div class="card">
-                    <h4>ユーザープロフィール</h4>
+                    <h4 style="padding: 5px 0;">プロフィール</h4>
                   <img src=<?=$icon?> alt="user_icon" class="user_icon" style="width:50%">
                     <h4><span class="update_name"><?=$user_nickname?></span></h4>
                     <h4>所属：<span class="update_belong_to"><?=$belong_to?></span></h4>
