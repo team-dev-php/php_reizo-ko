@@ -6,7 +6,7 @@ function cook(){
     let count_show_hide=3;
     let plusnum = 0;
 
-    let foods_container = [['山田','えび','2017年7月10日'],['大島','ジャガイモ', '2017年7月1日'],['佐藤','わかめ', '2017年7月10日'],['山田','鶏肉','2017年7月10日'],['鈴本', '栗', '2017年7月10日'],['佐藤', 'トマト', '2017年7月10日'],['山田','牛肉', '2017年7月10日'],['大島', 'ハム', '2017年7月10日'],['佐藤','きゅうり', '2017年7月10日'],['山田','アスパラガス','2017年7月10日']];
+    let foods_container = [['山田','えび','2017年7月10日'],['大島','ジャガイモ', '2017年7月1日'],['佐藤','わかめ', '2017年7月10日'],['山田','鶏肉','2017年7月10日'],['鈴本', '栗', '2017年7月10日'],['佐藤', 'トマト', '2017年7月10日'],['山田','牛肉', '2017年7月10日'],['大島', 'ハム', '2017年7月10日'],['山田','きゅうり', '2017年7月10日'],['山田','アスパラガス','2017年7月10日']];
 
 //        let foods_container = [['山田','エビ','2017年7月10日'],['高橋','ジャガイモ', '2017年7月1日'],['佐藤','わかめ', '2017年7月10日']];
 
@@ -449,13 +449,19 @@ function cook(){
                     let halfinteg = [];
                     let halfamt = [];
 
-//                    for (let l = 0; l < halfamount.length; l+=2){
-//                        halfinteg.push(halfamount[l]);
-//                        halfamt.push(halfamount[l+1]);
-//                    }
-//
-//                    console.log(halfinteg);
-//                    console.log(halfamt);
+                    for (let l = 0; l < halfamount.length; l+=2){
+                        halfinteg.push(halfamount[l]);
+                        halfamt.push(halfamount[l+1]);
+                    }
+
+                    console.log(halfinteg);
+                    console.log(halfamt);
+
+                    let a = halfinteg.join("<br>");
+                    let b = halfamt.join("<br>");
+
+                    $('.listinteg').html(a);
+                    $('.listamt').html(b);
 //
 //                    for(let y=0; y<halfinteg.length; y++){
 //                        let hlig = $("<div>", {
