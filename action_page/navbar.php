@@ -117,7 +117,7 @@
             <h4 class="modal-title text-center">アイテム情報確認</h4>
           </div>
           <div style="text-align:center;" class="">
-             <img id="sourceImage2" src="" alt="" >
+             <img id="sourceImage2" src="" alt="" style="width:50%;margin-top:1em;">
           </div>
           <div class="modal-body row">
             <div class="list-group">
@@ -168,6 +168,7 @@
                 <div class= "regist_box"><input id="regist_bt" type="submit" class="regist_bt btn btn-block btn-danger" value="アイテムを登録！">
                     <!-- <div id="signin_btn" class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div> -->
                 </div>
+
                 <button type="button" class="close btn btn-primary btn-block" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">戻る</span></button>
                 <!-- /DBへ登録する情報のinput -->
             </form>

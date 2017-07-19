@@ -102,7 +102,7 @@
                          }else{
                              let item_image = html.items[0].link;
                              $("#sourceImage").attr("src",item_image);
-                             $("#img_src").val(item_image);
+                             //$("#img_src").val(item_image);//ここでモーダルのhiddenになってるinputタグに代入
                              // $("#item_name").val(item_name);
                              // $("#category").val(category);
                              // $("#item_end_date").val(item_name);
