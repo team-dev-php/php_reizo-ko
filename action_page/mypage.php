@@ -37,15 +37,16 @@
     <script src="js/item_info_modal.js"></script>
     <!-- <script src="js/google_login.js"></script> -->
 
-    <script src="js/Chart.bundle.js"></script>
+    <!-- <script src="js/Chart.bundle.js"></script> -->
     <script src="js/utils.js"></script>
-    <style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
+    <!-- <style>
     canvas{
         -moz-user-select: none;
         -webkit-user-select: none;
         -ms-user-select: none;
     }
-    </style>
+    </style> -->
 </head>
 
 <body id="" class="index">
@@ -80,11 +81,16 @@
                 </div>
             </div>
             <!-- /プロフィールページ -->
+            <div class="container text-center" style="margin-bottom: 80px;">
+                <h4>現在までの保存記録</h4>
+                <canvas id="myChart"></canvas>
+            </div>
             <!-- 残り物レシピ画像欄 -->
             <div class="container text-center">
                 <div class="back"><div id="box"></div></div>
             </div>
             <!-- /残り物レシピ画像欄 -->
+
             <div class="container text-center">
                 <h4><span class="update_name"><?=$user_nickname?></span>の保存中アイテム一覧</h4>
                 <table class="table table-condensed">
@@ -101,139 +107,6 @@
                     </tbody>
                 </table>
             </div>
-            <div class="container text-center">
-                <h4>現在までの保存記録分析</h4>
-                <div style="width:75%;">
-        <canvas id="canvas"></canvas>
-    </div>
-    <br>
-    <br>
-    <button id="randomizeData">Randomize Data</button>
-    <button id="addDataset">Add Dataset</button>
-    <button id="removeDataset">Remove Dataset</button>
-    <button id="addData">Add Data</button>
-    <button id="removeData">Remove Data</button>
-    <script>
-        var MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-        var config = {
-            type: 'line',
-            data: {
-                labels: ["January", "February", "March", "April", "May", "June", "July"],
-                datasets: [{
-                    label: "My First dataset",
-                    backgroundColor: window.chartColors.red,
-                    borderColor: window.chartColors.red,
-                    data: [
-                        randomScalingFactor(),
-                        randomScalingFactor(),
-                        randomScalingFactor(),
-                        randomScalingFactor(),
-                        randomScalingFactor(),
-                        randomScalingFactor(),
-                        randomScalingFactor()
-                    ],
-                    fill: false,
-                }, {
-                    label: "My Second dataset",
-                    fill: false,
-                    backgroundColor: window.chartColors.blue,
-                    borderColor: window.chartColors.blue,
-                    data: [
-                        randomScalingFactor(),
-                        randomScalingFactor(),
-                        randomScalingFactor(),
-                        randomScalingFactor(),
-                        randomScalingFactor(),
-                        randomScalingFactor(),
-                        randomScalingFactor()
-                    ],
-                }]
-            },
-            options: {
-                responsive: true,
-                title:{
-                    display:true,
-                    text:'Chart.js Line Chart'
-                },
-                tooltips: {
-                    mode: 'index',
-                    intersect: false,
-                },
-                hover: {
-                    mode: 'nearest',
-                    intersect: true
-                },
-                scales: {
-                    xAxes: [{
-                        display: true,
-                        scaleLabel: {
-                            display: true,
-                            labelString: 'Month'
-                        }
-                    }],
-                    yAxes: [{
-                        display: true,
-                        scaleLabel: {
-                            display: true,
-                            labelString: 'Value'
-                        }
-                    }]
-                }
-            }
-        };
-        window.onload = function() {
-            var ctx = document.getElementById("canvas").getContext("2d");
-            window.myLine = new Chart(ctx, config);
-        };
-        document.getElementById('randomizeData').addEventListener('click', function() {
-            config.data.datasets.forEach(function(dataset) {
-                dataset.data = dataset.data.map(function() {
-                    return randomScalingFactor();
-                });
-            });
-            window.myLine.update();
-        });
-        var colorNames = Object.keys(window.chartColors);
-        document.getElementById('addDataset').addEventListener('click', function() {
-            var colorName = colorNames[config.data.datasets.length % colorNames.length];
-            var newColor = window.chartColors[colorName];
-            var newDataset = {
-                label: 'Dataset ' + config.data.datasets.length,
-                backgroundColor: newColor,
-                borderColor: newColor,
-                data: [],
-                fill: false
-            };
-            for (var index = 0; index < config.data.labels.length; ++index) {
-                newDataset.data.push(randomScalingFactor());
-            }
-            config.data.datasets.push(newDataset);
-            window.myLine.update();
-        });
-        document.getElementById('addData').addEventListener('click', function() {
-            if (config.data.datasets.length > 0) {
-                var month = MONTHS[config.data.labels.length % MONTHS.length];
-                config.data.labels.push(month);
-                config.data.datasets.forEach(function(dataset) {
-                    dataset.data.push(randomScalingFactor());
-                });
-                window.myLine.update();
-            }
-        });
-        document.getElementById('removeDataset').addEventListener('click', function() {
-            config.data.datasets.splice(0, 1);
-            window.myLine.update();
-        });
-        document.getElementById('removeData').addEventListener('click', function() {
-            config.data.labels.splice(-1, 1); // remove the label first
-            config.data.datasets.forEach(function(dataset, datasetIndex) {
-                dataset.data.pop();
-            });
-            window.myLine.update();
-        });
-    </script>
-            </div>
-
         </div>
         <!-- Footer -->
     <?php include (dirname(__FILE__).'/footer.php'); ?>
@@ -376,7 +249,28 @@
     <!--消費期限アラート-->
     <script src="js/alert.js"></script>
 
-
+    <script>
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+          type: 'line',
+          data: {
+            labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
+            datasets: [{
+              label: '肉類',
+              data: [12, 19, 3, 17, 6, 3, 7],
+              backgroundColor: "rgba(153,216,173,0.4)"
+            }, {
+              label: '果物',
+              data: [2, 29, 5, 5, 2, 3, 10],
+              backgroundColor: "rgba(255,153,0,0.4)"
+            },{
+              label: '果物',
+              data: [2, 1, 5, 12, 2, 10, 20],
+              backgroundColor: "rgba(153,255,0,0.4)"
+            }]
+          }
+        });
+    </script>
 </body>
 
 </html>
