@@ -25,6 +25,7 @@
 
     <!-- Custom CSS -->
     <link href="css/style.css" rel="stylesheet">
+    <link href="css/event.css" rel="stylesheet">
     <!-- Custom Fonts -->
     <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
@@ -64,9 +65,27 @@
             <div class="container text-center">
               <h4>おすすめシェアレシピ</h4>
               <hr class="star-primary">
+
+                <div class="back"><div id="box"></div></div>
+                <div id="modal-content">
+                    <!-- モーダルウィンドウのコンテンツ開始 -->
+                    <div class="pleslect">*持参する食材一覧<br>(食材１人分)</div>
+                    <div class = flexb><div class = "listinteg"></div><div class = "listamt"></div></div>
+                    <form action="">
+
+
+
+                        <input type="submit" id = send class = send value="確定する">
+                        <p><a id="modal-close" class="modal-close">Close</a></p>
+                    </form>
+                    <!-- モーダルウィンドウのコンテンツ終了 -->
+                </div>
+
+
+
               <!-- ajaxでphpからhtmlを取得して表示 -->
               <table id="recipe" class="table table-condensed">
-                
+
               </table>
             </div>
         </div>
@@ -120,6 +139,7 @@
     <!-- Theme JavaScript -->
     <script src="js/freelancer.min.js"></script>
     <script src="js/google_merge.js"></script>
+    <script src="js/event.js"></script>
 
 </body>
 
