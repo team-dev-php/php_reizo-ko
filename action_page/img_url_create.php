@@ -21,9 +21,9 @@ if(isset($_FILES['file'])){
 
   // //本番環境用
       //koyama
-  $barcode = 'http://shoheikoya.sakura.ne.jp/gs/team-dev/action_page/img/'.$time.'.jpg';
+  //$barcode = 'http://shoheikoya.sakura.ne.jp/gs/team-dev/action_page/img/'.$time.'.jpg';
       //kusumi
-  //$barcode = 'http://whisper1111.sakura.ne.jp/php_reizo-ko/action_page/img/'.$time.'.jpg';
+  $barcode = 'localhost:8888/git-local/action_page/img/'.$time.'.jpg';
 
    }
 }else{
